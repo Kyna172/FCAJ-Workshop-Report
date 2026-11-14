@@ -28,7 +28,7 @@ chapter: false
 
 ---
 
-![Profile Picture](/images/avatar.png)
+![Profile Picture](../static/images/images.png)
 
 ---
 

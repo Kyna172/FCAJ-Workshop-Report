@@ -28,7 +28,7 @@ chapter: false
 
 ---
 
-![Ảnh đại diện](../../static/images/images.png)
+![Ảnh đại diện](../static/images/images.png)
 
 ---
 

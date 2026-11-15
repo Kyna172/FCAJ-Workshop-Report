@@ -6,10 +6,14 @@ chapter: false
 pre: " <b> 4.2. </b> "
 ---
 
+**Bài viết sự kiện:** [Xem trên Facebook – AWS Study Group](https://www.facebook.com/share/p/1ArkgMT1KM/)
+
+---
+
 ### Mục đích của sự kiện
 
 - Tìm hiểu những xu hướng phát triển trong lĩnh vực Cloud Computing và Artificial Intelligence.
-- Tiếp cận các chủ đề về ứng dụng AI, hiện đại hóa phần mềm và hạ tầng đám mây.
+- Tiếp cận các chủ đề về Agentic AI, hạ tầng dữ liệu và hiện đại hóa ứng dụng trên nền tảng đám mây.
 - Có thêm góc nhìn về cách doanh nghiệp ứng dụng các dịch vụ AWS trong phát triển và vận hành hệ thống.
 - Giao lưu và học hỏi cùng cộng đồng những người quan tâm đến công nghệ AWS tại Việt Nam.
 
@@ -18,25 +22,28 @@ pre: " <b> 4.2. </b> "
 #### Agentic AI & Phát triển phần mềm hiện đại
 
 - Tìm hiểu xu hướng phát triển của AI Agent và khả năng hỗ trợ xử lý các tác vụ trong ứng dụng phần mềm.
-- Có thêm góc nhìn về vai trò của AI trong quá trình phát triển và cải tiến sản phẩm công nghệ.
+- Tiếp cận những góc nhìn về việc đưa AI Agent từ giai đoạn thử nghiệm vào môi trường vận hành thực tế.
+- Có thêm nhận thức về vai trò của AI trong quá trình phát triển và cải tiến sản phẩm công nghệ.
 
-#### Platform Engineering & Cloud Infrastructure
+#### Data Foundation & Cloud Modernization
 
-- Tiếp cận các khái niệm về xây dựng và quản lý nền tảng phát triển ứng dụng trên môi trường đám mây.
-- Tìm hiểu tổng quan về việc sử dụng container và Amazon EKS trong quản lý ứng dụng.
-- Nhận thức được tầm quan trọng của khả năng mở rộng và tính ổn định trong thiết kế hệ thống.
+- Tìm hiểu tổng quan về vai trò của hạ tầng dữ liệu trong việc xây dựng các ứng dụng Cloud và AI.
+- Tiếp cận những định hướng hiện đại hóa hệ thống và ứng dụng trên nền tảng đám mây.
+- Nhận thức được tầm quan trọng của việc lựa chọn kiến trúc phù hợp với nhu cầu thực tế của doanh nghiệp.
 
-#### AI & Cloud Operations
+#### Cloud Operations & Cost Optimization
 
-- Tìm hiểu vai trò của các công cụ AI trong việc hỗ trợ quy trình phát triển phần mềm.
-- Có thêm nhận thức về việc cân bằng giữa hiệu năng, chi phí và khả năng vận hành khi sử dụng dịch vụ đám mây.
+- Tìm hiểu những vấn đề cần cân nhắc khi triển khai và vận hành ứng dụng trên AWS.
+- Có thêm góc nhìn về việc cân bằng giữa hiệu năng, chi phí và khả năng mở rộng của hệ thống.
+- Tiếp cận các cuộc thảo luận về tối ưu chi phí Cloud và ứng dụng AI trong thực tế.
 
 ### Những gì học được
 
 - **Cloud & AI Trends:** Có thêm góc nhìn tổng quan về xu hướng kết hợp điện toán đám mây và trí tuệ nhân tạo trong phát triển phần mềm.
-- **System Architecture:** Hiểu thêm tầm quan trọng của việc lựa chọn kiến trúc phù hợp với yêu cầu thực tế của ứng dụng.
-- **Platform Engineering:** Bước đầu làm quen với các khái niệm về quản lý nền tảng và triển khai ứng dụng trên Cloud.
-- **Continuous Learning:** Nhận thức được sự cần thiết của việc thường xuyên cập nhật kiến thức và công nghệ mới.
+- **Agentic AI:** Hiểu thêm những vấn đề cần cân nhắc khi chuyển một giải pháp AI từ thử nghiệm sang ứng dụng thực tế.
+- **System Architecture:** Nhận thức được tầm quan trọng của việc lựa chọn kiến trúc phù hợp với yêu cầu và quy mô của hệ thống.
+- **Cloud Cost Optimization:** Có thêm nhận thức về việc theo dõi và tối ưu chi phí khi sử dụng dịch vụ đám mây.
+- **Continuous Learning:** Hiểu được sự cần thiết của việc thường xuyên cập nhật kiến thức và công nghệ mới.
 
 ### Ứng dụng vào công việc
 
@@ -46,13 +53,19 @@ pre: " <b> 4.2. </b> "
 
 ### Trải nghiệm trong sự kiện
 
-Tham gia **AWS Cloud & AI Day 2026 – HCMC Watch Party** tại văn phòng AWS Việt Nam là cơ hội để tôi theo dõi các nội dung chia sẻ về Cloud Computing và Artificial Intelligence, đồng thời có thêm góc nhìn về những xu hướng công nghệ đang được quan tâm.
+Tham gia **AWS Cloud & AI Day 2026 – HCMC Watch Party** tại văn phòng AWS Việt Nam là cơ hội để tôi theo dõi các nội dung chia sẻ từ chương trình chính tại Hà Nội, đồng thời có thêm góc nhìn về những xu hướng phát triển của Cloud Computing và Artificial Intelligence.
 
 #### Theo dõi chương trình Watch Party
 
-- Có cơ hội theo dõi các phiên chia sẻ về công nghệ Cloud và AI trong chương trình.
-- Tiếp cận nhiều chủ đề công nghệ khác nhau trong cùng một sự kiện.
-- Giao lưu với những người cùng quan tâm đến lĩnh vực điện toán đám mây và trí tuệ nhân tạo.
+- Theo dõi các phiên chia sẻ được truyền trực tiếp từ sự kiện AWS Cloud & AI Day tại Hà Nội.
+- Tiếp cận các chủ đề như Agentic AI, Data Foundation và Cloud Modernization.
+- Có cơ hội giao lưu cùng những người quan tâm đến công nghệ AWS và AI tại TP. Hồ Chí Minh.
+
+#### Giao lưu và thảo luận
+
+- Sự kiện tạo điều kiện để những người tham dự trao đổi kiến thức và góc nhìn về các chủ đề công nghệ.
+- Có thêm cơ hội lắng nghe những ý kiến về việc ứng dụng AI và tối ưu hạ tầng Cloud trong thực tế.
+- Hiểu thêm giá trị của việc học hỏi và chia sẻ kiến thức trong cộng đồng AWS Study Group.
 
 #### Bài học rút ra
 
@@ -64,8 +77,8 @@ Tham gia **AWS Cloud & AI Day 2026 – HCMC Watch Party** tại văn phòng AWS 
 
 ### Một số hình ảnh khi tham gia sự kiện
 
-<img width="1280" height="960" alt="1790644496163_4892130363282366041_4892130363282366041_e22ba2216684192b3ee73f638e33f851" src="https://github.com/user-attachments/assets/c3b55367-4780-4f3b-9d61-b936644a534c" />
+<img width="1280" height="960" alt="AWS Cloud & AI Day 2026 HCMC Watch Party - Photo 1" src="https://github.com/user-attachments/assets/c3b55367-4780-4f3b-9d61-b936644a534c" />
 
-<img width="1280" height="960" alt="1792751197455_186912018913895205_6518061436599146441_dec087904a07bcbb0b5a6bfa5097eb72" src="https://github.com/user-attachments/assets/3f3a2bf0-f6b2-4c70-b957-cbd22f1a8c90" />
+<img width="1280" height="960" alt="AWS Cloud & AI Day 2026 HCMC Watch Party - Photo 2" src="https://github.com/user-attachments/assets/3f3a2bf0-f6b2-4c70-b957-cbd22f1a8c90" />
 
-<img width="590" height="1280" alt="1792751197523_186912018913895205_6518061436599146441_1f55bdf4ad52747dbc07ee9ac59e9dbc" src="https://github.com/user-attachments/assets/cb2eb12a-be6e-401e-b789-0df55f0d849e" />
+<img width="590" height="1280" alt="AWS Cloud & AI Day 2026 HCMC Watch Party - Photo 3" src="https://github.com/user-attachments/assets/cb2eb12a-be6e-401e-b789-0df55f0d849e" />

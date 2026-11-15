@@ -1,6 +1,6 @@
 ---
-title: "Các events đã tham gia"
-date: 2025-08-11
+title: "Các sự kiện đã tham gia"
+date: 2026-11-04
 weight: 4
 chapter: false
 pre: " <b> 4. </b> "
@@ -8,24 +8,46 @@ pre: " <b> 4. </b> "
 
 # Các sự kiện công nghệ & Hội thảo đã tham gia
 
-Trong suốt quá trình thực tập tại chương trình **First Cloud AI Journey (FCAJ)**, em đã có cơ hội tham gia các buổi hội thảo chuyên sâu và ngày hội công nghệ lớn do AWS cùng cộng đồng tổ chức. Đây là những trải nghiệm thực tế vô cùng quý báu, giúp em mở rộng góc nhìn từ giảng đường đại học ra môi trường doanh nghiệp thực tế, học hỏi từ các chuyên gia kiến trúc giải pháp hàng đầu và kết nối với các anh chị kỹ sư trong ngành.
+Trong quá trình thực tập tại chương trình **First Cloud AI Journey (FCAJ)**, em đã có cơ hội tham gia các sự kiện công nghệ và buổi chia sẻ kiến thức do AWS cùng cộng đồng AWS Study Group tổ chức. Những hoạt động này giúp em mở rộng hiểu biết về Cloud Computing, Artificial Intelligence và các xu hướng phát triển phần mềm hiện đại, đồng thời có cơ hội giao lưu, học hỏi từ các chuyên gia và những người cùng quan tâm đến công nghệ.
 
-Dưới đây là báo cáo chi tiết về 2 sự kiện tiêu biểu em đã tham dự:
-
----
-
-### [Sự kiện 1: Hội thảo Hiện đại hóa Ứng dụng & Cơ sở dữ liệu ứng dụng GenAI](4.1-event1/)
-* **Tên sự kiện:** GenAI-powered App-DB Modernization Workshop  
-* **Thời gian:** 09:00 - 17:00, Ngày 13/08/2025  
-* **Địa điểm:** Tầng 26, Bitexco Financial Tower, Quận 1, TP. Hồ Chí Minh  
-* **Vai trò tham gia:** Người tham dự (Attendee)  
-* **Nội dung trọng tâm:** Thiết kế hướng miền (Domain-Driven Design), Kiến trúc hướng sự kiện (EDA), chia tách Microservices và tăng tốc hiện đại hóa mã nguồn cũ bằng trợ lý ảo Amazon Q Developer.
+Dưới đây là tổng hợp 4 sự kiện em đã tham gia trong quá trình thực tập:
 
 ---
 
-### [Sự kiện 2: Ngày hội công nghệ AWS Community Day Vietnam](4.2-event2/)
-* **Tên sự kiện:** AWS Community Day Vietnam 2025  
-* **Thời gian:** 08:30 - 16:30, Ngày 20/09/2025  
-* **Địa điểm:** Trung tâm Hội nghị Grand Palace, Quận Tân Bình, TP. Hồ Chí Minh  
-* **Vai trò tham gia:** Khách mời kỹ thuật & Hỗ trợ điều phối cộng đồng sinh viên  
-* **Nội dung trọng tâm:** Xây dựng ứng dụng Generative AI cho doanh nghiệp với Amazon Bedrock, tối ưu hóa chi phí hạ tầng EKS Kubernetes quy mô lớn và thiết lập kiến trúc phòng thủ an toàn thông tin Zero-Trust.
+### [Sự kiện 1: Buildrathon – Kickoff: Code the Future with CMC Global](4.1-Event1/)
+
+- **Tên sự kiện:** Buildrathon – Kickoff: Code the Future with CMC Global
+- **Thời gian:** 10:30 – 12:00, Thứ Bảy, ngày 26/09/2026
+- **Địa điểm:** Văn phòng AWS Việt Nam, Tầng 26, Bitexco Financial Tower, TP. Hồ Chí Minh, Việt Nam.
+- **Vai trò tham gia:** Người tham dự (Participant)
+- **Nội dung trọng tâm:** Khởi động FCAJ Buildrathon 2026 Season 01; tìm hiểu tư duy xây dựng và tối ưu AI Agent thông qua Talkshow "The Thinking Behind Building The Bot"; giao lưu với cộng đồng AWS Study Group và CMC Global.
+
+---
+
+### [Sự kiện 2: AWS Cloud & AI Day 2026 – HCMC Watch Party](4.2-Event2/)
+
+- **Tên sự kiện:** AWS Cloud & AI Day 2026 – HCMC Watch Party
+- **Thời gian:** 08:00 – 17:00, Thứ Ba, ngày 29/09/2026
+- **Địa điểm:** Văn phòng AWS Việt Nam, Tầng 26, Bitexco Financial Tower, TP. Hồ Chí Minh, Việt Nam.
+- **Vai trò tham gia:** Người tham dự (Attendee)
+- **Nội dung trọng tâm:** Theo dõi các phiên chia sẻ từ AWS Cloud & AI Day tại Hà Nội; tìm hiểu xu hướng Agentic AI, Data Foundation và Cloud Modernization; giao lưu và trao đổi kiến thức cùng cộng đồng Cloud & AI tại TP. Hồ Chí Minh.
+
+---
+
+### [Sự kiện 3: Fireside Chat with Dr. Werner – Navigating the Future of Cloud & AI in Vietnam](4.3-Event3/)
+
+- **Tên sự kiện:** Fireside Chat with Dr. Werner – Navigating the Future of Cloud & AI in Vietnam
+- **Thời gian:** Ngày 02/10/2026
+- **Địa điểm:** Văn phòng AWS Việt Nam, Tầng 26, Bitexco Financial Tower, TP. Hồ Chí Minh, Việt Nam.
+- **Vai trò tham gia:** Người tham dự (Attendee)
+- **Nội dung trọng tâm:** Lắng nghe chia sẻ từ Dr. Werner Vogels, CTO của Amazon, về quá trình phát triển AWS, Engineering at Scale, vai trò của lập trình viên trong kỷ nguyên AI và tư duy xây dựng phần mềm hiện đại.
+
+---
+
+### [Sự kiện 4: Cloud & AI Infrastructure Meetup](4.4-Event4/)
+
+- **Tên sự kiện:** Cloud & AI Infrastructure Meetup
+- **Thời gian:** Ngày 24/10/2026
+- **Địa điểm:** Văn phòng AWS Việt Nam, Tầng 26, Bitexco Financial Tower, TP. Hồ Chí Minh, Việt Nam.
+- **Vai trò tham gia:** Người tham dự (Attendee)
+- **Nội dung trọng tâm:** Tham gia buổi gặp gỡ và trao đổi kiến thức về Cloud Computing, AI Infrastructure và những vấn đề liên quan đến phát triển, vận hành hạ tầng công nghệ hiện đại.

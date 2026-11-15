@@ -1,64 +1,71 @@
 ---
-title: "Sự kiện 2"
-date: 2025-08-11
+title: "AWS Cloud & AI Day 2026 – HCMC Watch Party"
+date: 2026-09-29
 weight: 2
 chapter: false
 pre: " <b> 4.2. </b> "
 ---
 
-# Báo cáo tổng kết: Ngày hội công nghệ "AWS Community Day Vietnam 2025"
+### Mục đích của sự kiện
 
-### Thông tin sự kiện
-* **Tên sự kiện:** AWS Community Day Vietnam 2025
-* **Thời gian:** 08:30 – 16:30, Ngày 20/09/2025
-* **Địa điểm:** Trung tâm Hội nghị Grand Palace, Quận Tân Bình, TP. Hồ Chí Minh
-* **Vai trò tham dự:** Khách mời kỹ thuật & Tình nguyện viên hỗ trợ cộng đồng sinh viên
+- Tìm hiểu những xu hướng phát triển trong lĩnh vực Cloud Computing và Artificial Intelligence.
+- Tiếp cận các chủ đề về ứng dụng AI, hiện đại hóa phần mềm và hạ tầng đám mây.
+- Có thêm góc nhìn về cách doanh nghiệp ứng dụng các dịch vụ AWS trong phát triển và vận hành hệ thống.
+- Giao lưu và học hỏi cùng cộng đồng những người quan tâm đến công nghệ AWS tại Việt Nam.
 
----
+### Nội dung nổi bật
 
-### Quy mô & Không khí sự kiện
-**AWS Community Day** là sự kiện công nghệ đám mây thường niên lớn nhất do chính cộng đồng các kỹ sư AWS User Group tại Việt Nam tổ chức. Năm 2025, ngày hội quy tụ hơn **600+ kỹ sư Cloud, chuyên gia kiến trúc giải pháp, các lãnh đạo công nghệ (CTO/VP of Engineering) và các bạn sinh viên đam mê công nghệ**, với nhiều phòng hội thảo chuyên đề song song xoay quanh Generative AI, DevOps, Container và An toàn thông tin.
+#### Agentic AI & Phát triển phần mềm hiện đại
 
----
+- Tìm hiểu xu hướng phát triển của AI Agent và khả năng hỗ trợ xử lý các tác vụ trong ứng dụng phần mềm.
+- Có thêm góc nhìn về vai trò của AI trong quá trình phát triển và cải tiến sản phẩm công nghệ.
 
-### Các phiên hội thảo kỹ thuật ấn tượng nhất
+#### Platform Engineering & Cloud Infrastructure
 
-#### 1. Phiên toàn thể: Ứng dụng Generative AI cho Doanh nghiệp với Amazon Bedrock
-* **Diễn giả:** Các chuyên gia đạt danh hiệu AWS Community Hero và Kiến trúc sư giải pháp doanh nghiệp.
-* **Bài học cốt lõi:**
-  * Thay vì tự bỏ hàng triệu USD để huấn luyện mô hình ngôn ngữ lớn từ đầu, các doanh nghiệp đang tạo ra giá trị đột phá nhanh chóng bằng cách khai thác các Foundation Model hàng đầu thế giới (Claude 3.5 Sonnet, Llama 3, Amazon Titan) qua **Amazon Bedrock**.
-  * Kỹ thuật tìm kiếm tăng cường truy xuất **RAG (Retrieval-Augmented Generation)** kết hợp giữa Amazon OpenSearch Serverless hoặc tiện ích mở rộng pgvector trên Amazon RDS PostgreSQL để AI trả lời chính xác dựa trên tài liệu nghiệp vụ nội bộ của công ty.
-  * Thiết lập hàng rào bảo vệ **Guardrails for Amazon Bedrock** để tự động lọc bỏ thông tin nhạy cảm (PII), chống lộ dữ liệu bí mật và ngăn chặn các câu lệnh prompt nguy hại.
+- Tiếp cận các khái niệm về xây dựng và quản lý nền tảng phát triển ứng dụng trên môi trường đám mây.
+- Tìm hiểu tổng quan về việc sử dụng container và Amazon EKS trong quản lý ứng dụng.
+- Nhận thức được tầm quan trọng của khả năng mở rộng và tính ổn định trong thiết kế hệ thống.
 
-#### 2. Chuyên đề chuyên sâu: Tối ưu chi phí hạ tầng Kubernetes trên Amazon EKS
-* **Diễn giả:** Trưởng phòng DevOps tại một kỳ lân công nghệ khu vực Đông Nam Á.
-* **Bài học cốt lõi:**
-  * Xu hướng chuyển dịch từ công cụ Cluster Autoscaler cổ điển sang **Karpenter** - bộ tự động cấp phát node máy chủ mã nguồn mở cực nhanh do AWS phát triển.
-  * Karpenter chỉ mất vài mili-giây để phân tích các Pod đang chờ cấp phát và tự động chọn loại máy chủ EC2 Spot có giá rẻ nhất, giúp cắt giảm tới hơn 45% chi phí máy chủ cụm EKS.
-  * Tận dụng dòng chip thế hệ mới AWS Graviton kiến trúc ARM (`c7g`, `m7g`) để tối ưu tỷ lệ hiệu năng trên giá thành (Price-to-Performance).
+#### AI & Cloud Operations
 
-#### 3. Chuyên đề An toàn thông tin: Kiến trúc Zero-Trust trên nền tảng AWS
-* **Diễn giả:** Chuyên gia tư vấn an ninh mạng cao cấp AWS.
-* **Bài học cốt lõi:**
-  * Triết lý "Không bao giờ tin tưởng, luôn luôn xác thực": Chuyển từ việc bảo vệ theo chu vi tường lửa cứng nhắc sang xác thực định danh chi tiết ở từng tầng giao dịch.
-  * Ứng dụng AWS IAM Roles Anywhere, AWS PrivateLink và hệ thống phát hiện mối đe dọa thông minh Amazon GuardDuty có khả năng tự động cô lập máy chủ nhiễm mã độc bằng hàm Lambda.
+- Tìm hiểu vai trò của các công cụ AI trong việc hỗ trợ quy trình phát triển phần mềm.
+- Có thêm nhận thức về việc cân bằng giữa hiệu năng, chi phí và khả năng vận hành khi sử dụng dịch vụ đám mây.
 
----
+### Những gì học được
 
-### Trải nghiệm thực tế & Hoạt động tình nguyện của sinh viên
+- **Cloud & AI Trends:** Có thêm góc nhìn tổng quan về xu hướng kết hợp điện toán đám mây và trí tuệ nhân tạo trong phát triển phần mềm.
+- **System Architecture:** Hiểu thêm tầm quan trọng của việc lựa chọn kiến trúc phù hợp với yêu cầu thực tế của ứng dụng.
+- **Platform Engineering:** Bước đầu làm quen với các khái niệm về quản lý nền tảng và triển khai ứng dụng trên Cloud.
+- **Continuous Learning:** Nhận thức được sự cần thiết của việc thường xuyên cập nhật kiến thức và công nghệ mới.
 
-#### Hoạt động hỗ trợ sự kiện
-Bên cạnh việc lắng nghe các bài thuyết trình chuyên môn, em rất vinh dự được cùng các anh chị trong ban tổ chức FCAJ tham gia hỗ trợ bàn thông tin: Hướng dẫn check-in mã QR cho khách tham dự, phát tài liệu hướng dẫn các phòng hội thảo và chia sẻ những câu chuyện thực tế về kỳ thực tập Cloud của mình cho các bạn sinh viên khóa dưới.
+### Ứng dụng vào công việc
 
-#### Trải nghiệm các gian hàng công nghệ tương tác
-Tại khu vực triển lãm công nghệ, em đã có dịp trực tiếp trải nghiệm:
-* Mô hình camera thị giác máy tính chạy ở thiết bị biên kết hợp AWS IoT Greengrass nhận diện lỗi sản phẩm trong nhà máy sản xuất.
-* Trải nghiệm ứng dụng trợ lý ảo AI hỏi đáp thông minh kết nối với dữ liệu tài liệu kỹ thuật của AWS.
+- **Tìm hiểu kiến trúc AWS:** Tiếp tục nghiên cứu các dịch vụ AWS và cách kết hợp chúng trong một hệ thống ứng dụng.
+- **Phát triển dự án ReLoop:** Tham khảo những nguyên tắc lựa chọn kiến trúc và cân nhắc hiệu năng, chi phí khi tham gia thảo luận về dự án nhóm.
+- **Nâng cao kiến thức Cloud & AI:** Chủ động tìm hiểu thêm các chủ đề được giới thiệu tại sự kiện trong quá trình thực tập.
 
-#### Mở rộng mạng lưới kết nối nghề nghiệp (Networking)
-Khoảnh khắc tuyệt vời nhất là được trực tiếp trò chuyện cùng các anh chị kỹ sư trưởng (Lead DevOps) trong giờ ăn trưa. Các anh chị đã chia sẻ rất cởi mở về lộ trình phát triển nghề nghiệp: Không nên chỉ học vẹt các chứng chỉ đám mây, mà điều nhà tuyển dụng tìm kiếm nhất ở một sinh viên mới ra trường là sự am hiểu sâu sắc về mạng, hệ điều hành Linux và khả năng tự tay làm các dự án thực tế kèm theo việc viết blog chia sẻ kiến thức.
+### Trải nghiệm trong sự kiện
 
----
+Tham gia **AWS Cloud & AI Day 2026 – HCMC Watch Party** tại văn phòng AWS Việt Nam là cơ hội để tôi theo dõi các nội dung chia sẻ về Cloud Computing và Artificial Intelligence, đồng thời có thêm góc nhìn về những xu hướng công nghệ đang được quan tâm.
 
-### Lời kết
-Tham gia AWS Community Day Vietnam 2025 là một cột mốc đáng nhớ trong kỳ thực tập của em. Sự kiện không chỉ tiếp thêm cho em nguồn cảm hứng kỹ thuật dồi dào mà còn giúp em củng cố vững chắc quyết tâm theo đuổi định hướng trở thành một Kỹ sư Kiến trúc giải pháp Đám mây (Cloud Solutions Architect) trong tương lai.
+#### Theo dõi chương trình Watch Party
+
+- Có cơ hội theo dõi các phiên chia sẻ về công nghệ Cloud và AI trong chương trình.
+- Tiếp cận nhiều chủ đề công nghệ khác nhau trong cùng một sự kiện.
+- Giao lưu với những người cùng quan tâm đến lĩnh vực điện toán đám mây và trí tuệ nhân tạo.
+
+#### Bài học rút ra
+
+- Việc tiếp cận công nghệ mới cần đi kèm với quá trình tìm hiểu và đánh giá tính phù hợp với từng bài toán.
+- Kiến thức nền tảng về Cloud Computing vẫn đóng vai trò quan trọng khi phát triển các ứng dụng tích hợp AI.
+- Tham gia các sự kiện chuyên ngành giúp mở rộng góc nhìn và xác định những chủ đề cần tiếp tục nghiên cứu.
+
+> Tổng thể, sự kiện giúp tôi có thêm góc nhìn về xu hướng phát triển Cloud và AI, đồng thời tạo động lực tiếp tục học tập và tìm hiểu các dịch vụ AWS trong quá trình thực tập.
+
+### Một số hình ảnh khi tham gia sự kiện
+
+<img width="1280" height="960" alt="1790644496163_4892130363282366041_4892130363282366041_e22ba2216684192b3ee73f638e33f851" src="https://github.com/user-attachments/assets/c3b55367-4780-4f3b-9d61-b936644a534c" />
+
+<img width="1280" height="960" alt="1792751197455_186912018913895205_6518061436599146441_dec087904a07bcbb0b5a6bfa5097eb72" src="https://github.com/user-attachments/assets/3f3a2bf0-f6b2-4c70-b957-cbd22f1a8c90" />
+
+<img width="590" height="1280" alt="1792751197523_186912018913895205_6518061436599146441_1f55bdf4ad52747dbc07ee9ac59e9dbc" src="https://github.com/user-attachments/assets/cb2eb12a-be6e-401e-b789-0df55f0d849e" />

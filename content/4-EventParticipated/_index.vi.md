@@ -19,7 +19,7 @@ Dưới đây là tổng hợp 4 sự kiện em đã tham gia trong quá trình 
 - **Tên sự kiện:** Buildrathon – Kickoff: Code the Future with CMC Global
 - **Thời gian:** 10:30 – 12:00, Thứ Bảy, ngày 26/09/2026
 - **Địa điểm:** Văn phòng AWS Việt Nam, Tầng 26, Bitexco Financial Tower, TP. Hồ Chí Minh, Việt Nam.
-- **Vai trò tham gia:** Người tham dự (Participant)
+- **Vai trò tham gia:** Người tham dự
 - **Nội dung trọng tâm:** Khởi động FCAJ Buildrathon 2026 Season 01; tìm hiểu tư duy xây dựng và tối ưu AI Agent thông qua Talkshow "The Thinking Behind Building The Bot"; giao lưu với cộng đồng AWS Study Group và CMC Global.
 
 ---
@@ -29,7 +29,7 @@ Dưới đây là tổng hợp 4 sự kiện em đã tham gia trong quá trình 
 - **Tên sự kiện:** AWS Cloud & AI Day 2026 – HCMC Watch Party
 - **Thời gian:** 08:00 – 17:00, Thứ Ba, ngày 29/09/2026
 - **Địa điểm:** Văn phòng AWS Việt Nam, Tầng 26, Bitexco Financial Tower, TP. Hồ Chí Minh, Việt Nam.
-- **Vai trò tham gia:** Người tham dự (Attendee)
+- **Vai trò tham gia:** Người tham dự
 - **Nội dung trọng tâm:** Theo dõi các phiên chia sẻ từ AWS Cloud & AI Day tại Hà Nội; tìm hiểu xu hướng Agentic AI, Data Foundation và Cloud Modernization; giao lưu và trao đổi kiến thức cùng cộng đồng Cloud & AI tại TP. Hồ Chí Minh.
 
 ---
@@ -39,7 +39,7 @@ Dưới đây là tổng hợp 4 sự kiện em đã tham gia trong quá trình 
 - **Tên sự kiện:** Fireside Chat with Dr. Werner – Navigating the Future of Cloud & AI in Vietnam
 - **Thời gian:** Ngày 02/10/2026
 - **Địa điểm:** Văn phòng AWS Việt Nam, Tầng 26, Bitexco Financial Tower, TP. Hồ Chí Minh, Việt Nam.
-- **Vai trò tham gia:** Người tham dự (Attendee)
+- **Vai trò tham gia:** Người tham dự
 - **Nội dung trọng tâm:** Lắng nghe chia sẻ từ Dr. Werner Vogels, CTO của Amazon, về quá trình phát triển AWS, Engineering at Scale, vai trò của lập trình viên trong kỷ nguyên AI và tư duy xây dựng phần mềm hiện đại.
 
 ---
@@ -49,5 +49,5 @@ Dưới đây là tổng hợp 4 sự kiện em đã tham gia trong quá trình 
 - **Tên sự kiện:** Cloud & AI Infrastructure Meetup
 - **Thời gian:** Ngày 24/10/2026
 - **Địa điểm:** Văn phòng AWS Việt Nam, Tầng 26, Bitexco Financial Tower, TP. Hồ Chí Minh, Việt Nam.
-- **Vai trò tham gia:** Người tham dự (Attendee)
+- **Vai trò tham gia:** Người tham dự
 - **Nội dung trọng tâm:** Tham gia buổi gặp gỡ và trao đổi kiến thức về Cloud Computing, AI Infrastructure và những vấn đề liên quan đến phát triển, vận hành hạ tầng công nghệ hiện đại.

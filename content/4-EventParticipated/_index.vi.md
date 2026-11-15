@@ -34,7 +34,7 @@ Dưới đây là tổng hợp 4 sự kiện em đã tham gia trong quá trình 
 
 ---
 
-### [Sự kiện 3: Fireside Chat with Dr. Werner – Navigating the Future of Cloud & AI in Vietnam](4.3-Event3 /)
+### [Sự kiện 3: Fireside Chat with Dr. Werner – Navigating the Future of Cloud & AI in Vietnam](4.3-Event3/ )
 
 - **Tên sự kiện:** Fireside Chat with Dr. Werner – Navigating the Future of Cloud & AI in Vietnam
 - **Thời gian:** Ngày 02/10/2026
@@ -44,7 +44,7 @@ Dưới đây là tổng hợp 4 sự kiện em đã tham gia trong quá trình 
 
 ---
 
-### [Sự kiện 4: Cloud & AI Infrastructure Meetup](4.4-Event4 /)
+### [Sự kiện 4: Cloud & AI Infrastructure Meetup](4.4-Event4/ )
 
 - **Tên sự kiện:** Cloud & AI Infrastructure Meetup
 - **Thời gian:** Ngày 24/10/2026

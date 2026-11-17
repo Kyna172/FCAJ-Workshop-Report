@@ -10,7 +10,7 @@ pre: " <b> 3.3. </b> "
 
 **Bài viết đã chia sẻ trên cộng đồng AWS Study Group.**
 
-**Link bài đăng:** [Xem bài viết trên Facebook](https://www.facebook.com/share/p/197T9SMqNq/)
+**Link bài đăng:** [Xem bài viết trên Facebook](https://www.facebook.com/share/p/1M4qEfJYd4/)
 
 ## Nội dung bài viết
 

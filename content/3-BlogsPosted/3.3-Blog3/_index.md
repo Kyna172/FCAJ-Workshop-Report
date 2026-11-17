@@ -10,7 +10,7 @@ pre: " <b> 3.3. </b> "
 
 **This article was shared with the AWS Study Group community.**
 
-**Published post:** [View the article on Facebook](https://www.facebook.com/share/p/197T9SMqNq/)
+**Published post:** [View the article on Facebook](https://www.facebook.com/share/p/1M4qEfJYd4/)
 
 ## Article Content
 

@@ -1,28 +1,69 @@
 ---
 title: "Worklog Tuần 9"
-date: 2025-10-06
+date: 2026-11-09
 weight: 9
 chapter: false
 pre: " <b> 1.9. </b> "
 ---
 
-# Tuần 9: Đóng gói và Vận hành ứng dụng dạng Container (Docker, ECR & ECS)
-
 ### Mục tiêu tuần 9:
-* Thành thạo kỹ thuật đóng gói ứng dụng bằng Docker với kỹ thuật Multi-stage build tối ưu kích thước image.
-* Quản lý kho chứa container bảo mật và quét lỗ hổng bảo mật tự động trên Amazon Elastic Container Registry (ECR).
-* Triển khai cụm dịch vụ container phi máy chủ với Amazon Elastic Container Service (ECS) chạy trên hạ tầng AWS Fargate.
 
-### Các công việc triển khai trong tuần:
-| Thứ | Nội dung công việc | Bắt đầu | Hoàn thành | Tài liệu tham khảo |
-| :--- | :--- | :--- | :--- | :--- |
-| **Thứ 2** | - Học kiến thức nền tảng về Container, cơ chế layer của Docker và các nguyên tắc bảo mật khi viết Dockerfile.<br>- Áp dụng kỹ thuật Multi-stage build cho ứng dụng web, giảm dung lượng image từ 850MB xuống chỉ còn 65MB. | 06/10/2025 | 06/10/2025 | [Tài liệu Docker](https://docs.docker.com/) |
-| **Thứ 3** | - Tạo kho lưu trữ private repository trên Amazon ECR, bật tính năng khóa thẻ phiên bản (Immutable Tags).<br>- Kích hoạt tính năng tự động quét lỗ hổng bảo mật (Scan on push) để kiểm tra các mã lỗi CVE.<br>- Đăng nhập Docker qua CLI bằng lệnh `aws ecr get-login-password` và đẩy image lên kho ECR. | 07/10/2025 | 07/10/2025 | [Hướng dẫn Amazon ECR](https://docs.aws.amazon.com/AmazonECR/latest/userguide/) |
-| **Thứ 4** | - Nghiên cứu 3 khái niệm cốt lõi của ECS: Cụm (Cluster), Định nghĩa tác vụ (Task Definition) và Dịch vụ (Service).<br>- Viết file Task Definition quy định mức CPU, RAM, cổng kết nối và các biến môi trường cấu hình ứng dụng. | 08/10/2025 | 08/10/2025 | [Tài liệu Amazon ECS](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/) |
-| **Thứ 5** | - Triển khai một ECS Service trên nền tảng phi máy chủ AWS Fargate, chạy bên trong Private Subnet và đứng sau ALB.<br>- Không cần quản lý bất kỳ máy chủ EC2 máy chủ chủ nào, chỉ định mức CPU/RAM là Fargate tự động chạy.<br>- Kiểm tra quy trình cập nhật phiên bản mới cuốn chiếu (Rolling Update) không gây gián đoạn dịch vụ (Zero downtime). | 09/10/2025 | 09/10/2025 | [Hướng dẫn AWS Fargate](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/AWS_Fargate.html) |
-| **Thứ 6** | - Cấu hình tính năng tự động tăng giảm số lượng task (Service Auto Scaling) dựa trên số lượng request đổ về Load Balancer.<br>- Đọc báo cáo quét bảo mật của ECR và sửa các thư viện có nguy cơ rủi ro.<br>- Dọn dẹp tài nguyên và nộp báo cáo tuần 9. | 10/10/2025 | 10/10/2025 | [Tự động co giãn ECS](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-auto-scaling.html) |
+- Chỉnh sửa, hoàn thiện và xuất bản bài blog AWS số 3 về AWS WAF và API Gateway Throttling.
+- Nghiên cứu, biên soạn và xuất bản bài blog AWS số 4 về quản lý request và token usage trên Amazon Bedrock.
+- Tổng hợp bốn bài blog kỹ thuật đã được phê duyệt vào mục Blogs Posted trên website báo cáo thực tập cá nhân.
+- Hoàn thiện nội dung báo cáo các sự kiện công nghệ đã tham gia trong mục Event Participated.
+- Phối hợp với các thành viên trong nhóm để tổng hợp và hoàn thiện Proposal dự án ReLoop.
+- Tham gia sự kiện Cloud Mastery tại văn phòng AWS để giao lưu và tìm hiểu thêm về lĩnh vực Cloud Computing.
 
-### Kết quả đạt được & Bài học rút ra:
-* **Hiệu quả của Multi-stage build:** Loại bỏ toàn bộ các công cụ biên dịch thừa khỏi image cuối, vừa giảm mạnh thời gian tải vừa thu hẹp bề mặt tấn công của kẻ xấu.
-* **Sự tiện lợi của AWS Fargate:** Không còn phải đau đầu tính toán nâng cấp hệ điều hành máy chủ hay lo lắng dung lượng đĩa của cluster, mọi thứ đều được trừu tượng hóa thành từng tác vụ độc lập.
-* **Quy trình triển khai không gián đoạn:** Hiểu sâu sắc cách ECS và Load Balancer phối hợp kiểm tra sức khỏe của container mới trước khi ngắt kết nối container cũ, đem lại trải nghiệm mượt mà cho người dùng.
+---
+
+### Công việc thực hiện trong tuần:
+
+| Thứ | Công việc | Ngày bắt đầu | Ngày hoàn thành | Tài liệu tham khảo |
+| --- | --- | --- | --- | --- |
+| 2 | - Chỉnh sửa và hoàn thiện bài blog AWS số 3:<br>&nbsp;&nbsp;&nbsp;+ Chủ đề: API đã có AWS WAF, vì sao vẫn cần Throttling?<br>&nbsp;&nbsp;&nbsp;+ Rà soát và điều chỉnh nội dung bài viết theo phản hồi.<br>&nbsp;&nbsp;&nbsp;+ Làm rõ sự khác biệt giữa AWS WAF và API Gateway Throttling.<br>&nbsp;&nbsp;&nbsp;+ Hoàn thiện bài viết và gửi lại để xét duyệt.<br>&nbsp;&nbsp;&nbsp;+ Bài viết được phê duyệt và đăng tải trên Facebook. | 09/11/2026 | 09/11/2026 | [Facebook Post](https://www.facebook.com/share/p/197T9SMqNq/) |
+| 3 | - Nghiên cứu và hoàn thiện bài blog AWS số 4 về Amazon Bedrock:<br>&nbsp;&nbsp;&nbsp;+ Chủ đề: Kiểm soát Request và Token Usage trước khi chi phí tăng cao.<br>&nbsp;&nbsp;&nbsp;+ Tìm hiểu tầm quan trọng của việc kiểm soát số lượng request.<br>&nbsp;&nbsp;&nbsp;+ Nghiên cứu token usage và các yếu tố ảnh hưởng đến chi phí sử dụng mô hình AI.<br>&nbsp;&nbsp;&nbsp;+ Tổng hợp các phương pháp theo dõi và kiểm soát mức sử dụng Amazon Bedrock.<br>&nbsp;&nbsp;&nbsp;+ Hoàn thiện bài viết, được phê duyệt và đăng tải trên Facebook. | 10/11/2026 | 10/11/2026 | [Facebook Post](https://www.facebook.com/share/p/1cJCsM4u1G/) |
+| 4 | - Tổng hợp bốn bài blog AWS vào website báo cáo thực tập:<br>&nbsp;&nbsp;&nbsp;+ Thu thập nội dung các bài blog đã được phê duyệt.<br>&nbsp;&nbsp;&nbsp;+ Biên soạn và sắp xếp nội dung trong mục 3 – Blogs Posted.<br>&nbsp;&nbsp;&nbsp;+ Cập nhật các bài viết lên GitHub.<br>&nbsp;&nbsp;&nbsp;+ Bổ sung đường dẫn minh chứng cho các bài viết.<br>&nbsp;&nbsp;&nbsp;+ Rà soát cách trình bày và cấu trúc nội dung. | 11/11/2026 | 11/11/2026 | |
+| 5 | - Hoàn thiện nội dung báo cáo Event 3 và Event 4:<br>&nbsp;&nbsp;&nbsp;+ Event 3: Fireside Chat with Dr. Werner – Navigating the Future of Cloud & AI in Vietnam.<br>&nbsp;&nbsp;&nbsp;+ Event 4: First Cloud AI Journey – Weekly Meet Up 24/10.<br>&nbsp;&nbsp;&nbsp;+ Tổng hợp nội dung nổi bật và kiến thức tiếp thu từ các sự kiện.<br>&nbsp;&nbsp;&nbsp;+ Biên soạn báo cáo sự kiện bằng tiếng Việt và tiếng Anh.<br>&nbsp;&nbsp;&nbsp;+ Bổ sung hình ảnh, video và các đường dẫn minh chứng.<br>&nbsp;&nbsp;&nbsp;+ Cập nhật nội dung vào mục 4 – Event Participated trên GitHub. | 12/11/2026 | 12/11/2026 | [Event 3 Video](https://www.youtube.com/watch?v=jWjOIfMA9qc)<br>[Event 4 Video](https://www.youtube.com/watch?v=dJiP5890kTg) |
+| 6 | - Phối hợp với nhóm tổng hợp Proposal dự án ReLoop:<br>&nbsp;&nbsp;&nbsp;+ Thu thập và rà soát thông tin từ các thành viên trong nhóm.<br>&nbsp;&nbsp;&nbsp;+ Tổng hợp mục tiêu và phạm vi của dự án.<br>&nbsp;&nbsp;&nbsp;+ Biên soạn nội dung giới thiệu giải pháp và kiến trúc hệ thống AWS.<br>&nbsp;&nbsp;&nbsp;+ Rà soát kế hoạch triển khai và các nội dung liên quan.<br>&nbsp;&nbsp;&nbsp;+ Sắp xếp, chuẩn hóa cấu trúc tài liệu Proposal. | 13/11/2026 | 13/11/2026 | |
+| 7 | - Tham gia sự kiện Cloud Mastery tại văn phòng AWS:<br>&nbsp;&nbsp;&nbsp;+ Giao lưu cùng cộng đồng sinh viên quan tâm đến Cloud Computing.<br>&nbsp;&nbsp;&nbsp;+ Theo dõi phần hỏi đáp về định hướng nghề nghiệp và kiến thức chuyên môn Cloud.<br>&nbsp;&nbsp;&nbsp;+ Tham gia hoạt động Quiz cuối chương trình.<br>&nbsp;&nbsp;&nbsp;+ Có thêm cơ hội trao đổi và học hỏi từ cộng đồng công nghệ. | 14/11/2026 | 14/11/2026 | [Cloud Mastery Recap](https://www.facebook.com/share/p/1E3kZ8yC7h/) |
+
+---
+
+### Kết quả đạt được tuần 9:
+
+- Hoàn thiện và xuất bản bài blog AWS số 3 về AWS WAF và API Gateway Throttling:
+  + Rà soát và chỉnh sửa nội dung theo phản hồi.
+  + Củng cố kiến thức về cơ chế bảo vệ API bằng AWS WAF.
+  + Hiểu rõ hơn vai trò của Throttling trong việc kiểm soát lưu lượng truy cập API.
+  + Bài viết được phê duyệt và đăng tải trên Facebook.
+
+- Nghiên cứu và xuất bản bài blog AWS số 4 về Amazon Bedrock:
+  + Tìm hiểu cách kiểm soát request và token usage.
+  + Nắm được tầm quan trọng của việc theo dõi mức sử dụng mô hình AI.
+  + Củng cố kiến thức về quản lý và tối ưu chi phí Amazon Bedrock.
+  + Hoàn thành bài viết và được phê duyệt đăng tải trên Facebook.
+
+- Tổng hợp bốn bài blog kỹ thuật vào website báo cáo thực tập:
+  + Thu thập và hệ thống hóa nội dung các bài viết đã được phê duyệt.
+  + Cập nhật các bài blog vào mục 3 – Blogs Posted.
+  + Bổ sung đường dẫn minh chứng cho các bài viết.
+  + Cải thiện cách tổ chức và trình bày nội dung báo cáo trên GitHub.
+
+- Hoàn thiện báo cáo các sự kiện công nghệ đã tham gia:
+  + Tổng hợp nội dung Event 3 và Event 4.
+  + Biên soạn nội dung báo cáo bằng tiếng Việt và tiếng Anh.
+  + Bổ sung hình ảnh và video minh chứng.
+  + Hoàn thiện nội dung trong mục 4 – Event Participated.
+
+- Phối hợp với nhóm trong quá trình hoàn thiện Proposal dự án ReLoop:
+  + Tổng hợp thông tin từ các thành viên trong nhóm.
+  + Rà soát nội dung giới thiệu dự án, mục tiêu và giải pháp.
+  + Hệ thống hóa thông tin kiến trúc AWS và kế hoạch thực hiện.
+  + Cải thiện kỹ năng biên soạn tài liệu kỹ thuật và phối hợp nhóm.
+
+- Tham gia sự kiện Cloud Mastery:
+  + Giao lưu với cộng đồng sinh viên quan tâm đến lĩnh vực Cloud Computing.
+  + Theo dõi các câu hỏi và trao đổi về định hướng nghề nghiệp, kiến thức Cloud.
+  + Tham gia hoạt động Quiz cuối sự kiện.
+  + Mở rộng hiểu biết và có thêm động lực tiếp tục học tập trong lĩnh vực Điện toán đám mây.

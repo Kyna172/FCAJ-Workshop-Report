@@ -1,6 +1,6 @@
 ---
 title: "Nhật ký công việc"
-date: 2025-08-11
+date: 2026-09-14
 weight: 1
 chapter: false
 pre: " <b> 1. </b> "
@@ -8,42 +8,46 @@ pre: " <b> 1. </b> "
 
 # Nhật ký thực tập theo tuần (Worklog)
 
-Trong suốt 12 tuần tham gia chương trình thực tập **First Cloud AI Journey (FCAJ)**, em đã trải qua lộ trình học tập và rèn luyện kỹ năng thực chiến với các dịch vụ điện toán đám mây Amazon Web Services (AWS), tư duy thiết kế kiến trúc hệ thống và quy trình tự động hóa CI/CD. Mỗi tuần đều được đặt ra mục tiêu cụ thể, danh sách công việc hàng ngày rõ ràng cùng các kết quả thực tế có thể kiểm chứng được.
+Trong chương trình thực tập **First Cloud AI Journey (FCAJ)** kéo dài 12 tuần (14/09 – 04/12/2026), em có cơ hội học tập, thực hành các dịch vụ điện toán đám mây của Amazon Web Services (AWS), tham gia các sự kiện công nghệ và phối hợp cùng nhóm phát triển dự án ReLoop.
 
-Dưới đây là bức tranh tổng quan về hành trình 12 tuần của em:
+Với vai trò phụ trách an ninh mạng và tài liệu, em tập trung nghiên cứu các giải pháp bảo mật, quản lý chi phí AWS, tham gia kiểm thử website và biên soạn tài liệu kỹ thuật của dự án.
 
-* **[Tuần 1: Khởi động, Nền tảng AWS & Thiết lập môi trường làm việc](1.1-week1/)**  
-  Làm quen với đội ngũ, quy định thực tập, hiểu về hạ tầng toàn cầu của AWS, phân quyền IAM cơ bản và cấu hình AWS CLI.
+Dưới đây là tổng quan về lộ trình thực tập của em theo từng tuần:
 
-* **[Tuần 2: Nền tảng mạng chuyên sâu trên AWS (Amazon VPC)](1.2-week2/)**  
-  Tự tay thiết kế VPC tùy chỉnh, phân chia Public/Private Subnet, cấu hình Internet Gateway, NAT Gateway, Route Table và chính sách Network ACL/Security Group.
+* **[Tuần 1: Khởi động chương trình FCAJ và làm quen với AWS](1.1-Week1/)**  
+  Thiết lập tài khoản AWS, FCAJ Portal và GitHub cá nhân; tìm hiểu nội quy, AWS Credits và môi trường học tập.
 
-* **[Tuần 3: Dịch vụ tính toán linh hoạt (Amazon EC2 & Auto Scaling)](1.3-week3/)**  
-  Khởi tạo máy chủ EC2, gắn ổ lưu trữ EBS, thiết lập bộ cân bằng tải Application Load Balancer và cấu hình cụm Auto Scaling Group đảm bảo tính sẵn sàng cao.
+* **[Tuần 2: AWS IAM, Amazon VPC và Buildrathon Kickoff](1.2-Week2/)**  
+  Làm quen với môi trường thực tập tại văn phòng, học tập và thực hành quản lý danh tính, bảo mật mạng trên AWS; tham gia sự kiện Buildrathon Kickoff.
 
-* **[Tuần 4: Dịch vụ lưu trữ đối tượng và Mạng phân phối nội dung (S3 & CloudFront)](1.4-week4/)**  
-  Khai thác Amazon S3 Lifecycle, chính sách Bucket Policy, cấu hình Static Website Hosting và tích hợp CDN toàn cầu với Amazon CloudFront.
+* **[Tuần 3: Amazon EC2, sự kiện Cloud & AI và hình thành nhóm](1.3-Week3/)**  
+  Tìm hiểu và thực hành Amazon EC2, tham gia các sự kiện công nghệ AWS, bước đầu hình thành nhóm và thảo luận ý tưởng dự án phân tích email bằng AI.
 
-* **[Tuần 5: Quản trị cơ sở dữ liệu quan hệ và NoSQL (Amazon RDS & DynamoDB)](1.5-week5/)**  
-  Triển khai mô hình RDS Multi-AZ cho MySQL/PostgreSQL, sao lưu tự động và thực hành thiết kế dữ liệu NoSQL tối ưu trên Amazon DynamoDB.
+* **[Tuần 4: Amazon RDS, AWS Budgets và định hướng dự án ReLoop](1.4-Week4/)**  
+  Tìm hiểu cơ sở dữ liệu và quản lý ngân sách trên AWS; đánh giá ý tưởng ban đầu và thống nhất chuyển sang dự án ReLoop vào ngày 09/10/2026.
 
-* **[Tuần 6: Kiến trúc phi máy chủ Serverless (AWS Lambda & API Gateway)](1.6-week6/)**  
-  Xây dựng các microservices hướng sự kiện bằng AWS Lambda, mở API RESTful an toàn qua Amazon API Gateway và kết nối trực tiếp với DynamoDB.
+* **[Tuần 5: Amazon CloudWatch, Hybrid DNS và phân chia vai trò](1.5-Week5/)**  
+  Tìm hiểu giám sát tài nguyên và Hybrid DNS với Amazon Route 53 Resolver; nghiên cứu các chức năng của ReLoop và thống nhất phân chia vai trò trong nhóm.
 
-* **[Tuần 7: Bảo mật, Quản lý danh tính và Tuân thủ quy chuẩn (Security & Governance)](1.7-week7/)**  
-  Thực hành nguyên tắc đặc quyền tối thiểu với IAM Session Policies, mã hóa dữ liệu với AWS KMS và giám sát nhật ký hành vi bằng AWS CloudTrail.
+* **[Tuần 6: Kiểm thử phiên bản demo ReLoop và FCAJ Meetup](1.6-Week6/)**  
+  Tìm hiểu quy trình hoạt động của hệ thống, kiểm thử phiên bản demo đầu tiên, tổng hợp các vấn đề cần cải thiện và tham gia sự kiện FCAJ Meetup.
 
-* **[Tuần 8: Giám sát hệ thống, Cảnh báo và Nhật ký tập trung (Amazon CloudWatch)](1.8-week8/)**  
-  Xây dựng Dashboard trực quan trên CloudWatch, đặt cảnh báo Metric Alarms, thu thập Log tập trung và phân tích luồng truy vết với AWS X-Ray.
+* **[Tuần 7: AWS Backup, Amazon ECS và kiểm thử ReLoop](1.7-Week7/)**  
+  Tìm hiểu giải pháp sao lưu và triển khai ứng dụng container, kiểm thử phiên bản ReLoop đã cập nhật và biên soạn bài blog về quản lý chi phí Amazon Bedrock.
 
-* **[Tuần 9: Đóng gói và Vận hành ứng dụng dạng Container (Docker, ECR & ECS)](1.9-week9/)**  
-  Container hóa ứng dụng web với Docker, lưu trữ image trên Amazon ECR và triển khai container phi máy chủ với Amazon ECS on AWS Fargate.
+* **[Tuần 8: Tổng hợp tài liệu và nghiên cứu kỹ thuật AWS](1.8-Week8/)**  
+  Hệ thống hóa Worklog và thông tin sự kiện, nghiên cứu quản lý chi phí AWS để viết bài blog thứ hai và chuẩn bị bài blog về bảo mật API.
 
-* **[Tuần 10: Tự động hóa hạ tầng (IaC) và Quy trình CI/CD](1.10-week10/)**  
-  Định nghĩa hạ tầng bằng mã nguồn (IaC) qua Terraform/CloudFormation và thiết lập luồng CI/CD tự động kiểm thử, build và deploy bằng GitHub Actions.
+* **[Tuần 9: Hoàn thiện Blog, Proposal và tham gia Cloud Mastery](1.9-Week9/)**  
+  Hoàn thiện và xuất bản các bài blog kỹ thuật, cập nhật báo cáo sự kiện, phối hợp cùng nhóm biên soạn Proposal ReLoop và tham gia Cloud Mastery.
 
-* **[Tuần 11: Xây dựng bài thực hành Workshop & Hoàn thiện tài liệu kỹ thuật](1.11-week11/)**  
-  Biên soạn bộ hướng dẫn thực hành kỹ thuật chuyên sâu về mạng lai và VPC Endpoint, tự kiểm thử nhiều lần các kịch bản lab và xử lý các lỗi phát sinh.
+* **[Tuần 10: Củng cố kiến thức AWS WAF và rà soát tài liệu dự án](1.10-Week10/)**  
+  Ôn tập AWS WAF, cập nhật báo cáo sự kiện, rà soát Proposal và trao đổi cùng nhóm về nội dung Workshop.
 
-* **[Tuần 12: Nghiệm thu dự án, Đánh giá chéo & Báo cáo tổng kết](1.12-week12/)**  
-  Hoàn thiện toàn bộ các sản phẩm thực tập, tham gia đánh giá chéo giữa các thành viên, trình bày báo cáo tổng kết và đúc rút bài học kinh nghiệm quý giá.
+* **[Tuần 11: AWS Cost Explorer, Workshop và website báo cáo](1.11-Week11/)**  
+  Tìm hiểu cách phân tích chi phí AWS, xây dựng nội dung Workshop cùng nhóm, tìm hiểu Hugo và GitHub Pages, đồng thời cập nhật nội dung tự đánh giá.
+
+* **[Tuần 12: Hoàn thiện website và báo cáo thực tập](1.12-Week12/)**  
+  Hoàn thiện tài liệu song ngữ, triển khai và kiểm tra website báo cáo cá nhân, tổng hợp Worklog và chuẩn bị nộp báo cáo cuối kỳ.
+
+*Lộ trình các tuần đang thực hiện và các tuần tiếp theo sẽ được cập nhật theo tiến độ thực tế.*

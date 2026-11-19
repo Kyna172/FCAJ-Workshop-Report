@@ -1,28 +1,44 @@
 ---
 title: "Week 10 Worklog"
-date: 2025-10-13
+date: 2026-11-16
 weight: 10
 chapter: false
 pre: " <b> 1.10. </b> "
 ---
 
-# Week 10: Infrastructure as Code & Automated CI/CD Pipelines
-
 ### Week 10 Objectives:
-* Adopt Infrastructure as Code (IaC) principles using AWS CloudFormation and Terraform.
-* Build automated continuous integration and continuous deployment (CI/CD) pipelines using GitHub Actions.
-* Secure pipeline secrets and automate unit testing, linting, and infrastructure provisioning.
 
-### Tasks Carried Out This Week:
-| Day | Tasks | Start Date | Completion Date | Reference Materials |
-| :--- | :--- | :--- | :--- | :--- |
-| **Mon** | - Studied declarative Infrastructure as Code fundamentals: State management, drift detection, and idempotency.<br>- Authored a CloudFormation YAML template defining an S3 bucket with versioning, lifecycle rules, and bucket policy. | 13/10/2025 | 13/10/2025 | [AWS CloudFormation Guide](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/) |
-| **Tue** | - Practiced deploying CloudFormation stacks via AWS CLI (`aws cloudformation deploy`).<br>- Explored Terraform basics: Providers, Resources, Variables, Outputs, and remote state storage in Amazon S3 with DynamoDB state locking. | 14/10/2025 | 14/10/2025 | [Terraform AWS Provider](https://registry.terraform.io/providers/hashicorp/aws/latest/docs) |
-| **Wed** | - Created a GitHub Actions workflow triggered on git push to the `main` branch.<br>- Configured OpenID Connect (OIDC) between GitHub Actions and AWS IAM, eliminating long-lived AWS secret keys in GitHub Secrets. | 15/10/2025 | 15/10/2025 | [GitHub OIDC with AWS](https://docs.github.com/en/actions/deployment/security-hardening-your-deployments/configuring-openid-connect-in-amazon-web-services) |
-| **Thu** | - Built a multi-step CI pipeline: Code checkout -> dependency installation -> unit tests -> code linter execution -> build artifact generation.<br>- Implemented automated static website deployment to S3 followed by CloudFront cache invalidation upon successful build. | 16/10/2025 | 16/10/2025 | [GitHub Actions Documentation](https://docs.github.com/en/actions) |
-| **Fri** | - Added branch protection rules requiring status checks to pass before merging Pull Requests.<br>- Performed a simulated failure test in a staging branch to verify pipeline rollbacks.<br>- Documented CI/CD workflows and submitted weekly worklog. | 17/10/2025 | 17/10/2025 | [AWS DevOps Best Practices](https://aws.amazon.com/devops/) |
+- Review and reinforce knowledge of AWS WAF.
+- Update information about the attended event.
+- Review the Proposal and agree on the Workshop content with the team.
+- Consolidate and update the Worklog.
 
-### Week 10 Achievements & Key Takeaways:
-* **Elimination of ClickOps:** Transitioned completely from manual console clicking to reproducible, version-controlled code for provisioning cloud infrastructure.
-* **Keyless Security with OIDC:** Replaced dangerous long-lived access keys in GitHub Secrets with dynamic, short-lived IAM credentials authenticated via OIDC.
-* **Rapid Release Velocity:** Reduced code deployment time from 25 minutes of manual steps to an automated, reliable 2-minute pipeline triggered on every commit.
+---
+
+### Tasks Completed During the Week:
+
+| Day | Task | Start Date | Completion Date | References |
+| --- | --- | --- | --- | --- |
+| 2 | - Review and reinforce AWS WAF knowledge through a Workshop:<br>&nbsp;&nbsp;&nbsp;+ Review the operating mechanism of Web ACLs.<br>&nbsp;&nbsp;&nbsp;+ Reinforce knowledge of Managed Rules and Custom Rules.<br>&nbsp;&nbsp;&nbsp;+ Review how to monitor allowed and blocked requests. | 16/11/2026 | 16/11/2026 | [AWS WAF Workshop](https://000026.awsfcaj.com/) |
+| 3 | - Consolidate information about the Cloud Mastery event attended on November 14:<br>&nbsp;&nbsp;&nbsp;+ Collect event content and images.<br>&nbsp;&nbsp;&nbsp;+ Update the Event Participated section in Vietnamese and English. | 17/11/2026 | 17/11/2026 | [Facebook Post](https://www.facebook.com/share/p/1E3kZ8yC7h/) |
+| 4 | - Review the ReLoop project Proposal:<br>&nbsp;&nbsp;&nbsp;+ Compare the Proposal content with the project progress.<br>&nbsp;&nbsp;&nbsp;+ Review and update necessary information. | 18/11/2026 | 18/11/2026 | |
+| 5 | - Discuss the Workshop content with the team:<br>&nbsp;&nbsp;&nbsp;+ Agree on the structure and scope of the content.<br>&nbsp;&nbsp;&nbsp;+ Identify the required documentation and images. | 19/11/2026 | 19/11/2026 | |
+| 6 | - Consolidate and update the Worklog:<br>&nbsp;&nbsp;&nbsp;+ Consolidate work notes from Weeks 9 and 10.<br>&nbsp;&nbsp;&nbsp;+ Update the Worklog in Vietnamese and English. | 20/11/2026 | 20/11/2026 | |
+
+---
+
+### Week 10 Achievements:
+
+- Reinforced AWS WAF knowledge:
+  + Reviewed the operating mechanism of Web ACLs and different types of protection rules.
+  + Reinforced knowledge of web application traffic monitoring.
+
+- Updated the Cloud Mastery event content:
+  + Consolidated event content and images.
+  + Added bilingual content to the Event Participated section.
+
+- Reviewed and prepared ReLoop project documentation:
+  + Updated the Proposal according to the project progress.
+  + Agreed on the Workshop structure and development direction with the team.
+
+- Consolidated and updated the Worklogs for Weeks 9 and 10 in Vietnamese and English.

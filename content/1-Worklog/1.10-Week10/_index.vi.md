@@ -1,28 +1,44 @@
 ---
 title: "Worklog Tuần 10"
-date: 2025-10-13
+date: 2026-11-16
 weight: 10
 chapter: false
 pre: " <b> 1.10. </b> "
 ---
 
-# Tuần 10: Tự động hóa hạ tầng (IaC) và Quy trình CI/CD
-
 ### Mục tiêu tuần 10:
-* Tiếp cận tư duy quản lý hạ tầng bằng mã nguồn (Infrastructure as Code - IaC) với AWS CloudFormation và Terraform.
-* Xây dựng luồng tích hợp và triển khai liên tục (CI/CD Pipeline) hoàn toàn tự động bằng GitHub Actions.
-* Ứng dụng xác thực không mật khẩu (OIDC) giữa GitHub và AWS, tự động hóa kiểm thử mã nguồn và triển khai ứng dụng.
 
-### Các công việc triển khai trong tuần:
-| Thứ | Nội dung công việc | Bắt đầu | Hoàn thành | Tài liệu tham khảo |
-| :--- | :--- | :--- | :--- | :--- |
-| **Thứ 2** | - Nghiên cứu khái niệm IaC: Quản lý trạng thái (State), phát hiện lệch cấu hình (Drift Detection) và tính lũy quyền (Idempotency).<br>- Viết mẫu CloudFormation bằng cú pháp YAML định nghĩa một S3 Bucket chuẩn bảo mật (bật versioning, mã hóa mặc định, gắn chính sách chặn public). | 13/10/2025 | 13/10/2025 | [Tài liệu CloudFormation](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/) |
-| **Thứ 3** | - Thực hành triển khai Stack CloudFormation qua dòng lệnh AWS CLI.<br>- Tìm hiểu cấu trúc cơ bản của Terraform: Provider, Resource, Variable, Output và lưu trữ file trạng thái từ xa (Remote State) trên S3 kết hợp DynamoDB State Locking. | 14/10/2025 | 14/10/2025 | [Terraform AWS Provider](https://registry.terraform.io/providers/hashicorp/aws/latest/docs) |
-| **Thứ 4** | - Tạo workflow GitHub Actions tự động kích hoạt khi có lệnh đẩy mã (`push`) lên nhánh `main`.<br>- Cấu hình xác thực định danh OIDC (OpenID Connect) giữa GitHub và AWS IAM, loại bỏ hoàn toàn việc lưu Access Key tĩnh trong kho bí mật GitHub Secrets. | 15/10/2025 | 15/10/2025 | [Cấu hình GitHub OIDC với AWS](https://docs.github.com/en/actions/deployment/security-hardening-your-deployments/configuring-openid-connect-in-amazon-web-services) |
-| **Thứ 5** | - Viết quy trình CI/CD nhiều bước: Kéo code về -> Cài đặt thư viện -> Chạy Unit Test -> Quét chất lượng code Linter -> Đóng gói build dự án Hugo/Next.js.<br>- Tự động tải tệp tin build lên S3 và kích hoạt xóa bộ nhớ đệm CloudFront Invalidation. | 16/10/2025 | 16/10/2025 | [Tài liệu GitHub Actions](https://docs.github.com/en/actions) |
-| **Thứ 6** | - Thiết lập Branch Protection Rules trên GitHub, bắt buộc toàn bộ bài kiểm tra tự động phải màu xanh mới cho phép merge code vào nhánh chính.<br>- Thử nghiệm cố tình tạo lỗi kiểm thử trên một nhánh phụ để kiểm chứng cơ chế ngăn chặn mã lỗi lọt vào production.<br>- Nộp báo cáo tuần 10. | 17/10/2025 | 17/10/2025 | [Thực tiễn AWS DevOps](https://aws.amazon.com/devops/) |
+- Ôn tập và củng cố kiến thức về AWS WAF.
+- Cập nhật thông tin sự kiện đã tham gia.
+- Rà soát nội dung Proposal và thống nhất nội dung Workshop cùng nhóm.
+- Tổng hợp và cập nhật Worklog.
 
-### Kết quả đạt được & Bài học rút ra:
-* **Từ bỏ thói quen ClickOps:** Chuyển dịch hoàn toàn từ thao tác click chuột thủ công sang quản lý toàn bộ hệ thống bằng code được lưu vết lịch sử phiên bản trên Git.
-* **Bảo mật tối tân với OIDC:** Không còn nỗi lo rò rỉ Access Key trên mạng vì toàn bộ quyền truy cập được cấp phát bằng token tạm thời có thời hạn ngắn.
-* **Tốc độ bàn giao sản phẩm vượt bậc:** Rút ngắn thời gian triển khai từ 25 phút thủ công đầy rủi ro nhầm lẫn xuống còn chưa đầy 2 phút tự động, ổn định và chính xác 100%.
+---
+
+### Công việc thực hiện trong tuần:
+
+| Thứ | Công việc | Ngày bắt đầu | Ngày hoàn thành | Tài liệu tham khảo |
+| --- | --- | --- | --- | --- |
+| 2 | - Ôn tập và củng cố kiến thức về AWS WAF thông qua Workshop:<br>&nbsp;&nbsp;&nbsp;+ Rà soát cơ chế hoạt động của Web ACL.<br>&nbsp;&nbsp;&nbsp;+ Củng cố kiến thức về Managed Rules và Custom Rules.<br>&nbsp;&nbsp;&nbsp;+ Ôn tập cách giám sát các yêu cầu được cho phép hoặc bị chặn. | 16/11/2026 | 16/11/2026 | [AWS WAF Workshop](https://000026.awsfcaj.com/) |
+| 3 | - Tổng hợp thông tin sự kiện Cloud Mastery ngày 14/11:<br>&nbsp;&nbsp;&nbsp;+ Tổng hợp nội dung và hình ảnh sự kiện.<br>&nbsp;&nbsp;&nbsp;+ Cập nhật nội dung vào mục Event Participated bằng tiếng Việt và tiếng Anh. | 17/11/2026 | 17/11/2026 | [Facebook Post](https://www.facebook.com/share/p/1E3kZ8yC7h/) |
+| 4 | - Rà soát nội dung Proposal của dự án ReLoop:<br>&nbsp;&nbsp;&nbsp;+ Đối chiếu nội dung Proposal với tiến độ dự án.<br>&nbsp;&nbsp;&nbsp;+ Rà soát và cập nhật các thông tin cần thiết. | 18/11/2026 | 18/11/2026 | |
+| 5 | - Trao đổi cùng nhóm về nội dung Workshop:<br>&nbsp;&nbsp;&nbsp;+ Thống nhất cấu trúc và phạm vi nội dung.<br>&nbsp;&nbsp;&nbsp;+ Xác định các tài liệu và hình ảnh cần chuẩn bị. | 19/11/2026 | 19/11/2026 | |
+| 6 | - Tổng hợp và cập nhật Worklog:<br>&nbsp;&nbsp;&nbsp;+ Tổng hợp các ghi chú công việc trong tuần 9 và tuần 10.<br>&nbsp;&nbsp;&nbsp;+ Cập nhật nội dung Worklog bằng tiếng Việt và tiếng Anh. | 20/11/2026 | 20/11/2026 | |
+
+---
+
+### Kết quả đạt được tuần 10:
+
+- Củng cố kiến thức về AWS WAF:
+  + Ôn tập cơ chế hoạt động của Web ACL và các loại quy tắc bảo vệ.
+  + Củng cố kiến thức về giám sát lưu lượng truy cập ứng dụng web.
+
+- Cập nhật nội dung sự kiện Cloud Mastery:
+  + Tổng hợp nội dung và hình ảnh sự kiện.
+  + Bổ sung nội dung song ngữ vào mục Event Participated.
+
+- Rà soát và chuẩn bị tài liệu dự án ReLoop:
+  + Cập nhật nội dung Proposal theo tiến độ dự án.
+  + Thống nhất cấu trúc và định hướng xây dựng Workshop cùng nhóm.
+
+- Tổng hợp và cập nhật Worklog tuần 9 và tuần 10 bằng tiếng Việt và tiếng Anh.

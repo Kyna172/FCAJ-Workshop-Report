@@ -131,12 +131,18 @@ ReLoop sử dụng kiến trúc serverless với các tài nguyên backend đư�
 
 #### Các giai đoạn triển khai
 
-1. **Nghiên cứu & kiến trúc (28/09–08/10/2026):** chuyển bản đặc tả v1.0 (1.189 đoạn) thành 45 quyết định nghiệp vụ (QĐ-01 → QĐ-45), liệt kê cách truy vấn DynamoDB và chọn một Lambda sau HTTP API. Giai đoạn này chưa viết code ứng dụng.
+1. **Nghiên cứu ý tưởng ban đầu và lựa chọn đề tài (28/09–09/10/2026):**
+   - Hình thành nhóm, nghiên cứu và đánh giá ý tưởng ứng dụng AI để phân tích và phát hiện email đáng ngờ.
+   - Ngày 08/10, ý tưởng ReLoop được đề xuất trên tài liệu chung của nhóm.
+   - Ngày 09/10, các thành viên gặp trực tiếp tại văn phòng, thảo luận và chính thức thống nhất chuyển sang phát triển dự án ReLoop.
 
-2. **Ước tính chi phí & tính khả thi (05/10–08/10/2026), kết thúc bằng Đề xuất Phần 1 (nộp ngày 08/10/2026):**
-   - Bỏ nạp/rút tiền qua ngân hàng (chưa có API ngân hàng), chuyển sang trả tiền trực tiếp khi bàn giao.
+2. **Phân tích yêu cầu, thiết kế kiến trúc và đánh giá tính khả thi của ReLoop (từ 09/10/2026):**
+   - Phân tích yêu cầu nghiệp vụ, xác định các chức năng chính và định hướng kiến trúc serverless trên AWS.
+   - Xác định các mô hình truy vấn DynamoDB và phương án sử dụng AWS Lambda kết hợp Amazon API Gateway HTTP API.
+   - Bỏ nạp/rút tiền qua ngân hàng do chưa có API ngân hàng, chuyển sang trả tiền trực tiếp khi bàn giao.
    - Chọn DynamoDB on-demand và Lambda arm64.
-   - Đặt mọi lời gọi AWS sau interface để cả nhóm code trên máy cá nhân mà không tốn tiền AWS.
+   - Đặt các lời gọi dịch vụ AWS sau interface để nhóm có thể phát triển trên máy cá nhân mà không phát sinh chi phí AWS.
+   - Đánh giá chi phí triển khai và tính khả thi của giải pháp.
 
 3. **Phát triển & deploy lần đầu (09/10–23/10/2026):**
    - Bắt đầu phát triển ngày 09/10 với bảng chính, bucket ảnh, đăng nhập Cognito và ứng dụng React.

@@ -10,7 +10,7 @@ pre: " <b> 4. </b> "
 
 Trong quá trình thực tập tại chương trình **First Cloud AI Journey (FCAJ)**, em đã có cơ hội tham gia các sự kiện công nghệ và buổi chia sẻ kiến thức do AWS cùng cộng đồng AWS Study Group tổ chức. Những hoạt động này giúp em mở rộng hiểu biết về Cloud Computing, Artificial Intelligence và các xu hướng phát triển phần mềm hiện đại, đồng thời có cơ hội giao lưu, học hỏi từ các chuyên gia và những người cùng quan tâm đến công nghệ.
 
-Dưới đây là tổng hợp 4 sự kiện em đã tham gia trong quá trình thực tập:
+Dưới đây là tổng hợp 5 sự kiện em đã tham gia trong quá trình thực tập:
 
 ---
 
@@ -34,7 +34,7 @@ Dưới đây là tổng hợp 4 sự kiện em đã tham gia trong quá trình 
 
 ---
 
-### [Sự kiện 3: Fireside Chat with Dr. Werner – Navigating the Future of Cloud & AI in Vietnam](4.3-Event3/ )
+### [Sự kiện 3: Fireside Chat with Dr. Werner – Navigating the Future of Cloud & AI in Vietnam](4.3-Event3/)
 
 - **Tên sự kiện:** Fireside Chat with Dr. Werner – Navigating the Future of Cloud & AI in Vietnam
 - **Thời gian:** Ngày 02/10/2026
@@ -44,10 +44,20 @@ Dưới đây là tổng hợp 4 sự kiện em đã tham gia trong quá trình 
 
 ---
 
-### [Sự kiện 4: Cloud & AI Infrastructure Meetup](4.4-Event4/ )
+### [Sự kiện 4: Cloud & AI Infrastructure Meetup](4.4-Event4/)
 
 - **Tên sự kiện:** Cloud & AI Infrastructure Meetup
 - **Thời gian:** Ngày 24/10/2026
 - **Địa điểm:** Văn phòng AWS Việt Nam, Tầng 26, Bitexco Financial Tower, TP. Hồ Chí Minh, Việt Nam.
 - **Vai trò tham gia:** Người tham dự
 - **Nội dung trọng tâm:** Tham gia buổi gặp gỡ và trao đổi kiến thức về Cloud Computing, AI Infrastructure và những vấn đề liên quan đến phát triển, vận hành hạ tầng công nghệ hiện đại.
+
+---
+
+### [Sự kiện 5: Cloud Mastery – Buổi chia sẻ về Cloud dành cho sinh viên](4.5-Event5/)
+
+- **Tên sự kiện:** Cloud Mastery – Buổi chia sẻ về Cloud dành cho sinh viên
+- **Thời gian:** Buổi sáng, Thứ Bảy, ngày 14/11/2026
+- **Địa điểm:** Văn phòng AWS Việt Nam, Tầng 26, Bitexco Financial Tower, TP. Hồ Chí Minh, Việt Nam.
+- **Vai trò tham gia:** Người tham dự
+- **Nội dung trọng tâm:** Tham gia buổi chia sẻ kiến thức và định hướng nghề nghiệp trong lĩnh vực Cloud; lắng nghe phần hỏi đáp về kiến thức chuyên môn, lộ trình học tập và kỹ năng cần thiết dành cho sinh viên; giao lưu với cộng đồng AWS và ôn tập kiến thức thông qua hoạt động Quiz cuối buổi.

@@ -131,12 +131,18 @@ ReLoop uses a serverless architecture with backend resources deployed in the ap-
 
 #### Implementation Phases
 
-1. **Research & Architecture (September 28 – October 8, 2026):** converted the v1.0 specification (1,189 paragraphs) into 45 business decisions (QD-01 → QD-45), identified DynamoDB access patterns, and selected a single Lambda function behind an HTTP API. Application development had not started during this phase.
+1. **Initial Project Research and Project Selection (September 28 – October 9, 2026):**
+   - Formed the team and researched an AI-powered solution for analyzing and detecting suspicious emails.
+   - On October 8, the ReLoop concept was proposed in the team's shared document.
+   - On October 9, the team held an in-person discussion at the office and officially agreed to proceed with the development of ReLoop.
 
-2. **Cost Estimation & Feasibility (October 5 – October 8, 2026), concluding with Proposal Part 1 (submitted on October 8, 2026):**
+2. **ReLoop Requirements Analysis, Architecture Design & Feasibility Assessment (from October 9, 2026):**
+   - Analyzed business requirements, identified core features, and established the serverless architecture approach on AWS.
+   - Identified DynamoDB access patterns and the approach of combining AWS Lambda with Amazon API Gateway HTTP API.
    - Removed bank deposit and withdrawal functionality due to the lack of banking APIs, replacing it with direct payment during device handover.
    - Selected DynamoDB on-demand and Lambda arm64.
    - Abstracted AWS service calls behind interfaces so that team members could develop locally without incurring AWS costs.
+   - Evaluated implementation costs and technical feasibility.
 
 3. **Development & Initial Deployment (October 9 – October 23, 2026):**
    - Started application development on October 9 with the main database table, image bucket, Cognito authentication, and React application.

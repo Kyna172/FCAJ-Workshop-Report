@@ -1,6 +1,6 @@
 ---
 title: "Worklog"
-date: 2025-08-11
+date: 2026-09-14
 weight: 1
 chapter: false
 pre: " <b> 1. </b> "
@@ -8,42 +8,46 @@ pre: " <b> 1. </b> "
 
 # Weekly Internship Worklog
 
-During the 12-week internship in the **First Cloud AI Journey (FCAJ)** program, I engaged in an intensive learning path focused on Amazon Web Services (AWS), modern cloud architecture, automation, and DevOps best practices. Each week was planned with specific learning goals, hands-on tasks, and measurable deliverables.
+During the 12-week **First Cloud AI Journey (FCAJ)** internship program (September 14 – December 4, 2026), I have the opportunity to study and practice Amazon Web Services (AWS) cloud computing services, attend technology events, and collaborate with my team on the ReLoop project.
 
-Below is an overview of my 12-week journey:
+In my cybersecurity and documentation role, I focus on researching security solutions and AWS cost management, participating in website testing, and preparing technical documentation for the project.
 
-* **[Week 1: Onboarding, AWS Fundamentals & Development Environment Setup](1.1-week1/)**  
-  Getting familiar with program guidelines, AWS Global Infrastructure, IAM foundational security, and configuring AWS CLI.
+Below is an overview of my weekly internship journey:
 
-* **[Week 2: Networking Foundations on AWS (Amazon VPC)](1.2-week2/)**  
-  Designing custom VPCs, public/private subnets, internet gateways, NAT gateways, route tables, and network security policies.
+* **[Week 1: FCAJ Onboarding and AWS Fundamentals](1.1-Week1/)**  
+  Setting up my AWS account, FCAJ Portal, and personal GitHub repository; learning program guidelines, AWS Credits, and the learning environment.
 
-* **[Week 3: Elastic Compute & Scalability (Amazon EC2 & Auto Scaling)](1.3-week3/)**  
-  Deploying EC2 instances, managing EBS storage, configuring Application Load Balancers, and building Auto Scaling Groups for high availability.
+* **[Week 2: AWS IAM, Amazon VPC, and Buildrathon Kickoff](1.2-Week2/)**  
+  Getting familiar with the office environment, studying and practicing identity management and network security on AWS, and attending the Buildrathon Kickoff event.
 
-* **[Week 4: Object Storage & Content Delivery (Amazon S3 & CloudFront)](1.4-week4/)**  
-  Deep dive into Amazon S3 lifecycle rules, bucket policies, static website hosting, and global CDN acceleration via Amazon CloudFront.
+* **[Week 3: Amazon EC2, Cloud & AI Events, and Team Formation](1.3-Week3/)**  
+  Studying and practicing Amazon EC2, attending AWS technology events, forming the project team, and discussing an initial AI-powered email analysis concept.
 
-* **[Week 5: Relational & NoSQL Database Services (Amazon RDS & DynamoDB)](1.5-week5/)**  
-  Provisioning Multi-AZ Amazon RDS PostgreSQL/MySQL databases, automated backups, and practicing NoSQL schema design on DynamoDB.
+* **[Week 4: Amazon RDS, AWS Budgets, and ReLoop Project Direction](1.4-Week4/)**  
+  Exploring database services and budget management on AWS, evaluating the initial project concept, and officially agreeing to proceed with ReLoop on October 9, 2026.
 
-* **[Week 6: Serverless Architecture (AWS Lambda & Amazon API Gateway)](1.6-week6/)**  
-  Building event-driven microservices using AWS Lambda, REST APIs with API Gateway, and integration with Amazon DynamoDB.
+* **[Week 5: Amazon CloudWatch, Hybrid DNS, and Team Role Allocation](1.5-Week5/)**  
+  Exploring resource monitoring and Hybrid DNS with Amazon Route 53 Resolver, studying ReLoop's core features, and finalizing team roles and responsibilities.
 
-* **[Week 7: Cloud Security, Identity & Governance](1.7-week7/)**  
-  Enforcing least privilege access via IAM Session Policies, key management using AWS KMS, and audit tracking with AWS CloudTrail.
+* **[Week 6: Initial ReLoop Demo Testing and FCAJ Meetup](1.6-Week6/)**  
+  Understanding system workflows, testing the initial ReLoop demo, documenting areas for improvement, and attending the FCAJ Meetup event.
 
-* **[Week 8: Monitoring, Observability & Logging (Amazon CloudWatch)](1.8-week8/)**  
-  Creating CloudWatch dashboards, configuring metric alarms, centralized log ingestion, and tracing distributed transactions with AWS X-Ray.
+* **[Week 7: AWS Backup, Amazon ECS, and ReLoop Testing](1.7-Week7/)**  
+  Exploring backup solutions and container deployment, testing the updated ReLoop application, and writing a technical blog about Amazon Bedrock cost management.
 
-* **[Week 9: Containerization on AWS (Docker, Amazon ECR & ECS)](1.9-week9/)**  
-  Containerizing applications with Docker, pushing images to Amazon ECR, and deploying serverless containers with Amazon ECS on AWS Fargate.
+* **[Week 8: Documentation and AWS Technical Research](1.8-Week8/)**  
+  Consolidating worklogs and event information, researching AWS cost management for the second blog, and preparing a technical article about API security.
 
-* **[Week 10: Infrastructure as Code & CI/CD Pipelines](1.10-week10/)**  
-  Writing reusable infrastructure templates using Terraform / AWS CloudFormation, and building automated GitHub Actions deployment pipelines.
+* **[Week 9: Technical Blogs, Proposal, and Cloud Mastery](1.9-Week9/)**  
+  Finalizing and publishing technical blogs, updating event reports, collaborating on the ReLoop Proposal, and attending the Cloud Mastery event.
 
-* **[Week 11: Personal Workshop Preparation & Technical Documentation](1.11-week11/)**  
-  Drafting comprehensive step-by-step documentation for the hybrid VPC Endpoint workshop, verifying lab scenarios, and troubleshooting edge cases.
+* **[Week 10: AWS WAF Knowledge Review and Project Documentation](1.10-Week10/)**  
+  Reviewing AWS WAF concepts, updating event reports, reviewing the Proposal, and discussing the Workshop content with the team.
 
-* **[Week 12: Capstone Finalization, Peer Review & Final Presentation](1.12-week12/)**  
-  Finalizing project deliverables, conducting peer testing, presenting the final internship report, and wrapping up program takeaways.
+* **[Week 11: AWS Cost Explorer, Workshop, and Report Website](1.11-Week11/)**  
+  Exploring AWS cost analysis, developing Workshop content with the team, learning about Hugo and GitHub Pages, and updating the self-evaluation section.
+
+* **[Week 12: Final Report and Website Completion](1.12-Week12/)**  
+  Finalizing bilingual documentation, deploying and reviewing the personal report website, completing the Worklog, and preparing the final internship report for submission.
+
+*The schedule for ongoing and upcoming weeks will be updated according to actual progress.*

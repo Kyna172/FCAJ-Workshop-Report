@@ -169,23 +169,30 @@ ReLoop uses a serverless architecture with backend resources deployed in the ap-
 
 ### 5. Timeline & Implementation Milestones
 
-| Week | Period | Deliverables |
-|---|---|---|
-| Week 1 | 14/09–18/09 | AWS fundamentals: account security, IAM, VPC, EC2, and team familiarization |
-| Week 2 | 21/09–26/09 | Serverless fundamentals (S3, DynamoDB, Lambda, API Gateway); Buildrathon kickoff and ReLoop project selection (26/09) |
-| Week 3 | 28/09–02/10 | Converted the v1.0 specification into 45 business decisions (QD-01 → QD-45) and identified 58 missing requirements; repository and CI setup; team task allocation |
-| Week 4 | 05/10–09/10 | Architecture and DynamoDB access patterns; finalized cost and feasibility analysis; submitted Proposal Part 1 (08/10); started development (09/10): `keys.ts`, main table, Cognito authentication, and React application |
-| Week 5 | 12/10–16/10 | S3 image uploads, Rekognition content moderation, and initial AI-powered listing analysis (Amazon Nova Pro) |
-| Week 6 | 19/10–24/10 | Terraform-based development environment; full Marketplace workflow running on AWS (19/10); successful smoke test (22/10); EventBridge jobs and monitoring dashboard |
-| Week 7 | 26/10–30/10 | Redesigned user interface based on the Product Owner's design (public website, partner portal, Admin portal); image text detection and Guardrails; migrated AI processing to Kimi K3 (28/10) |
-| Week 8 | 02/11–06/11 | Asynchronous listing matching; five QA rounds (146 items, 03/11); load testing; increased Lambda concurrency quota to 1,000; AI usage controls; WAF integration for CloudFront and Cognito (06/11) |
-| Week 9 | 09/11–13/11 | Security testing using AWS Security Agent (7 findings, none rated high severity); remediation deployment; CSP implementation; SES for email; AWS Budgets alerts at 50% / 80%; submitted Proposal Part 2 (13/11) |
-| Week 10 | 16/11–20/11 | Repeat load testing after throttling adjustments; standardize the CI/CD workflow; manage individual team member access permissions; production environment |
-| Week 11 | 23/11–27/11 | Terraform state migration; removal of unused resources; cost review |
-| Week 12 | 30/11–04/12 | Final report, demonstration, and handover documentation |
-| Post-launch | 12/2026–02/2027 | Operate development and production environments within the AWS credit validity period (until 28/02/2027); collect actual usage data for AI processing and listing matching |
+The following timeline reflects my learning, technical research, and contributions to the ReLoop project in my cybersecurity and documentation role. Major project milestones are aligned with the team's shared timeline, while weekly activities reflect my individual responsibilities and internship experience.
 
-*Milestones from Week 10 onward represent the team's implementation plan and are subject to updates based on actual progress.*
+| Week | Period | Activities and Deliverables |
+|---|---|---|
+| Week 1 | 14/09–18/09 | Set up my AWS account, FCAJ Portal, and personal GitHub repository; learn program guidelines, AWS Credits, and cloud computing fundamentals. |
+| Week 2 | 21/09–26/09 | Study and practice AWS IAM and Amazon VPC; strengthen knowledge of identity management and network security; attend the Buildrathon Kickoff event on September 26. |
+| Week 3 | 28/09–02/10 | Study and practice Amazon EC2; attend Cloud & AI events; participate in initial team formation and research an AI-powered solution for analyzing suspicious emails. |
+| Week 4 | 05/10–09/10 | Explore Amazon RDS and AWS Budgets; evaluate the initial project concept; ReLoop is proposed on October 8 and officially selected by the team on October 9. |
+| Week 5 | 12/10–16/10 | Explore Amazon CloudWatch and Hybrid DNS with Amazon Route 53 Resolver; study ReLoop's objectives, features, and business workflows; finalize team roles on October 16. |
+| Week 6 | 19/10–24/10 | Study ReLoop's system workflows; participate in initial demo testing from October 21; document UI and functional issues, suggest improvements, and attend the FCAJ Meetup. |
+| Week 7 | 26/10–30/10 | Explore AWS Backup and Amazon ECS; perform regression and end-to-end workflow testing on the updated ReLoop application; write a technical blog about Amazon Bedrock cost management. |
+| Week 8 | 02/11–06/11 | Consolidate internship documentation; research AWS Budgets, Cost Anomaly Detection, and Cost Explorer; study the roles of AWS WAF and API Gateway Throttling in web application protection. |
+| Week 9 | 09/11–14/11 | Finalize and publish technical blogs about API security and Amazon Bedrock usage management; consolidate technical documentation and collaborate with the team on Proposal Part 2 on November 13; attend Cloud Mastery. |
+| Week 10 | 16/11–20/11 | Strengthen AWS WAF knowledge through a workshop; review the Proposal against project progress; discuss the Workshop structure, scope, and required supporting materials with the team. |
+| Week 11 | 23/11–27/11 | Explore AWS cost visualization and analysis using Cost Explorer; collaborate on Workshop development, technical documentation, and diagrams; learn about report website deployment using Hugo and GitHub Pages. |
+| Week 12 | 30/11–04/12 | Finalize the Worklog, Self-Evaluation, Feedback, and remaining report sections; deploy and review the bilingual report website; prepare the required materials for final internship report submission. |
+
+#### Post-launch Project Operation Plan
+
+According to the team's shared plan, ReLoop's development and production environments will continue operating within the AWS credit validity period until February 28, 2027, to monitor operational costs and collect actual data on AI usage and listing-matching effectiveness.
+
+*The team officially agreed to proceed with ReLoop on October 9, 2026. Activities before this date were part of the learning, team formation, and initial project research stages.*
+
+*Ongoing activities in Week 10 and milestones from Week 11 onward will be updated according to actual progress.*
 
 ### 6. Budget Estimation
 

@@ -169,23 +169,30 @@ ReLoop sử dụng kiến trúc serverless với các tài nguyên backend đư�
 
 ### 5. Lộ trình & Mốc triển khai
 
-| Tuần | Thời gian | Kết quả bàn giao |
-|---|---|---|
-| Tuần 1 | 14/09–18/09 | Nền tảng AWS: bảo mật tài khoản, IAM, VPC, EC2; làm quen nhóm |
-| Tuần 2 | 21/09–26/09 | Kiến thức serverless (S3, DynamoDB, Lambda, API Gateway); Buildrathon khai mạc, chọn dự án ReLoop (26/09) |
-| Tuần 3 | 28/09–02/10 | Chuyển bản đặc tả v1.0 thành 45 quyết định nghiệp vụ (QĐ-01 → QĐ-45) và 58 điểm còn thiếu; repo + CI; chia việc trong nhóm |
-| Tuần 4 | 05/10–09/10 | Kiến trúc và cách truy vấn DynamoDB; chốt chi phí và tính khả thi; nộp Đề xuất Phần 1 (08/10); bắt đầu phát triển (09/10): `keys.ts`, bảng chính, đăng nhập Cognito + ứng dụng React |
-| Tuần 5 | 12/10–16/10 | Tải ảnh lên S3, kiểm duyệt bằng Rekognition, AI phân tích tin đầu tiên (Amazon Nova Pro) |
-| Tuần 6 | 19/10–24/10 | Môi trường dev bằng Terraform; luồng Chợ đầy đủ chạy trên AWS (19/10); smoke test đạt (22/10); job EventBridge; dashboard |
-| Tuần 7 | 26/10–30/10 | Giao diện mới theo thiết kế PO (web công khai, cổng đối tác, cổng Admin); đọc chữ trong ảnh + Guardrails; AI chuyển sang Kimi K3 (28/10) |
-| Tuần 8 | 02/11–06/11 | Ghép tin chạy nền; 5 đợt QA (146 mục, 03/11); load test; nâng giới hạn Lambda chạy song song lên 1.000; kiểm soát lượt sử dụng AI; WAF cho CloudFront + Cognito (06/11) |
-| Tuần 9 | 09/11–13/11 | Kiểm thử bảo mật bằng AWS Security Agent (7 phát hiện, không có mức cao); deploy bản sửa; áp dụng CSP; SES cho email; cảnh báo AWS Budgets 50% / 80%; nộp Đề xuất Phần 2 (13/11) |
-| Tuần 10 | 16/11–20/11 | Chạy lại load test sau khi điều chỉnh throttling; thống nhất quy trình CI/CD; quản lý quyền truy cập cho từng thành viên; môi trường production |
-| Tuần 11 | 23/11–27/11 | Chuyển Terraform state; dọn tài nguyên thừa; rà soát chi phí |
-| Tuần 12 | 30/11–04/12 | Báo cáo cuối kỳ, demo, tài liệu bàn giao |
-| Sau ra mắt | 12/2026–02/2027 | Chạy dev/prod trong thời hạn credit (đến 28/02/2027); thu số liệu dùng thật cho AI và ghép tin |
+Lộ trình dưới đây được xây dựng dựa trên quá trình học tập, nghiên cứu và tham gia dự án ReLoop của cá nhân em trong vai trò phụ trách an ninh mạng và tài liệu. Các mốc quan trọng của dự án được thống nhất với nhóm, trong khi nội dung công việc theo từng tuần phản ánh nhiệm vụ và quá trình thực tập của cá nhân.
 
-*Các mốc từ tuần 10 trở đi là kế hoạch triển khai của nhóm và được cập nhật theo tiến độ thực tế.*
+| Tuần | Thời gian | Nội dung và kết quả thực hiện |
+|---|---|---|
+| Tuần 1 | 14/09–18/09 | Thiết lập tài khoản AWS, FCAJ Portal và GitHub cá nhân; tìm hiểu nội quy chương trình, AWS Credits và kiến thức Cloud cơ bản. |
+| Tuần 2 | 21/09–26/09 | Tìm hiểu và thực hành AWS IAM, Amazon VPC; củng cố kiến thức về quản lý danh tính và bảo mật mạng; tham gia Buildrathon Kickoff ngày 26/09. |
+| Tuần 3 | 28/09–02/10 | Tìm hiểu và thực hành Amazon EC2; tham gia các sự kiện Cloud & AI; bước đầu hình thành nhóm và nghiên cứu ý tưởng phân tích email đáng ngờ bằng AI. |
+| Tuần 4 | 05/10–09/10 | Tìm hiểu Amazon RDS và AWS Budgets; đánh giá đề tài ban đầu; ý tưởng ReLoop được đề xuất ngày 08/10 và chính thức được nhóm thống nhất triển khai ngày 09/10. |
+| Tuần 5 | 12/10–16/10 | Tìm hiểu Amazon CloudWatch và Hybrid DNS với Amazon Route 53 Resolver; nghiên cứu mục tiêu, chức năng và quy trình nghiệp vụ của ReLoop; thống nhất phân chia vai trò ngày 16/10. |
+| Tuần 6 | 19/10–24/10 | Tìm hiểu các luồng hoạt động của ReLoop; tham gia kiểm thử phiên bản demo đầu tiên từ ngày 21/10; tổng hợp lỗi giao diện, chức năng và đề xuất cải thiện; tham gia FCAJ Meetup. |
+| Tuần 7 | 26/10–30/10 | Nghiên cứu AWS Backup và Amazon ECS; kiểm thử hồi quy và kiểm thử luồng nghiệp vụ trên phiên bản ReLoop đã cập nhật; biên soạn bài blog về quản lý chi phí Amazon Bedrock. |
+| Tuần 8 | 02/11–06/11 | Hệ thống hóa tài liệu thực tập; nghiên cứu AWS Budgets, Cost Anomaly Detection và Cost Explorer; tìm hiểu vai trò của AWS WAF và API Gateway Throttling trong bảo vệ ứng dụng web. |
+| Tuần 9 | 09/11–14/11 | Hoàn thiện và xuất bản các bài blog về bảo mật API và quản lý mức sử dụng Amazon Bedrock; tổng hợp tài liệu kỹ thuật và phối hợp cùng nhóm hoàn thiện Proposal Part 2 ngày 13/11; tham gia Cloud Mastery. |
+| Tuần 10 | 16/11–20/11 | Củng cố kiến thức AWS WAF thông qua Workshop; rà soát Proposal theo tiến độ dự án; trao đổi cùng nhóm về cấu trúc, phạm vi và tài liệu cần chuẩn bị cho Workshop. |
+| Tuần 11 | 23/11–27/11 | Tìm hiểu cách trực quan hóa và phân tích chi phí với AWS Cost Explorer; phối hợp xây dựng Workshop, tổng hợp tài liệu kỹ thuật và sơ đồ; tìm hiểu triển khai website báo cáo với Hugo và GitHub Pages. |
+| Tuần 12 | 30/11–04/12 | Hoàn thiện Worklog, Self-Evaluation, Feedback và các nội dung báo cáo còn lại; triển khai và kiểm tra website báo cáo song ngữ; chuẩn bị tài liệu nộp báo cáo cuối kỳ. |
+
+#### Kế hoạch vận hành dự án sau khi ra mắt
+
+Theo kế hoạch chung của nhóm, môi trường development và production của ReLoop sẽ tiếp tục được duy trì trong thời hạn AWS Credits đến ngày 28/02/2027, nhằm theo dõi chi phí vận hành và thu thập dữ liệu thực tế về mức sử dụng AI cũng như hiệu quả ghép nối tin đăng.
+
+*Dự án ReLoop được chính thức thống nhất triển khai vào ngày 09/10/2026. Các hoạt động trước thời điểm này thuộc giai đoạn học tập, hình thành nhóm và nghiên cứu đề tài ban đầu.*
+
+*Các công việc đang thực hiện trong tuần 10 và các mốc từ tuần 11 trở đi sẽ được cập nhật theo tiến độ thực tế.*
 
 ### 6. Ước tính ngân sách
 

@@ -87,9 +87,9 @@ ReLoop uses a serverless architecture with backend resources deployed in the ap-
 - Application logs and business metrics are collected by CloudWatch. SNS sends email notifications to administrators when alarms are triggered.
 - All infrastructure is defined using Terraform, with its state stored in a versioned S3 bucket.
 
-![ReLoop Architecture](https://raw.githubusercontent.com/Kyna172/ojt-report/main/static/images/2-Proposal/reloop-architecture.png)
+![ReLoop Architecture](https://raw.githubusercontent.com/Kyna172/FCAJ-Workshop-Report/main/static/images/2-Proposal/reloop-architecture.png)
 
-*Original architecture diagram: [reloop-architecture.drawio](https://github.com/Kyna172/ojt-report/blob/main/static/images/2-Proposal/reloop-architecture.drawio) (generated using `diagram/make_architecture.py`).*
+*Original architecture diagram: [reloop-architecture.drawio](https://github.com/Kyna172/FCAJ-Workshop-Report/blob/main/static/images/2-Proposal/reloop-architecture.drawio) (generated using `diagram/make_architecture.py`).*
 
 #### AWS Services Used
 
@@ -204,7 +204,7 @@ According to the team's shared plan, ReLoop's development and production environ
 
 The cost estimation is based on publicly available AWS pricing for the ap-southeast-1 region (use the [AWS Pricing Calculator](https://calculator.aws/) to recalculate the estimates).
 
-The detailed cost breakdown is available in [reloop-cost-estimate.csv](https://github.com/Kyna172/ojt-report/blob/main/static/files/2-proposal/reloop-cost-estimate.csv).
+The detailed cost breakdown is available in [reloop-cost-estimate.csv](https://github.com/Kyna172/FCAJ-Workshop-Report/blob/main/static/files/2-proposal/reloop-cost-estimate.csv).
 
 #### Infrastructure Costs
 

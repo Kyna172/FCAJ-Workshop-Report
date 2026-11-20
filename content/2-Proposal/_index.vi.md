@@ -87,9 +87,9 @@ ReLoop sử dụng kiến trúc serverless với các tài nguyên backend đư�
 - Log và số liệu nghiệp vụ đổ về CloudWatch; khi có cảnh báo, SNS gửi email cho Admin.
 - Toàn bộ hạ tầng viết bằng Terraform, state lưu trong bucket S3 có versioning.
 
-![Kiến trúc ReLoop](https://raw.githubusercontent.com/Kyna172/ojt-report/main/static/images/2-Proposal/reloop-architecture.png)
+![Kiến trúc ReLoop](https://raw.githubusercontent.com/Kyna172/FCAJ-Workshop-Report/main/static/images/2-Proposal/reloop-architecture.png)
 
-*File gốc sơ đồ: [reloop-architecture.drawio](https://github.com/Kyna172/ojt-report/blob/main/static/images/2-Proposal/reloop-architecture.drawio) (sinh bằng `diagram/make_architecture.py`).*
+*File gốc sơ đồ: [reloop-architecture.drawio](https://github.com/Kyna172/FCAJ-Workshop-Report/blob/main/static/images/2-Proposal/reloop-architecture.drawio) (sinh bằng `diagram/make_architecture.py`).*
 
 #### Dịch vụ AWS sử dụng
 
@@ -204,7 +204,7 @@ Theo kế hoạch chung của nhóm, môi trường development và production c
 
 Ước tính dựa trên bảng giá công khai của AWS cho ap-southeast-1 (dùng [AWS Pricing Calculator](https://calculator.aws/) để tính lại).
 
-Bảng tính chi tiết từng dòng nằm ở [reloop-cost-estimate.csv](https://github.com/Kyna172/ojt-report/blob/main/static/files/2-proposal/reloop-cost-estimate.csv).
+Bảng tính chi tiết từng dòng nằm ở [reloop-cost-estimate.csv](https://github.com/Kyna172/FCAJ-Workshop-Report/blob/main/static/files/2-proposal/reloop-cost-estimate.csv).
 
 #### Chi phí hạ tầng
 

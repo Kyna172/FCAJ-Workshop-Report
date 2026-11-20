@@ -18,7 +18,7 @@ Workshop này trình bày quy trình xây dựng, tích hợp, bảo mật và k
 
 Bên cạnh quy trình triển khai, bài thực hành tập trung làm rõ các cơ chế bảo mật được sử dụng trong hệ thống, bao gồm quản lý danh tính, bảo vệ dữ liệu, kiểm soát lưu lượng truy cập, an toàn nội dung AI và giám sát hoạt động của ứng dụng.
 
-![Kiến trúc tổng thể ReLoop trên AWS](../../images/5-Workshop/5.1/overview.png)
+![Kiến trúc tổng thể ReLoop trên AWS](/images/5-Workshop/5.1/overview.png)
 
 ### Mục tiêu bài thực hành
 
@@ -37,19 +37,19 @@ Nội dung Workshop được xây dựng dựa trên kiến trúc, tài liệu k
 
 ### Nội dung Workshop
 
-1. [Tổng quan và kiến trúc hệ thống ReLoop](5.1-Workshop-overview/)
-2. [Chuẩn bị môi trường và quản lý ngân sách AWS](5.2-Prerequisites/)
-3. [Xây dựng tầng dữ liệu với Amazon DynamoDB](5.3-Dynamodb/)
-4. [Xác thực và quản lý người dùng với Amazon Cognito](5.4-Cognito/)
-5. [Lưu trữ và bảo vệ hình ảnh với Amazon S3](5.5-S3-Images/)
-6. [Triển khai Backend API với AWS Lambda và Amazon API Gateway](5.6-Backend-API/)
-7. [Kiểm duyệt nội dung AI với Amazon Bedrock Guardrails](5.7-Bedrock-Guardrails/)
-8. [Triển khai Frontend với Amazon CloudFront và S3](5.8-Cloudfront-Frontend/)
-9. [Bảo vệ ứng dụng web với AWS WAF](5.9-WAF/)
-10. [Tự động hóa tác vụ định kỳ với Amazon EventBridge](5.10-EventBridge/)
-11. [Giám sát hệ thống với Amazon CloudWatch và SNS](5.11-Monitoring/)
-12. [Kiểm thử hệ thống End-to-End](5.12-End-to-End-Verification/)
-13. [Dọn dẹp tài nguyên và quản lý hạ tầng với Terraform](5.13-Cleanup-and-IaC/)
+1. [Tổng quan và kiến trúc hệ thống ReLoop](5.1-workshop-overview/)
+2. [Chuẩn bị môi trường và quản lý ngân sách AWS](5.2-prerequisites/)
+3. [Xây dựng tầng dữ liệu với Amazon DynamoDB](5.3-dynamodb/)
+4. [Xác thực và quản lý người dùng với Amazon Cognito](5.4-cognito/)
+5. [Lưu trữ và bảo vệ hình ảnh với Amazon S3](5.5-s3-images/)
+6. [Triển khai Backend API với AWS Lambda và Amazon API Gateway](5.6-backend-api/)
+7. [Kiểm duyệt nội dung AI với Amazon Bedrock Guardrails](5.7-bedrock-guardrails/)
+8. [Triển khai Frontend với Amazon CloudFront và S3](5.8-cloudfront-frontend/)
+9. [Bảo vệ ứng dụng web với AWS WAF](5.9-waf/)
+10. [Tự động hóa tác vụ định kỳ với Amazon EventBridge](5.10-eventbridge/)
+11. [Giám sát hệ thống với Amazon CloudWatch và SNS](5.11-monitoring/)
+12. [Kiểm thử hệ thống End-to-End](5.12-end-to-end-verification/)
+13. [Dọn dẹp tài nguyên và quản lý hạ tầng với Terraform](5.13-cleanup-and-iac/)
 
 {{% notice warning %}}
 Một số dịch vụ AWS có thể phát sinh chi phí ngay cả khi không có lưu lượng truy cập. Cần theo dõi ngân sách trong quá trình thực hành và dọn dẹp các tài nguyên không còn sử dụng sau khi hoàn thành Workshop.

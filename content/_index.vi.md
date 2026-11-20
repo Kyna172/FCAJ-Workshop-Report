@@ -28,8 +28,7 @@ chapter: false
 
 ---
 
-![Ảnh đại diện](../static/images/image.png)
-
+![Profile Picture](https://kyna172.github.io/ojt-report/images/image.png)
 ---
 
 ### Mục lục báo cáo

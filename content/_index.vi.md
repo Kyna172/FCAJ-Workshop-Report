@@ -28,7 +28,7 @@ chapter: false
 
 ---
 
-![Ảnh đại diện](https://kyna172.github.io/ojt-report/images/image.png)
+![Ảnh đại diện](https://kyna172.github.io/FCAJ-Workshop-Report/images/image.png)
 
 ---
 

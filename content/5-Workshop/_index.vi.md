@@ -18,7 +18,7 @@ Workshop này trình bày quy trình xây dựng, tích hợp, bảo mật và k
 
 Bên cạnh quy trình triển khai, bài thực hành tập trung làm rõ các cơ chế bảo mật được sử dụng trong hệ thống, bao gồm quản lý danh tính, bảo vệ dữ liệu, kiểm soát lưu lượng truy cập, an toàn nội dung AI và giám sát hoạt động của ứng dụng.
 
-![Kiến trúc tổng thể ReLoop trên AWS](static/images/5-Workshop/5.1/overview.png)
+![Kiến trúc tổng thể ReLoop trên AWS](../../images/5-Workshop/5.1/overview.png)
 
 ### Mục tiêu bài thực hành
 

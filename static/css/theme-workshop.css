@@ -226,3 +226,10 @@ div.notices.info p {
   border-top: 30px solid #fd9827;
   background: #fff2db;
 }
+
+/* Responsive images - preserve original aspect ratio */
+#body-inner img {
+    max-width: 100% !important;
+    height: auto !important;
+    object-fit: contain;
+}

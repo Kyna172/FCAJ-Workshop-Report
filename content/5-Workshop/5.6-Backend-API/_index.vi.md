@@ -1,95 +1,247 @@
 ---
-title : "VPC Endpoint Policies"
-date : 2024-01-01
-weight : 5
+title : "Backend Lambda & HTTP API Gateway"
+date : 2026-11-14
+weight : 6
 chapter : false
-pre : " <b> 5.5 </b> "
+pre : " <b> 5.6. </b> "
 ---
 
-Khi bạn tạo một Interface Endpoint  hoặc cổng, bạn có thể đính kèm một chính sách điểm cuối để kiểm soát quyền truy cập vào dịch vụ mà bạn đang kết nối. Chính sách VPC Endpoint là chính sách tài nguyên IAM mà bạn đính kèm vào điểm cuối. Nếu bạn không đính kèm chính sách khi tạo điểm cuối, thì AWS sẽ đính kèm chính sách mặc định cho bạn để cho phép toàn quyền truy cập vào dịch vụ thông qua điểm cuối.
+Trong phần này bạn xây dựng tầng xử lý chính cho toàn ứng dụng:
+- IAM Role tối thiểu quyền **`reloop2-api-lambda-role`**
+- Hàm **Lambda Node.js 22 (ARM64) `reloop2-api`** (`512 MB`, timeout `180 giây`)
+- **HTTP API Gateway (`reloop2-api`)** tích hợp **JWT Authorizer** trỏ về Cognito, 7 route rõ ràng, CORS và giới hạn lưu lượng **20 req/s (burst 50)** trên stage `$default`
+- Trigger Cognito **Pre-SignUp** gọi về `reloop2-api` để chặn đăng ký trùng email
 
-Bạn có thể tạo chính sách chỉ hạn chế quyền truy cập vào các S3 bucket cụ thể. Điều này hữu ích nếu bạn chỉ muốn một số Bộ chứa S3 nhất định có thể truy cập được thông qua điểm cuối.
+![Phạm vi Phần 5.6: HTTP API Gateway, API Lambda, Cognito & S3](/images/5-Workshop/5.6/architecture.png)
 
-Trong phần này, bạn sẽ tạo chính sách VPC Endpoint hạn chế quyền truy cập vào S3 bucket được chỉ định trong chính sách VPC Endpoint.
+---
 
-![endpoint diagram](/images/5-Workshop/5.5-Policy/s3-bucket-policy.png)
+### Phần A — Tạo IAM Role tối thiểu quyền (`reloop2-api-lambda-role`)
 
-#### Kết nối tới EC2 và xác minh kết nối tới S3. 
+1. Vào **IAM -> Roles -> Create role**, chọn Trusted entity **AWS service -> Lambda**.
 
-1. Bắt đầu một phiên AWS Session Manager mới trên máy chủ có tên là Test-Gateway-Endpoint. Từ phiên này, xác minh rằng bạn có thể liệt kê nội dung của bucket mà bạn đã tạo trong Phần 1: Truy cập S3 từ VPC.
+![Chọn Lambda làm Trusted entity](/images/5-Workshop/5.6/01-role-trusted-entity.png)
 
-```
-aws s3 ls s3://<your-bucket-name>
-```
-![test](/images/5-Workshop/5.5-Policy/test1.png)
+2. Gắn **`AWSLambdaBasicExecutionRole`** (kèm Permissions Boundary nếu tài khoản nhóm yêu cầu).
 
-Nội dung của bucket bao gồm hai tệp có dung lượng 1GB đã được tải lên trước đó.
+![Permissions boundary nếu có](/images/5-Workshop/5.6/02-role-permissions-boundary.png)
 
-2. Tạo một bucket S3 mới; tuân thủ mẫu đặt tên mà bạn đã sử dụng trong Phần 1, nhưng thêm '-2' vào tên. Để các trường khác là mặc định và nhấp vào **Create**.
+3. Đặt tên **`reloop2-api-lambda-role`**, gắn tags và bấm **Create role**.
 
-![create bucket](/images/5-Workshop/5.5-Policy/create-bucket.png)
+![Xem lại tên và tags của reloop2-api-lambda-role](/images/5-Workshop/5.6/03-role-name-review.png)
 
-3. Tạo bucket thành công.
+![Đã tạo xong reloop2-api-lambda-role](/images/5-Workshop/5.6/04-role-created.png)
 
-![Success](/images/5-Workshop/5.5-Policy/create-bucket-success.png)
+4. Mở `reloop2-api-lambda-role` -> **Add permissions -> Create inline policy** (`reloop2-api-access`) với phạm vi ARN chính xác cho DynamoDB, S3 `listings/*`, Bedrock (`InvokeModel` + `ApplyGuardrail`), Rekognition, tự gọi chính mình (`SelfInvoke`), Cognito `ListUsers` và Logs:
 
-Policy mặc định cho phép truy cập vào tất cả các S3 Buckets thông qua VPC endpoint.
-
-4. Trong giao diện **Edit Policy**, sao chép và dán theo policy sau, thay thế yourbucketname-2 với tên bucket thứ hai của bạn. Policy này sẽ cho phép truy cập đến bucket mới thông qua VPC endpoint, nhưng không cho phép truy cập đến các bucket còn lại. Chọn **Save** để kích hoạt policy.
-
-
-```
+```json
 {
-  "Id": "Policy1631305502445",
   "Version": "2012-10-17",
   "Statement": [
     {
-      "Sid": "Stmt1631305501021",
-      "Action": "s3:*",
+      "Sid": "CoreTable",
       "Effect": "Allow",
+      "Action": [
+        "dynamodb:GetItem",
+        "dynamodb:Query",
+        "dynamodb:PutItem",
+        "dynamodb:DeleteItem",
+        "dynamodb:ConditionCheckItem"
+      ],
       "Resource": [
-      				"arn:aws:s3:::yourbucketname-2",
-       				"arn:aws:s3:::yourbucketname-2/*"
-       ],
-      "Principal": "*"
+        "arn:aws:dynamodb:ap-southeast-1:123456789012:table/reloop2-core-table",
+        "arn:aws:dynamodb:ap-southeast-1:123456789012:table/reloop2-core-table/index/*"
+      ]
+    },
+    {
+      "Sid": "ListingImages",
+      "Effect": "Allow",
+      "Action": [
+        "s3:PutObject",
+        "s3:GetObject",
+        "s3:PutObjectTagging",
+        "s3:GetObjectTagging",
+        "s3:DeleteObject"
+      ],
+      "Resource": "arn:aws:s3:::reloop2-images-7k3q/listings/*"
+    },
+    {
+      "Sid": "Bedrock",
+      "Effect": "Allow",
+      "Action": ["bedrock:InvokeModel"],
+      "Resource": [
+        "arn:aws:bedrock:*:123456789012:inference-profile/global.moonshotai.kimi-k3",
+        "arn:aws:bedrock:*::foundation-model/*"
+      ]
+    },
+    {
+      "Sid": "Guardrail",
+      "Effect": "Allow",
+      "Action": ["bedrock:ApplyGuardrail"],
+      "Resource": [
+        "arn:aws:bedrock:ap-southeast-1:123456789012:guardrail/*",
+        "arn:aws:bedrock:*:123456789012:guardrail-profile/*"
+      ]
+    },
+    {
+      "Sid": "Moderation",
+      "Effect": "Allow",
+      "Action": ["rekognition:DetectModerationLabels", "rekognition:DetectText"],
+      "Resource": "*"
+    },
+    {
+      "Sid": "SelfInvoke",
+      "Effect": "Allow",
+      "Action": ["lambda:InvokeFunction"],
+      "Resource": "arn:aws:lambda:ap-southeast-1:123456789012:function:reloop2-api"
+    },
+    {
+      "Sid": "CognitoAliasCheck",
+      "Effect": "Allow",
+      "Action": ["cognito-idp:ListUsers"],
+      "Resource": "arn:aws:cognito-idp:ap-southeast-1:123456789012:userpool/ap-southeast-1_xxxxxxxxx"
+    },
+    {
+      "Sid": "Logs",
+      "Effect": "Allow",
+      "Action": ["logs:CreateLogStream", "logs:PutLogEvents"],
+      "Resource": "arn:aws:logs:ap-southeast-1:123456789012:log-group:/aws/lambda/reloop2-api:*"
     }
   ]
 }
 ```
 
-![custom policy](/images/5-Workshop/5.5-Policy/policy2.png)
+![Nhập inline policy JSON](/images/5-Workshop/5.6/05-inline-policy-json.png)
 
-Cấu hình policy thành công.
+![Đặt tên reloop2-api-access và tạo policy](/images/5-Workshop/5.6/06-inline-policy-review.png)
 
-![success](/images/5-Workshop/5.5-Policy/success.png)
+![Quyền hoàn chỉnh của reloop2-api-lambda-role](/images/5-Workshop/5.6/07-role-permissions-final.png)
 
-5. Từ session của bạn trên Test-Gateway-Endpoint instance, kiểm tra truy cập đến S3 bucket bạn tạo ở bước đầu
+---
 
-```
-aws s3 ls s3://<yourbucketname>
-```
+### Phần B — Tạo Lambda Backend (`reloop2-api`)
 
-Câu lệnh trả về lỗi bởi vì truy cập vào S3 bucket không có quyền trong VPC endpoint policy.
+5. Vào **AWS Lambda -> Create function**:
+   - **Function name:** `reloop2-api`
+   - **Runtime:** `Node.js 22.x`, **Architecture:** **`arm64`** (tối ưu hiệu năng/chi phí hơn x86_64)
+   - **Execution role:** `reloop2-api-lambda-role`
 
-![error](/images/5-Workshop/5.5-Policy/error.png)
+![Chọn custom role reloop2-api-lambda-role](/images/5-Workshop/5.6/08-lambda-custom-role.png)
 
-6. Trở lại home directory của bạn trên EC2 instance ```cd~```
+![Gắn tags cho Lambda](/images/5-Workshop/5.6/09-lambda-tags.png)
 
-+ Tạo file ```fallocate -l 1G test-bucket2.xyz ```
-+ Sao chép file lên bucket thứ  2 ```aws s3 cp test-bucket2.xyz s3://<your-2nd-bucket-name>```
+![Biểu mẫu tạo hàm reloop2-api](/images/5-Workshop/5.6/10-lambda-create-form.png)
 
-![success](/images/5-Workshop/5.5-Policy/test2.png)
+![Tạo xong hàm Lambda reloop2-api](/images/5-Workshop/5.6/11-lambda-created.png)
 
-Thao tác này được cho phép bởi VPC endpoint policy.
+6. Tải lên gói zip backend `reloop2-api.zip` (`index.js` + `index.js.map`).
 
-![success](/images/5-Workshop/5.5-Policy/test2-success.png)
+![Tải lên zip mã nguồn API](/images/5-Workshop/5.6/12-lambda-upload-zip.png)
 
-Sau đó chúng ta kiểm tra truy cập vào S3 bucket đầu tiên
+![Đã cập nhật gói mã nguồn](/images/5-Workshop/5.6/13-lambda-code-uploaded.png)
 
- ```aws s3 cp test-bucket2.xyz s3://<your-1st-bucket-name>```
+7. Vào **Configuration -> General configuration -> Edit**: đặt **Memory `512 MB`**, **Timeout `3 min 0 sec` (`180s`)**.
 
- ![fail](/images/5-Workshop/5.5-Policy/test2-fail.png)
+![Chỉnh bộ nhớ 512 MB và timeout 3 phút](/images/5-Workshop/5.6/14-lambda-basic-settings.png)
 
- Câu lệnh xảy ra lỗi bởi vì bucket không có quyền truy cập bởi VPC endpoint policy.
+![Cấu hình chung đã lưu](/images/5-Workshop/5.6/15-lambda-general-config.png)
 
-Trong phần này, bạn đã tạo chính sách VPC Endpoint cho Amazon S3 và sử dụng AWS CLI để kiểm tra chính sách. Các hoạt động AWS CLI liên quan đến bucket S3 ban đầu của bạn thất bại vì bạn áp dụng một chính sách chỉ cho phép truy cập đến bucket thứ hai mà bạn đã tạo. Các hoạt động AWS CLI nhắm vào bucket thứ hai của bạn thành công vì chính sách cho phép chúng. Những chính sách này có thể hữu ích trong các tình huống khi bạn cần kiểm soát quyền truy cập vào tài nguyên thông qua VPC Endpoint.
+8. Vào **Configuration -> Environment variables -> Edit** và điền đủ các biến môi trường:
+
+| Biến | Giá trị / Ý nghĩa |
+| --- | --- |
+| `STAGE` | `aws` |
+| `AUTH_MODE` | `cognito` |
+| `TABLE_NAME` | `reloop2-core-table` |
+| `IMAGE_BUCKET` | `reloop2-images-7k3q` |
+| `COGNITO_CLIENT_ID` | `<Client ID của reloop2-web-client>` |
+| `AI_MODEL_ID` | `global.moonshotai.kimi-k3` |
+| `ORIGIN_VERIFY_SECRET` | `<chuỗi bí mật ngẫu nhiên 32 byte>` (dùng chung với CloudFront ở Phần 5.8) |
+| `NODE_OPTIONS` | `--enable-source-maps` |
+
+{{% notice warning %}}
+Tuyệt đối bảo mật **`ORIGIN_VERIFY_SECRET`**, không đưa vào frontend hay Git. Backend kiểm tra header `x-origin-verify` bằng `crypto.timingSafeEqual` để chặn mọi truy cập đi vòng qua CloudFront gọi thẳng vào API Gateway.
+{{% /notice %}}
+
+![Nhập danh sách biến môi trường](/images/5-Workshop/5.6/16-lambda-env-vars.png)
+
+![Đã lưu biến môi trường](/images/5-Workshop/5.6/17-lambda-env-vars-saved.png)
+
+![Xác nhận STAGE=aws và các biến chính](/images/5-Workshop/5.6/37-lambda-env-stage.png)
+
+---
+
+### Phần C — Tạo HTTP API Gateway (`reloop2-api`)
+
+9. Vào **API Gateway -> Create API -> HTTP API -> Build**, đặt tên **`reloop2-api`** và chọn integration tới Lambda `reloop2-api`.
+
+![Chọn tạo HTTP API](/images/5-Workshop/5.6/18-apigw-choose-http.png)
+
+![Chọn tích hợp Lambda reloop2-api](/images/5-Workshop/5.6/19-apigw-integration.png)
+
+10. Tạo đầy đủ **7 routes** (6 route công khai/auth/preflight và route tổng `ANY /{proxy+}` có bảo vệ JWT):
+
+| Method | Route Path | Xác thực |
+| --- | --- | --- |
+| `POST` | `/auth/session` | None |
+| `POST` | `/auth/logout` | None |
+| `POST` | `/auth/refresh` | None |
+| `GET` | `/feed/public` | None |
+| `GET` | `/fees` | None |
+| `OPTIONS` | `/{proxy+}` | None (CORS preflight) |
+| `ANY` | `/{proxy+}` | **JWT Authorizer (`cognito`)** |
+
+![Khai báo 7 route trên HTTP API](/images/5-Workshop/5.6/20-apigw-routes.png)
+
+11. Giữ stage `$default` ở chế độ **Auto-deploy**, xem lại và bấm **Create**.
+
+![Cấu hình stage $default](/images/5-Workshop/5.6/21-apigw-stage-default.png)
+
+![Xem lại cấu hình HTTP API](/images/5-Workshop/5.6/22-apigw-review.png)
+
+![HTTP API reloop2-api đã tạo](/images/5-Workshop/5.6/23-apigw-created.png)
+
+12. Vào **Authorization -> Create JWT authorizer**:
+    - **Name:** `cognito`
+    - **Identity source:** `$request.header.Authorization`
+    - **Issuer URL:** `https://cognito-idp.ap-southeast-1.amazonaws.com/<User-Pool-ID>`
+    - **Audience:** `<Client ID của reloop2-web-client>`
+    Rồi gắn `cognito` cho đúng route **`ANY /{proxy+}`**.
+
+![Route ANY /{proxy+} trước khi gắn JWT authorizer](/images/5-Workshop/5.6/24-auth-route-no-authorizer.png)
+
+![Tạo JWT authorizer Cognito](/images/5-Workshop/5.6/25-jwt-authorizer-form.png)
+
+![Đã gắn JWT authorizer vào ANY /{proxy+}](/images/5-Workshop/5.6/26-jwt-authorizer-attached.png)
+
+13. Vào **Develop -> CORS -> Configure**, thêm `http://localhost:5173`, Allowed headers `authorization, content-type, idempotency-key`, Allowed methods `*`, Max age `3600` (Phần **5.8** sẽ thêm domain CloudFront).
+
+![Màn hình CORS ban đầu](/images/5-Workshop/5.6/27-cors-empty.png)
+
+![Điền thông số CORS cho API Gateway](/images/5-Workshop/5.6/28-cors-form.png)
+
+![Đã lưu cấu hình CORS](/images/5-Workshop/5.6/29-cors-saved.png)
+
+14. Vào **Deploy -> Stages -> `$default` -> Throttling -> Edit**: đặt **Rate limit `20` req/s**, **Burst limit `50`**.
+
+![Thông số throttling trước khi sửa](/images/5-Workshop/5.6/30-throttling-before.png)
+
+![Đặt Rate limit 20 và Burst 50](/images/5-Workshop/5.6/31-throttling-form.png)
+
+![Đã lưu giới hạn lưu lượng](/images/5-Workshop/5.6/32-throttling-saved.png)
+
+15. Kiểm tra **Integrations** trên API Gateway và **Resource-based policy** trên Lambda để đảm bảo API Gateway có đủ quyền gọi Lambda theo từng route.
+
+![Chi tiết Integration trên API Gateway](/images/5-Workshop/5.6/33-integration-details.png)
+
+![Resource-based policy tự sinh trên Lambda](/images/5-Workshop/5.6/34-lambda-resource-policy.png)
+
+---
+
+### Phần D — Gắn Pre-SignUp Trigger trong Cognito
+
+16. Quay lại Cognito **`reloop2-user-pool` -> Extensions -> Lambda triggers -> Add Lambda trigger**, chọn **Pre sign-up trigger -> `reloop2-api`** để kiểm tra chống trùng lặp email trước khi tạo tài khoản.
+
+![Chọn Pre sign-up trigger cho reloop2-api](/images/5-Workshop/5.6/35-presignup-trigger-form.png)
+
+![Cả 2 trigger Pre sign-up và Post confirmation hoạt động](/images/5-Workshop/5.6/36-presignup-trigger-added.png)

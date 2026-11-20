@@ -1,7 +1,7 @@
 ---
 title: "Cloud Mastery – Buổi chia sẻ về Cloud dành cho sinh viên"
 date: 2026-11-14
-weight: 1
+weight: 5
 chapter: false
 pre: "<b> 4.5. </b>"
 ---

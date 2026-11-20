@@ -28,8 +28,7 @@ chapter: false
 
 ---
 
-![Profile Picture](../static/images/image.png)
-
+![Profile Picture](https://kyna172.github.io/ojt-report/images/image.png)
 ---
 
 ### Report Directory

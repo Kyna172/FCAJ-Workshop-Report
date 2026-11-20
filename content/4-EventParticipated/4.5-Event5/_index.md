@@ -1,7 +1,7 @@
 ---
 title: "Cloud Mastery – Cloud Sharing Session for Students"
 date: 2026-11-14
-weight: 1
+weight: 5
 chapter: false
 pre: "<b> 4.5. </b>"
 ---

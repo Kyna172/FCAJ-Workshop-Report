@@ -38,7 +38,7 @@ Application-level quotas must also account for concurrent requests, retries, and
 
 ## Picture
 
-<img width="3754" height="540" alt="image" src="https://github.com/user-attachments/assets/4443cc50-51a8-4a68-9bb1-5f95ce803e21" />
+<img src="https://github.com/user-attachments/assets/7e10d331-3f14-4792-84ad-364ab8d1addb" alt="Sơ đồ kiến trúc Blog 4" style="max-width: 100%; height: auto;" />
 
 ## References
 

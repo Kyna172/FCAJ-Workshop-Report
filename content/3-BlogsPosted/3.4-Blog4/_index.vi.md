@@ -38,7 +38,7 @@ Cần lưu ý rằng quota ứng dụng phải xử lý các trường hợp req
 
 ## Hình ảnh
 
-<img width="3754" height="540" alt="image" src="https://github.com/user-attachments/assets/7e10d331-3f14-4792-84ad-364ab8d1addb" />
+<img src="https://github.com/user-attachments/assets/7e10d331-3f14-4792-84ad-364ab8d1addb" alt="Sơ đồ kiến trúc Blog 4" style="max-width: 100%; height: auto;" />
 
 ## Tài liệu tham khảo
 

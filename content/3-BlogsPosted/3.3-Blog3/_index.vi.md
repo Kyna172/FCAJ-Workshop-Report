@@ -35,7 +35,7 @@ Nên bắt đầu kiểm tra WAF Rate-based Rules bằng hành động **Count**
 
 ## Hình ảnh
 
-<img width="2438" height="540" alt="image" src="https://github.com/user-attachments/assets/af4f9c23-c8cc-4aaa-bad0-cc7474a36884" />
+<img src="https://github.com/user-attachments/assets/af4f9c23-c8cc-4aaa-bad0-cc7474a36884" alt="Sơ đồ kiến trúc Blog 3" style="max-width: 100%; height: auto;" />
 
 ## Tài liệu tham khảo
 

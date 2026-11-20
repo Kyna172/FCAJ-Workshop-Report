@@ -1,30 +1,56 @@
 ---
 title: "Workshop"
-date: 2025-08-11
+date: 2026-11-20
 weight: 5
 chapter: false
 pre: " <b> 5. </b> "
 ---
 
-# Secure Hybrid Access to S3 using VPC Endpoints
+# Deploying and Securing the ReLoop Serverless Platform on AWS
 
-#### Overview
+### Workshop Overview
 
-**AWS PrivateLink** provides private connectivity to AWS services from Amazon VPCs and your on-premises networks without exposing your traffic to the Public Internet.
+**ReLoop** is a platform that facilitates the trading and reuse of used or damaged electronic devices, connecting users with electronics buyers, repair shops, and recycling partners.
 
-In this comprehensive hands-on workshop, you will learn how to design, configure, and validate VPC endpoints that allow hybrid cloud workloads to interact with AWS services with enterprise-grade isolation and zero internet egress dependencies.
+The project is developed by the **AWSS3nt1n4L** team during the First Cloud AI Journey (FCAJ) internship program. It uses a serverless architecture on Amazon Web Services (AWS), combined with artificial intelligence services to support device recognition, content moderation, and an improved user experience.
 
-You will implement and evaluate two distinct types of VPC endpoints for Amazon S3:
-* **Gateway VPC Endpoint:** Directs traffic from subnets to Amazon S3 or DynamoDB via private AWS internal routing. Traffic is routed using VPC Route Table prefix lists at zero additional service cost.
-* **Interface VPC Endpoint (powered by AWS PrivateLink):** Provisions elastic network interfaces (ENIs) with private IP addresses inside your VPC subnets, enabling seamless, secure access from on-premises datacenters over VPN or AWS Direct Connect.
+This workshop presents the process of building, integrating, securing, and testing the ReLoop system on AWS, covering the data layer, user authentication, image storage, API processing, web application delivery, system monitoring, and resource management.
+
+In addition to the deployment process, the workshop focuses on the security mechanisms used throughout the system, including identity management, data protection, traffic control, AI content safety, and application monitoring.
+
+![ReLoop Overall Architecture on AWS](/images/5-Workshop/5.1/overview.png)
+
+### Workshop Objectives
+
+- Understand serverless architecture and how AWS services are integrated into a practical web application.
+- Explore the deployment of databases, user authentication, image storage, and Backend APIs.
+- Understand security mechanisms using Amazon Cognito, AWS IAM, Amazon S3, Amazon CloudFront, and AWS WAF.
+- Explore the use of Amazon Bedrock, Amazon Rekognition, and Bedrock Guardrails for content processing and moderation.
+- Understand system monitoring, cost management, and business workflow testing.
+- Understand resource cleanup and infrastructure management using Terraform.
+
+{{% notice note %}}
+This workshop is based on the architecture, technical documentation, and deployment images of the ReLoop project, developed collaboratively by the AWSS3nt1n4L team. Illustrative configuration values should be adjusted to suit the participant's own AWS environment.
+{{% /notice %}}
 
 ---
 
-#### Workshop Navigation
+### Workshop Contents
 
-1. [Workshop Overview & Architecture](5.1-Workshop-overview/)
-2. [Prerequisites & Base Stack Provisioning](5.2-Prerequiste/)
-3. [Access S3 from Cloud VPC via Gateway Endpoint](5.3-S3-vpc/)
-4. [Access S3 from On-Premises via Interface Endpoint](5.4-S3-onprem/)
-5. [VPC Endpoint Policies & Data Perimeter (Bonus)](5.5-Policy/)
-6. [Clean Up & Cost Avoidance](5.6-Cleanup/)
+1. [ReLoop System Overview and Architecture](5.1-workshop-overview/)
+2. [Environment Preparation and AWS Budget Management](5.2-prerequisites/)
+3. [Building the Data Layer with Amazon DynamoDB](5.3-dynamodb/)
+4. [Authentication and User Management with Amazon Cognito](5.4-cognito/)
+5. [Image Storage and Protection with Amazon S3](5.5-s3-images/)
+6. [Backend API Deployment with AWS Lambda and Amazon API Gateway](5.6-backend-api/)
+7. [AI Content Moderation with Amazon Bedrock Guardrails](5.7-bedrock-guardrails/)
+8. [Frontend Deployment with Amazon CloudFront and S3](5.8-cloudfront-frontend/)
+9. [Web Application Protection with AWS WAF](5.9-waf/)
+10. [Scheduled Task Automation with Amazon EventBridge](5.10-eventbridge/)
+11. [System Monitoring with Amazon CloudWatch and SNS](5.11-monitoring/)
+12. [End-to-End System Verification](5.12-end-to-end-verification/)
+13. [Resource Cleanup and Infrastructure Management with Terraform](5.13-cleanup-and-iac/)
+
+{{% notice warning %}}
+Some AWS services may incur charges even when there is no incoming traffic. Monitor your budget throughout the workshop and remove unused resources after completing the exercises.
+{{% /notice %}}

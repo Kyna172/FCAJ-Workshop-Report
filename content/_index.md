@@ -28,8 +28,7 @@ chapter: false
 
 ---
 
-![Profile Picture](https://kyna172.github.io/ojt-report/images/image.png)
----
+![Profile Picture](https://kyna172.github.io/FCAJ-Workshop-Report/images/image.png)---
 
 ### Report Directory
 

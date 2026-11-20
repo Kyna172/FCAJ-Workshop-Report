@@ -1,64 +1,86 @@
 baseURL = "https://kyna172.github.io/ojt-report/"
 relativeURLs = false
-canonifyURLs = false
-defaultContentLanguage = "en"
+canonifyURLs = true
 
-# Change the default theme to be use when building the site with Hugo
+defaultContentLanguage = "en"
+defaultContentLanguageInSubdir = false
+
+buildFuture = true
+
 theme = "hugo-theme-learn"
 
-# For search functionality
-[outputs]
-home = [ "HTML", "RSS", "JSON"]
+enableRobotsTXT = true
 
+# Search functionality
+[outputs]
+  home = ["HTML", "RSS", "JSON"]
+
+# Theme configuration
 [params]
-  # Change default color scheme with a variant one. Can be "red", "blue", "green".
   themeVariant = "workshop"
-  # Git hub repo link
   editURL = ""
-  description = ""
+  description = "First Cloud AI Journey Internship Report"
   author = "Nguyen Anh Ky"
+
   showVisitedLinks = true
   disableBreadcrumb = false
   disableNextPrev = false
-  
+  disableSearch = false
+  disableLanguageSwitchingButton = false
+
+# English version
 [Languages]
+
 [Languages.en]
-title = "Internship Report"
-weight = 1
-languageName = "English"
-label = "English"
+  title = "Internship Report"
+  weight = 1
+  languageName = "English"
+  label = "English"
 
 [[Languages.en.menu.shortcuts]]
-name = "<i class='fab fa-aws'></i> AWS Study Group - Blog"
-identifier = "AWS Study Group"
-url = "https://awsstudygroup.com"
-weight = 20
+  name = "<i class='fab fa-aws'></i> AWS Study Group - Blog"
+  identifier = "AWS Study Group"
+  url = "https://awsstudygroup.com"
+  weight = 20
 
 [[Languages.en.menu.shortcuts]]
-name = "<i class='fab fa-facebook'></i> AWS Study Group - FB Group"
-identifier = "AWS Study Group FB"
-url = "https://www.facebook.com/groups/awsstudygroupfcj"
-weight = 20
+  name = "<i class='fab fa-facebook'></i> AWS Study Group - FB Group"
+  identifier = "AWS Study Group FB"
+  url = "https://www.facebook.com/groups/awsstudygroupfcj"
+  weight = 21
 
+# Vietnamese version
 [Languages.vi]
-title = "Báo cáo thực tập"
-weight = 2
-languageName = "Tiếng Việt"
-label = "Tiếng Việt"
+  title = "Báo cáo thực tập"
+  weight = 2
+  languageName = "Tiếng Việt"
+  label = "Tiếng Việt"
 
 [[Languages.vi.menu.shortcuts]]
-name = "<i class='fab fa-aws'></i> AWS Study Group - Blog"
-identifier = "AWS Study Group"
-url = "http://awsstudygroup.com"
-weight = 20
+  name = "<i class='fab fa-aws'></i> AWS Study Group - Blog"
+  identifier = "AWS Study Group"
+  url = "https://awsstudygroup.com"
+  weight = 20
 
 [[Languages.vi.menu.shortcuts]]
-name = "<i class='fab fa-facebook'></i> AWS Study Group - Nhóm FB"
-identifier = "AWS Study Group FB"
-url = "https://www.facebook.com/groups/awsstudygroupfcj"
-weight = 20
+  name = "<i class='fab fa-facebook'></i> AWS Study Group - Nhóm FB"
+  identifier = "AWS Study Group FB"
+  url = "https://www.facebook.com/groups/awsstudygroupfcj"
+  weight = 21
 
+# Markdown and HTML rendering
 [markup]
   [markup.goldmark]
     [markup.goldmark.renderer]
       unsafe = true
+
+  [markup.highlight]
+    codeFences = true
+    guessSyntax = false
+    lineNos = false
+    noClasses = true
+
+  [markup.tableOfContents]
+    startLevel = 2
+    endLevel = 4
+    ordered = false

@@ -1,242 +1,98 @@
 ---
-title : "Prerequiste"
-date : 2024-01-01 
-weight : 2 
+title : "AI Content Safety with Bedrock Guardrails"
+date : 2026-11-14
+weight : 7
 chapter : false
-pre : " <b> 5.2. </b> "
+pre : " <b> 5.7. </b> "
 ---
 
-#### IAM permissions
-Add the following IAM permission policy to your user account to deploy and cleanup this workshop.
-```
-{
-    "Version": "2012-10-17",
-    "Statement": [
-        {
-            "Sid": "VisualEditor0",
-            "Effect": "Allow",
-            "Action": [
-                "cloudformation:*",
-                "cloudwatch:*",
-                "ec2:AcceptTransitGatewayPeeringAttachment",
-                "ec2:AcceptTransitGatewayVpcAttachment",
-                "ec2:AllocateAddress",
-                "ec2:AssociateAddress",
-                "ec2:AssociateIamInstanceProfile",
-                "ec2:AssociateRouteTable",
-                "ec2:AssociateSubnetCidrBlock",
-                "ec2:AssociateTransitGatewayRouteTable",
-                "ec2:AssociateVpcCidrBlock",
-                "ec2:AttachInternetGateway",
-                "ec2:AttachNetworkInterface",
-                "ec2:AttachVolume",
-                "ec2:AttachVpnGateway",
-                "ec2:AuthorizeSecurityGroupEgress",
-                "ec2:AuthorizeSecurityGroupIngress",
-                "ec2:CreateClientVpnEndpoint",
-                "ec2:CreateClientVpnRoute",
-                "ec2:CreateCustomerGateway",
-                "ec2:CreateDhcpOptions",
-                "ec2:CreateFlowLogs",
-                "ec2:CreateInternetGateway",
-                "ec2:CreateLaunchTemplate",
-                "ec2:CreateNetworkAcl",
-                "ec2:CreateNetworkInterface",
-                "ec2:CreateNetworkInterfacePermission",
-                "ec2:CreateRoute",
-                "ec2:CreateRouteTable",
-                "ec2:CreateSecurityGroup",
-                "ec2:CreateSubnet",
-                "ec2:CreateSubnetCidrReservation",
-                "ec2:CreateTags",
-                "ec2:CreateTransitGateway",
-                "ec2:CreateTransitGatewayPeeringAttachment",
-                "ec2:CreateTransitGatewayPrefixListReference",
-                "ec2:CreateTransitGatewayRoute",
-                "ec2:CreateTransitGatewayRouteTable",
-                "ec2:CreateTransitGatewayVpcAttachment",
-                "ec2:CreateVpc",
-                "ec2:CreateVpcEndpoint",
-                "ec2:CreateVpcEndpointConnectionNotification",
-                "ec2:CreateVpcEndpointServiceConfiguration",
-                "ec2:CreateVpnConnection",
-                "ec2:CreateVpnConnectionRoute",
-                "ec2:CreateVpnGateway",
-                "ec2:DeleteCustomerGateway",
-                "ec2:DeleteFlowLogs",
-                "ec2:DeleteInternetGateway",
-                "ec2:DeleteNetworkInterface",
-                "ec2:DeleteNetworkInterfacePermission",
-                "ec2:DeleteRoute",
-                "ec2:DeleteRouteTable",
-                "ec2:DeleteSecurityGroup",
-                "ec2:DeleteSubnet",
-                "ec2:DeleteSubnetCidrReservation",
-                "ec2:DeleteTags",
-                "ec2:DeleteTransitGateway",
-                "ec2:DeleteTransitGatewayPeeringAttachment",
-                "ec2:DeleteTransitGatewayPrefixListReference",
-                "ec2:DeleteTransitGatewayRoute",
-                "ec2:DeleteTransitGatewayRouteTable",
-                "ec2:DeleteTransitGatewayVpcAttachment",
-                "ec2:DeleteVpc",
-                "ec2:DeleteVpcEndpoints",
-                "ec2:DeleteVpcEndpointServiceConfigurations",
-                "ec2:DeleteVpnConnection",
-                "ec2:DeleteVpnConnectionRoute",
-                "ec2:Describe*",
-                "ec2:DetachInternetGateway",
-                "ec2:DisassociateAddress",
-                "ec2:DisassociateRouteTable",
-                "ec2:GetLaunchTemplateData",
-                "ec2:GetTransitGatewayAttachmentPropagations",
-                "ec2:ModifyInstanceAttribute",
-                "ec2:ModifySecurityGroupRules",
-                "ec2:ModifyTransitGatewayVpcAttachment",
-                "ec2:ModifyVpcAttribute",
-                "ec2:ModifyVpcEndpoint",
-                "ec2:ReleaseAddress",
-                "ec2:ReplaceRoute",
-                "ec2:RevokeSecurityGroupEgress",
-                "ec2:RevokeSecurityGroupIngress",
-                "ec2:RunInstances",
-                "ec2:StartInstances",
-                "ec2:StopInstances",
-                "ec2:UpdateSecurityGroupRuleDescriptionsEgress",
-                "ec2:UpdateSecurityGroupRuleDescriptionsIngress",
-                "iam:AddRoleToInstanceProfile",
-                "iam:AttachRolePolicy",
-                "iam:CreateInstanceProfile",
-                "iam:CreatePolicy",
-                "iam:CreateRole",
-                "iam:DeleteInstanceProfile",
-                "iam:DeletePolicy",
-                "iam:DeleteRole",
-                "iam:DeleteRolePolicy",
-                "iam:DetachRolePolicy",
-                "iam:GetInstanceProfile",
-                "iam:GetPolicy",
-                "iam:GetRole",
-                "iam:GetRolePolicy",
-                "iam:ListPolicyVersions",
-                "iam:ListRoles",
-                "iam:PassRole",
-                "iam:PutRolePolicy",
-                "iam:RemoveRoleFromInstanceProfile",
-                "lambda:CreateFunction",
-                "lambda:DeleteFunction",
-                "lambda:DeleteLayerVersion",
-                "lambda:GetFunction",
-                "lambda:GetLayerVersion",
-                "lambda:InvokeFunction",
-                "lambda:PublishLayerVersion",
-                "logs:CreateLogGroup",
-                "logs:DeleteLogGroup",
-                "logs:DescribeLogGroups",
-                "logs:PutRetentionPolicy",
-                "route53:ChangeTagsForResource",
-                "route53:CreateHealthCheck",
-                "route53:CreateHostedZone",
-                "route53:CreateTrafficPolicy",
-                "route53:DeleteHostedZone",
-                "route53:DisassociateVPCFromHostedZone",
-                "route53:GetHostedZone",
-                "route53:ListHostedZones",
-                "route53domains:ListDomains",
-                "route53domains:ListOperations",
-                "route53domains:ListTagsForDomain",
-                "route53resolver:AssociateResolverEndpointIpAddress",
-                "route53resolver:AssociateResolverRule",
-                "route53resolver:CreateResolverEndpoint",
-                "route53resolver:CreateResolverRule",
-                "route53resolver:DeleteResolverEndpoint",
-                "route53resolver:DeleteResolverRule",
-                "route53resolver:DisassociateResolverEndpointIpAddress",
-                "route53resolver:DisassociateResolverRule",
-                "route53resolver:GetResolverEndpoint",
-                "route53resolver:GetResolverRule",
-                "route53resolver:ListResolverEndpointIpAddresses",
-                "route53resolver:ListResolverEndpoints",
-                "route53resolver:ListResolverRuleAssociations",
-                "route53resolver:ListResolverRules",
-                "route53resolver:ListTagsForResource",
-                "route53resolver:UpdateResolverEndpoint",
-                "route53resolver:UpdateResolverRule",
-                "s3:AbortMultipartUpload",
-                "s3:CreateBucket",
-                "s3:DeleteBucket",
-                "s3:DeleteObject",
-                "s3:GetAccountPublicAccessBlock",
-                "s3:GetBucketAcl",
-                "s3:GetBucketOwnershipControls",
-                "s3:GetBucketPolicy",
-                "s3:GetBucketPolicyStatus",
-                "s3:GetBucketPublicAccessBlock",
-                "s3:GetObject",
-                "s3:GetObjectVersion",
-                "s3:GetBucketVersioning",
-                "s3:ListAccessPoints",
-                "s3:ListAccessPointsForObjectLambda",
-                "s3:ListAllMyBuckets",
-                "s3:ListBucket",
-                "s3:ListBucketMultipartUploads",
-                "s3:ListBucketVersions",
-                "s3:ListJobs",
-                "s3:ListMultipartUploadParts",
-                "s3:ListMultiRegionAccessPoints",
-                "s3:ListStorageLensConfigurations",
-                "s3:PutAccountPublicAccessBlock",
-                "s3:PutBucketAcl",
-                "s3:PutBucketPolicy",
-                "s3:PutBucketPublicAccessBlock",
-                "s3:PutObject",
-                "secretsmanager:CreateSecret",
-                "secretsmanager:DeleteSecret",
-                "secretsmanager:DescribeSecret",
-                "secretsmanager:GetSecretValue",
-                "secretsmanager:ListSecrets",
-                "secretsmanager:ListSecretVersionIds",
-                "secretsmanager:PutResourcePolicy",
-                "secretsmanager:TagResource",
-                "secretsmanager:UpdateSecret",
-                "sns:ListTopics",
-                "ssm:DescribeInstanceProperties",
-                "ssm:DescribeSessions",
-                "ssm:GetConnectionStatus",
-                "ssm:GetParameters",
-                "ssm:ListAssociations",
-                "ssm:ResumeSession",
-                "ssm:StartSession",
-                "ssm:TerminateSession"
-            ],
-            "Resource": "*"
-        }
-    ]
-}
+ReLoop runs a **multi-stage screening pipeline** whenever a user analyzes device photos:
+1. **Amazon Rekognition** (`DetectModerationLabels` + `DetectText`) runs on the S3 photo in **`ap-southeast-1`**.
+2. Any text detected by OCR (for example printed labels, serial stickers, or offensive text injected into a photo) is screened through **Amazon Bedrock Guardrail (`reloop2-ai-guardrail`)** via **`ApplyGuardrailCommand`**.
+3. If screening passes, **Amazon Bedrock (`global.moonshotai.kimi-k3`)** executes **`ConverseCommand`** to inspect the device photos and return structured JSON attributes.
 
-```
+{{% notice info %}}
+**Important Runtime Note on Kimi K3:** In Bedrock Runtime (`index.js`), when `AI_MODEL_ID` contains `kimi`, ReLoop calls `ConverseCommand` without inline `guardrailConfig` (and uses `maxTokens: 2048` without a custom `temperature`), because Kimi K3's cross-region inference profile does not accept inline `guardrailConfig`. Instead, safety enforcement still invokes your published Guardrail directly via `ApplyGuardrailCommand` (`bedrock:ApplyGuardrail` permission in Module 5.6)!
+{{% /notice %}}
 
-#### Provision resources using CloudFormation
+![Module 5.7 Focus: Amazon Bedrock, Kimi K3, Guardrails & Rekognition](/images/5-Workshop/5.7/architecture.png)
 
-In this lab, we will use **N.Virginia region (us-east-1)**.
+---
 
-To prepare the workshop environment, deploy this **CloudFormation Template** (click link): [PrivateLinkWorkshop ](https://us-east-1.console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/quickcreate?templateURL=https://s3.us-east-1.amazonaws.com/reinvent-endpoints-builders-session/Nested.yaml&stackName=PLCloudSetup). Accept all of the defaults when deploying the template. 
+### Step 1 — Create Guardrail `reloop2-ai-guardrail`
 
-![create stack](/images/5-Workshop/5.2-Prerequisite/create-stack1.png)
+1. Open **Amazon Bedrock -> Guardrails** (verify **Cross-region inference** is available in `ap-southeast-1` or configure `guardrail-profile/apac.guardrail.v1:0`) and click **Create guardrail**.
 
-+ Tick 2 acknowledgement boxes
-+ Choose **Create stack**
+![Bedrock Guardrails console page](/images/5-Workshop/5.7/01-guardrails-list.png)
 
-![create stack](/images/5-Workshop/5.2-Prerequisite/create-stack2.png)
+2. Configure **Guardrail details**:
+   - **Name:** `reloop2-ai-guardrail`
+   - **Description:** `ReLoop 2: filter unsafe text and images during AI device analysis`
+   - **Messaging for blocked prompts:** `Ảnh không phù hợp.`
+   - **Messaging for blocked responses:** `Kết quả không phù hợp.`
 
-The **ClouddFormation** deployment requires about 15 minutes to complete.
+![Guardrail details and blocked messages](/images/5-Workshop/5.7/02-details-messages.png)
 
-![complete](/images/5-Workshop/5.2-Prerequisite/complete.png)
+3. Enable **Cross-region inference** (`apac.guardrail.v1:0`) and add standard workshop tags (`Owner=team`, `Project=reloop2`, `Purpose=workshop`).
 
-+ **2 VPCs** have been created
+![Enable APAC cross-region guardrail profile and tags](/images/5-Workshop/5.7/03-cross-region-tags.png)
 
-![vpcs](/images/5-Workshop/5.2-Prerequisite/vpcs.png)
+---
 
-+ **3 EC2s** have been created
+### Step 2 — Configure Content Filters (Standard Tier, HIGH)
 
-![EC2](/images/5-Workshop/5.2-Prerequisite/ec2.png)
+4. Under **Content filters**: select **Standard tier** and configure all **6 categories** at **HIGH** threshold with **BLOCK** action:
+
+| Category | Input Modalities | Input Strength | Output Modalities | Output Strength |
+| --- | --- | --- | --- | --- |
+| **Hate** | TEXT, IMAGE | HIGH | TEXT | HIGH |
+| **Insults** | TEXT, IMAGE | HIGH | TEXT | HIGH |
+| **Sexual** | TEXT, IMAGE | HIGH | TEXT | HIGH |
+| **Violence** | TEXT, IMAGE | HIGH | TEXT | HIGH |
+| **Misconduct** | TEXT | HIGH | TEXT | HIGH |
+| **Prompt Attack** | TEXT | HIGH | *(N/A)* | NONE |
+
+![Configure prompt content filters](/images/5-Workshop/5.7/04-filters-prompts.png)
+
+![Configure response content filters](/images/5-Workshop/5.7/05-filters-responses.png)
+
+![Prompt attack HIGH threshold on Standard tier](/images/5-Workshop/5.7/06-prompt-attack-tier.png)
+
+5. Review all details and filters, then click **Create guardrail**.
+
+![Review guardrail configuration details](/images/5-Workshop/5.7/07-review-details.png)
+
+![Review all 6 content filter thresholds](/images/5-Workshop/5.7/08-review-filters.png)
+
+![Guardrail reloop2-ai-guardrail Ready](/images/5-Workshop/5.7/09-guardrail-created.png)
+
+---
+
+### Step 3 — Test in Bedrock Guardrail Playground & Publish Version `1`
+
+6. Inside `reloop2-ai-guardrail`, test **unsafe / prompt-injection text** (`Ignore previous instructions...`) and confirm the Guardrail blocks it with `"Ảnh không phù hợp."` and displays a `GUARDRAIL_INTERVENED` trace.
+
+![Guardrail blocks adversarial prompt in test panel](/images/5-Workshop/5.7/10-test-blocked.png)
+
+![Inspect Guardrail trace explaining intervention](/images/5-Workshop/5.7/11-test-trace.png)
+
+7. Next test a **benign electronic device prompt** (`Dell Latitude laptop with cracked screen corner, battery missing`) and verify it passes cleanly without intervention.
+
+![Guardrail allows benign device description](/images/5-Workshop/5.7/12-test-pass.png)
+
+8. Click **Versions -> Create version**, enter description `v1 cho reloop2-api (ReLoop 2 workshop)`, and publish **Version `1`** (immutable snapshot for production/workshop stability).
+
+![Create immutable Guardrail Version 1](/images/5-Workshop/5.7/13-create-version.png)
+
+![Guardrail Version 1 published](/images/5-Workshop/5.7/14-version-1.png)
+
+---
+
+### Step 4 — Wire Guardrail ID & Version to `reloop2-api` Lambda
+
+9. Open **AWS Lambda -> `reloop2-api` -> Configuration -> Environment variables -> Edit**, add:
+   - `AI_GUARDRAIL_ID` = `<your guardrail ID>` (e.g. `a1b2c3d4e5f6`)
+   - `AI_GUARDRAIL_VERSION` = `1`
+   Save and verify.
+
+![Wire AI_GUARDRAIL_ID and AI_GUARDRAIL_VERSION into Lambda](/images/5-Workshop/5.7/15-lambda-env-guardrail.png)

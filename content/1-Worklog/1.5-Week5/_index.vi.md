@@ -1,62 +1,62 @@
 ---
-title: "Worklog Tuần 5"
+title: "Worklog Week 5"
 date: 2026-10-12
 weight: 5
 chapter: false
 pre: " <b> 1.5. </b> "
 ---
 
-### Mục tiêu tuần 5:
-- Tìm hiểu và thực hành giám sát tài nguyên AWS với Amazon CloudWatch.
-- Tìm hiểu và thực hành cấu hình Hybrid DNS với Amazon Route 53 Resolver.
-- Tìm hiểu và thảo luận về định hướng phát triển dự án Reloop.
-- Tham gia họp nhóm và thống nhất phân chia vai trò cho các thành viên.
+### Week 5 Objectives:
+- Study and practice monitoring AWS resources using Amazon CloudWatch.
+- Study and practice configuring Hybrid DNS with Amazon Route 53 Resolver.
+- Study and discuss the development direction of the Reloop project.
+- Participate in group meetings and agree on role assignments for team members.
 
 ---
 
-### Công việc thực hiện trong tuần:
+### Tasks Completed During the Week:
 
-| Thứ | Công việc | Ngày bắt đầu | Ngày hoàn thành | Tài liệu tham khảo |
+| Day | Tasks | Start Date | Completion Date | References |
 | --- | --- | --- | --- | --- |
-| 2 | - Tìm hiểu và thực hành Amazon CloudWatch:<br>&nbsp;&nbsp;&nbsp;+ CloudWatch Metrics.<br>&nbsp;&nbsp;&nbsp;+ CloudWatch Logs.<br>&nbsp;&nbsp;&nbsp;+ CloudWatch Alarms.<br>&nbsp;&nbsp;&nbsp;+ CloudWatch Dashboards.<br>&nbsp;&nbsp;&nbsp;+ Resource Cleanup. | 12/10/2026 | 12/10/2026 | [Amazon CloudWatch Workshop](https://000008.awsfcaj.com/) |
-| 3 | - Tìm hiểu Amazon Route 53 Resolver và Hybrid DNS:<br>&nbsp;&nbsp;&nbsp;+ Hybrid DNS.<br>&nbsp;&nbsp;&nbsp;+ Private Hosted Zones.<br>&nbsp;&nbsp;&nbsp;+ Inbound Endpoints.<br>&nbsp;&nbsp;&nbsp;+ Outbound Endpoints.<br>&nbsp;&nbsp;&nbsp;+ Resolver Rules. | 13/10/2026 | 13/10/2026 | [Amazon Route 53 Resolver Introduction](https://000010.awsfcaj.com/1-introduce/) |
-| 4 | - Tìm hiểu quy trình thực hành Hybrid DNS với Amazon Route 53 Resolver:<br>&nbsp;&nbsp;&nbsp;+ Environment Preparation.<br>&nbsp;&nbsp;&nbsp;+ Remote Desktop Gateway.<br>&nbsp;&nbsp;&nbsp;+ Microsoft Active Directory.<br>&nbsp;&nbsp;&nbsp;+ DNS Configuration.<br>&nbsp;&nbsp;&nbsp;+ DNS Resolution Testing. | 14/10/2026 | 14/10/2026 | [Amazon Route 53 Resolver Workshop](https://000010.awsfcaj.com/) |
-| 5 | - Tìm hiểu và trao đổi sơ bộ về dự án Reloop:<br>&nbsp;&nbsp;&nbsp;+ Problem & Solution.<br>&nbsp;&nbsp;&nbsp;+ Project Objectives.<br>&nbsp;&nbsp;&nbsp;+ Core Features.<br>&nbsp;&nbsp;&nbsp;+ Tìm hiểu các nhóm người dùng dự kiến và nhu cầu sử dụng hệ thống.<br>&nbsp;&nbsp;&nbsp;+ Trao đổi sơ bộ về luồng đăng thông tin thiết bị, hình ảnh và tương tác giữa các bên. | 15/10/2026 | 15/10/2026 | |
-| 6 | - Tham gia buổi họp trực tiếp với các thành viên trong nhóm:<br>&nbsp;&nbsp;&nbsp;+ Thảo luận về mục tiêu và định hướng phát triển dự án Reloop.<br>&nbsp;&nbsp;&nbsp;+ Trao đổi về Business Workflow và các chức năng chính của hệ thống.<br>&nbsp;&nbsp;&nbsp;+ Tìm hiểu các dịch vụ AWS dự kiến sử dụng trong dự án.<br>&nbsp;&nbsp;&nbsp;+ Thảo luận về phương án triển khai và kế hoạch phát triển.<br>&nbsp;&nbsp;&nbsp;+ Thống nhất phân chia vai trò và trách nhiệm cho từng thành viên.<br>&nbsp;&nbsp;&nbsp;+ Xác định định hướng công việc cá nhân liên quan đến nghiên cứu bảo mật, kiểm thử hệ thống và tổng hợp tài liệu dự án. | 16/10/2026 | 16/10/2026 | |
+| Monday | - Study and practice Amazon CloudWatch:<br>&nbsp;&nbsp;&nbsp;+ CloudWatch Metrics.<br>&nbsp;&nbsp;&nbsp;+ CloudWatch Logs.<br>&nbsp;&nbsp;&nbsp;+ CloudWatch Alarms.<br>&nbsp;&nbsp;&nbsp;+ CloudWatch Dashboards.<br>&nbsp;&nbsp;&nbsp;+ Resource Cleanup. | 12/10/2026 | 12/10/2026 | [Amazon CloudWatch Workshop](https://000008.awsfcaj.com/) |
+| Tuesday | - Study Amazon Route 53 Resolver and Hybrid DNS:<br>&nbsp;&nbsp;&nbsp;+ Hybrid DNS.<br>&nbsp;&nbsp;&nbsp;+ Private Hosted Zones.<br>&nbsp;&nbsp;&nbsp;+ Inbound Endpoints.<br>&nbsp;&nbsp;&nbsp;+ Outbound Endpoints.<br>&nbsp;&nbsp;&nbsp;+ Resolver Rules. | 13/10/2026 | 13/10/2026 | [Amazon Route 53 Resolver Introduction](https://000010.awsfcaj.com/1-introduce/) |
+| Wednesday | - Study the Hybrid DNS configuration process using Amazon Route 53 Resolver:<br>&nbsp;&nbsp;&nbsp;+ Environment Preparation.<br>&nbsp;&nbsp;&nbsp;+ Remote Desktop Gateway.<br>&nbsp;&nbsp;&nbsp;+ Microsoft Active Directory.<br>&nbsp;&nbsp;&nbsp;+ DNS Configuration.<br>&nbsp;&nbsp;&nbsp;+ DNS Resolution Testing. | 14/10/2026 | 14/10/2026 | [Amazon Route 53 Resolver Workshop](https://000010.awsfcaj.com/) |
+| Thursday | - Study and discuss the Reloop project at an introductory level:<br>&nbsp;&nbsp;&nbsp;+ Problem & Solution.<br>&nbsp;&nbsp;&nbsp;+ Project Objectives.<br>&nbsp;&nbsp;&nbsp;+ Core Features.<br>&nbsp;&nbsp;&nbsp;+ Explore the expected user groups and their needs.<br>&nbsp;&nbsp;&nbsp;+ Discuss the basic workflow for posting device information, uploading images, and interactions between participants. | 15/10/2026 | 15/10/2026 | |
+| Friday | - Participate in an in-person meeting with team members:<br>&nbsp;&nbsp;&nbsp;+ Discuss the objectives and development direction of the Reloop project.<br>&nbsp;&nbsp;&nbsp;+ Discuss the Business Workflow and main system features.<br>&nbsp;&nbsp;&nbsp;+ Explore the AWS services planned for the project.<br>&nbsp;&nbsp;&nbsp;+ Discuss implementation approaches and the development plan.<br>&nbsp;&nbsp;&nbsp;+ Agree on roles and responsibilities for each team member.<br>&nbsp;&nbsp;&nbsp;+ Identify my individual responsibilities related to security research, system testing, and project documentation. | 16/10/2026 | 16/10/2026 | |
 
 ---
 
-### Kết quả đạt được tuần 5:
+### Week 5 Achievements:
 
-- Tìm hiểu và thực hành Amazon CloudWatch:
+- Study and practice Amazon CloudWatch:
   + CloudWatch Metrics.
   + CloudWatch Logs.
   + CloudWatch Alarms.
   + CloudWatch Dashboards.
   + Resource Cleanup.
 
-- Nắm được kiến thức cơ bản về Amazon Route 53 Resolver:
+- Gain fundamental knowledge of Amazon Route 53 Resolver:
   + Hybrid DNS.
   + Private Hosted Zones.
   + Inbound Endpoints.
   + Outbound Endpoints.
   + Resolver Rules.
 
-- Tìm hiểu quy trình cấu hình Hybrid DNS:
+- Study the Hybrid DNS configuration process:
   + Environment Preparation.
   + Remote Desktop Gateway.
   + Microsoft Active Directory.
   + DNS Configuration.
   + DNS Resolution Testing.
 
-- Bước đầu tìm hiểu về dự án Reloop:
-  + Xác định vấn đề và mục tiêu của dự án.
-  + Tìm hiểu các chức năng dự kiến của hệ thống.
-  + Tìm hiểu các nhóm người dùng và luồng hoạt động cơ bản của nền tảng.
+- Gain an initial understanding of the Reloop project:
+  + Identify the project's problem statement and objectives.
+  + Explore the planned system features.
+  + Understand the expected user groups and basic platform workflows.
 
-- Tham gia họp nhóm và thống nhất định hướng phát triển:
-  + Trao đổi về Business Workflow và các chức năng chính.
-  + Tìm hiểu các dịch vụ AWS dự kiến sử dụng.
-  + Thảo luận kế hoạch phát triển dự án.
-  + Thống nhất phân chia vai trò và trách nhiệm cho các thành viên.
-  + Xác định phạm vi công việc cá nhân trong hoạt động nghiên cứu bảo mật, kiểm thử và tổng hợp tài liệu dự án.
+- Participate in group meetings and agree on the development direction:
+  + Discuss the Business Workflow and main features.
+  + Explore the AWS services planned for the project.
+  + Discuss the project development plan.
+  + Agree on roles and responsibilities for team members.
+  + Identify my individual scope of work in security research, testing, and project documentation.

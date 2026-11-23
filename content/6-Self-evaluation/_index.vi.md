@@ -30,7 +30,7 @@ Về thái độ làm việc, tôi luôn cố gắng hoàn thành các nhiệm v
 | 8 | **Làm việc nhóm** | Phối hợp hiệu quả với đồng nghiệp và tích cực trong hoạt động nhóm | ✅ | ☐ | ☐ |
 | 9 | **Tác phong làm việc** | Tôn trọng đồng nghiệp, đối tác và văn hóa doanh nghiệp | ✅ | ☐ | ☐ |
 | 10 | **Kỹ năng giải quyết vấn đề** | Nhận diện vấn đề, đề xuất giải pháp sáng tạo và khả thi | ☐ | ✅ | ☐ |
-| 11 | **Đóng góp cho dự án/tập thể** | Hiệu quả công việc thực tế, sáng kiến và sự ghi nhận từ nhóm | ✅ | ☐ | ☐ |
+| 11 | **Đóng góp cho dự án/tập thể** | Hiệu quả công việc thực tế, sáng kiến và sự ghi nhận từ nhóm | ☐ | ✅ | ☐ |
 | 12 | **Đánh giá chung** | Nhận định tổng thể về toàn bộ quá trình thực tập | ✅ | ☐ | ☐ |
 
 ---

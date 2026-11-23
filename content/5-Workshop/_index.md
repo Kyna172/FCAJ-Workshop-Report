@@ -1,56 +1,34 @@
 ---
-title: "Workshop"
-date: 2026-11-20
-weight: 5
-chapter: false
-pre: " <b> 5. </b> "
+title : "Workshop"
+date : 2026-11-21
+weight : 5
+chapter : false
+pre : " <b> 5. </b> "
 ---
 
-# Deploying and Securing the ReLoop Serverless Platform on AWS
+# Deploy ReLoop Serverless E-Waste Marketplace on AWS
 
-### Workshop Overview
+Welcome to the **ReLoop AWS Serverless Workshop**. Across Modules **5.1 through 5.12**, you build and verify a complete serverless web application on AWS following the exact request flow of the architecture diagram — from **Arrow 1** at the global edge all the way through **Arrow 10** in AI processing, plus scheduled cleanup, monitoring, live verification, and teardown.
 
-**ReLoop** is a platform that facilitates the trading and reuse of used or damaged electronic devices, connecting users with electronics buyers, repair shops, and recycling partners.
-
-The project is developed by the **AWSS3nt1n4L** team during the First Cloud AI Journey (FCAJ) internship program. It uses a serverless architecture on Amazon Web Services (AWS), combined with artificial intelligence services to support device recognition, content moderation, and an improved user experience.
-
-This workshop presents the process of building, integrating, securing, and testing the ReLoop system on AWS, covering the data layer, user authentication, image storage, API processing, web application delivery, system monitoring, and resource management.
-
-In addition to the deployment process, the workshop focuses on the security mechanisms used throughout the system, including identity management, data protection, traffic control, AI content safety, and application monitoring.
-
-![ReLoop Overall Architecture on AWS](/images/5-Workshop/5.1/overview.png)
-
-### Workshop Objectives
-
-- Understand serverless architecture and how AWS services are integrated into a practical web application.
-- Explore the deployment of databases, user authentication, image storage, and Backend APIs.
-- Understand security mechanisms using Amazon Cognito, AWS IAM, Amazon S3, Amazon CloudFront, and AWS WAF.
-- Explore the use of Amazon Bedrock, Amazon Rekognition, and Bedrock Guardrails for content processing and moderation.
-- Understand system monitoring, cost management, and business workflow testing.
-- Understand resource cleanup and infrastructure management using Terraform.
+{{% notice tip %}}
+**Companion Code & Terraform Repo:** [https://github.com/madlyham/ReLoop](https://github.com/madlyham/ReLoop)
+{{% /notice %}}
 
 {{% notice note %}}
-This workshop is based on the architecture, technical documentation, and deployment images of the ReLoop project, developed collaboratively by the AWSS3nt1n4L team. Illustrative configuration values should be adjusted to suit the participant's own AWS environment.
+This guide uses `reloop2` as the resource prefix and sanitized placeholders (`123456789012`, `alerts@example.com`, `<suffix>`) so you can run the workshop safely without exposing personal data or colliding with existing stacks.
 {{% /notice %}}
 
----
+### Workshop Modules (Graph Order: 1 → 12)
 
-### Workshop Contents
-
-1. [ReLoop System Overview and Architecture](5.1-workshop-overview/)
-2. [Environment Preparation and AWS Budget Management](5.2-prerequisites/)
-3. [Building the Data Layer with Amazon DynamoDB](5.3-dynamodb/)
-4. [Authentication and User Management with Amazon Cognito](5.4-cognito/)
-5. [Image Storage and Protection with Amazon S3](5.5-s3-images/)
-6. [Backend API Deployment with AWS Lambda and Amazon API Gateway](5.6-backend-api/)
-7. [AI Content Moderation with Amazon Bedrock Guardrails](5.7-bedrock-guardrails/)
-8. [Frontend Deployment with Amazon CloudFront and S3](5.8-cloudfront-frontend/)
-9. [Web Application Protection with AWS WAF](5.9-waf/)
-10. [Scheduled Task Automation with Amazon EventBridge](5.10-eventbridge/)
-11. [System Monitoring with Amazon CloudWatch and SNS](5.11-monitoring/)
-12. [End-to-End System Verification](5.12-end-to-end-verification/)
-13. [Resource Cleanup and Infrastructure Management with Terraform](5.13-cleanup-and-iac/)
-
-{{% notice warning %}}
-Some AWS services may incur charges even when there is no incoming traffic. Monitor your budget throughout the workshop and remove unused resources after completing the exercises.
-{{% /notice %}}
+1. [5.1. Workshop Overview & Architecture](5.1-workshop-overview/) — Full diagram & numbered walk **1 → 12**
+2. [5.2. Prerequisites & Bedrock Access](5.2-prerequisites/) — Account, Singapore region (`ap-southeast-1`) & Kimi K3 access
+3. [5.3. Global Edge & Static Website](5.3-global-edge/) — **Arrows 1, 2** + WAF (`Users → CloudFront [WAF] → S3 website`)
+4. [5.4. Sign-up, Sign-in & IAM Role](5.4-sign-up-and-sign-in/) — **Arrow 3** + Post-confirm (`Users → Cognito → Lambda → create profile`)
+5. [5.5. IAM & API Backend](5.5-api-backend/) — **Arrows 4, 5** + verify JWT (`CloudFront /api/* → API Gateway → Lambda API`)
+6. [5.6. Data Storage: Amazon DynamoDB](5.6-dynamodb/) — **Arrow 6** (`read/write users, listings & invoices`)
+7. [5.7. Data Storage: Amazon S3 Photos](5.7-s3-photos/) — **Arrows 7, 8** (`presign & tag` + `upload / view photos`)
+8. [5.8. AI Processing: Rekognition & Bedrock](5.8-ai-processing/) — **Arrows 9, 10** (`image moderation` + `AI analysis + Guardrail`)
+9. [5.9. Scheduled Sweeps: Amazon EventBridge](5.9-eventbridge/) — `expire listings every 15 min`
+10. [5.10. Monitoring & Alerts: CloudWatch & SNS](5.10-monitoring/) — `logs & metrics → alarm → email Admin`
+11. [5.11. End-to-End Verification](5.11-end-to-end-verification/) — Live walk of **Arrows 1 → 10** + EventBridge + CloudWatch & SNS
+12. [5.12. Cleanup & Terraform Reference](5.12-cleanup-and-iac/) — Reverse-order teardown & zero-leftovers verification

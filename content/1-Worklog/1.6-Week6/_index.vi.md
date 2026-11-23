@@ -22,9 +22,9 @@ pre: " <b> 1.6. </b> "
 | --- | --- | --- | --- | --- |
 | 2 | - Tiếp tục tìm hiểu và trao đổi về các chức năng của dự án Reloop:<br>&nbsp;&nbsp;&nbsp;+ System Overview.<br>&nbsp;&nbsp;&nbsp;+ User Roles.<br>&nbsp;&nbsp;&nbsp;+ Business Workflow.<br>&nbsp;&nbsp;&nbsp;+ User Registration & Login.<br>&nbsp;&nbsp;&nbsp;+ Listing Management.<br>&nbsp;&nbsp;&nbsp;+ AI Integration.<br>&nbsp;&nbsp;&nbsp;+ AWS Architecture.<br>&nbsp;&nbsp;&nbsp;+ ... | 19/10/2026 | 19/10/2026 | |
 | 3 | - Tìm hiểu các luồng thao tác và chức năng cần kiểm thử trên website Reloop:<br>&nbsp;&nbsp;&nbsp;+ User Registration.<br>&nbsp;&nbsp;&nbsp;+ Login & Logout.<br>&nbsp;&nbsp;&nbsp;+ Password Recovery.<br>&nbsp;&nbsp;&nbsp;+ User Profile.<br>&nbsp;&nbsp;&nbsp;+ Listing Management.<br>&nbsp;&nbsp;&nbsp;+ Form Validation.<br>&nbsp;&nbsp;&nbsp;+ ... | 20/10/2026 | 20/10/2026 | |
-| 4 | - Tham gia trải nghiệm và kiểm thử phiên bản demo đầu tiên của Reloop:<br>&nbsp;&nbsp;&nbsp;+ User Interface.<br>&nbsp;&nbsp;&nbsp;+ User Registration.<br>&nbsp;&nbsp;&nbsp;+ Login & Logout.<br>&nbsp;&nbsp;&nbsp;+ Password Recovery.<br>&nbsp;&nbsp;&nbsp;+ User Profile.<br>&nbsp;&nbsp;&nbsp;+ Form Validation.<br>&nbsp;&nbsp;&nbsp;+ ... | 21/10/2026 | 21/10/2026 | [Reloop Website](https://d1cjl1tvcp0r6q.cloudfront.net/) |
-| 5 | - Tiếp tục kiểm thử và rà soát các chức năng của Reloop:<br>&nbsp;&nbsp;&nbsp;+ Listing Creation.<br>&nbsp;&nbsp;&nbsp;+ Image Upload.<br>&nbsp;&nbsp;&nbsp;+ Profile Updates.<br>&nbsp;&nbsp;&nbsp;+ Email & Phone Validation.<br>&nbsp;&nbsp;&nbsp;+ Address Information.<br>&nbsp;&nbsp;&nbsp;+ Error Handling.<br>&nbsp;&nbsp;&nbsp;+ ...<br>- Trao đổi với các thành viên về những vấn đề phát hiện trong quá trình kiểm thử. | 22/10/2026 | 22/10/2026 | |
-| 6 | - Tổng hợp thông tin và kết quả kiểm thử phiên bản demo Reloop:<br>&nbsp;&nbsp;&nbsp;+ Test Scenarios.<br>&nbsp;&nbsp;&nbsp;+ UI Issues.<br>&nbsp;&nbsp;&nbsp;+ Functional Issues.<br>&nbsp;&nbsp;&nbsp;+ Bug Reports.<br>&nbsp;&nbsp;&nbsp;+ Improvement Suggestions.<br>&nbsp;&nbsp;&nbsp;+ ...<br>- Cùng với các thành viên trong nhóm thảo luận về các vấn đề cần điều chỉnh trong những phiên bản tiếp theo. | 23/10/2026 | 23/10/2026 | |
+| 4 | - Tham gia trải nghiệm và kiểm thử phiên bản demo đầu tiên của Reloop:<br>&nbsp;&nbsp;&nbsp;+ User Interface.<br>&nbsp;&nbsp;&nbsp;+ User Registration.<br>&nbsp;&nbsp;&nbsp;+ Login & Logout.<br>&nbsp;&nbsp;&nbsp;+ Password Recovery.<br>&nbsp;&nbsp;&nbsp;+ User Profile.<br>&nbsp;&nbsp;&nbsp;+ Form Validation.<br>&nbsp;&nbsp;&nbsp;+ Kiểm tra các thao tác cơ bản theo góc nhìn người dùng.<br>&nbsp;&nbsp;&nbsp;+ Ghi nhận các vấn đề về giao diện và chức năng trong quá trình trải nghiệm.<br>&nbsp;&nbsp;&nbsp;+ ... | 21/10/2026 | 21/10/2026 | [Reloop Website](https://d1cjl1tvcp0r6q.cloudfront.net/) |
+| 5 | - Tiếp tục kiểm thử và rà soát các chức năng của Reloop:<br>&nbsp;&nbsp;&nbsp;+ Listing Creation.<br>&nbsp;&nbsp;&nbsp;+ Image Upload.<br>&nbsp;&nbsp;&nbsp;+ Profile Updates.<br>&nbsp;&nbsp;&nbsp;+ Email & Phone Validation.<br>&nbsp;&nbsp;&nbsp;+ Address Information.<br>&nbsp;&nbsp;&nbsp;+ Error Handling.<br>&nbsp;&nbsp;&nbsp;+ Kiểm tra phản hồi của hệ thống khi nhập thông tin chưa đầy đủ hoặc không hợp lệ.<br>&nbsp;&nbsp;&nbsp;+ ...<br>- Trao đổi với các thành viên về những vấn đề phát hiện trong quá trình kiểm thử. | 22/10/2026 | 22/10/2026 | |
+| 6 | - Tổng hợp thông tin và kết quả kiểm thử phiên bản demo Reloop:<br>&nbsp;&nbsp;&nbsp;+ Test Scenarios.<br>&nbsp;&nbsp;&nbsp;+ UI Issues.<br>&nbsp;&nbsp;&nbsp;+ Functional Issues.<br>&nbsp;&nbsp;&nbsp;+ Bug Reports.<br>&nbsp;&nbsp;&nbsp;+ Improvement Suggestions.<br>&nbsp;&nbsp;&nbsp;+ Tổng hợp các vấn đề phát hiện theo từng chức năng để thuận tiện trao đổi với nhóm.<br>&nbsp;&nbsp;&nbsp;+ ...<br>- Cùng với các thành viên trong nhóm thảo luận về các vấn đề cần điều chỉnh trong những phiên bản tiếp theo. | 23/10/2026 | 23/10/2026 | |
 | 7 | - Tham gia sự kiện First Cloud AI Journey Meetup tại Bitexco Financial Tower:<br>&nbsp;&nbsp;&nbsp;+ Vietnamese Voice AI on AWS.<br>&nbsp;&nbsp;&nbsp;+ AWS Resource Access Manager.<br>&nbsp;&nbsp;&nbsp;+ AWS Pentest & Security Agent.<br>&nbsp;&nbsp;&nbsp;+ Amazon Bedrock AgentCore.<br>&nbsp;&nbsp;&nbsp;+ Kiro Crew & AI Agents.<br>&nbsp;&nbsp;&nbsp;+ ... | 24/10/2026 | 24/10/2026 | [First Cloud AI Journey Meetup](https://www.facebook.com/share/p/19uiwnYsM8/) |
 
 ---
@@ -53,11 +53,13 @@ pre: " <b> 1.6. </b> "
   + Kiểm tra chức năng quên mật khẩu và cập nhật thông tin người dùng.
   + Kiểm thử chức năng đăng tin và nhập thông tin thiết bị.
   + Rà soát các trường thông tin như email, số điện thoại và địa chỉ.
+  + Kiểm tra cách hệ thống phản hồi với các trường thông tin không hợp lệ.
   + Ghi nhận và trao đổi những vấn đề phát hiện trong quá trình kiểm thử.
 
 - Tổng hợp kết quả kiểm thử và trao đổi về việc cải thiện website:
   + Tổng hợp các vấn đề về giao diện và chức năng.
   + Ghi nhận những lỗi và hạn chế của phiên bản demo.
+  + Phân loại các vấn đề theo chức năng để thuận tiện theo dõi và trao đổi.
   + Trao đổi với nhóm về các nội dung cần điều chỉnh.
   + Đề xuất những cải tiến cho các phiên bản tiếp theo.
 

@@ -21,8 +21,8 @@ pre: " <b> 1.5. </b> "
 | 2 | - Tìm hiểu và thực hành Amazon CloudWatch:<br>&nbsp;&nbsp;&nbsp;+ CloudWatch Metrics.<br>&nbsp;&nbsp;&nbsp;+ CloudWatch Logs.<br>&nbsp;&nbsp;&nbsp;+ CloudWatch Alarms.<br>&nbsp;&nbsp;&nbsp;+ CloudWatch Dashboards.<br>&nbsp;&nbsp;&nbsp;+ Resource Cleanup. | 12/10/2026 | 12/10/2026 | [Amazon CloudWatch Workshop](https://000008.awsfcaj.com/) |
 | 3 | - Tìm hiểu Amazon Route 53 Resolver và Hybrid DNS:<br>&nbsp;&nbsp;&nbsp;+ Hybrid DNS.<br>&nbsp;&nbsp;&nbsp;+ Private Hosted Zones.<br>&nbsp;&nbsp;&nbsp;+ Inbound Endpoints.<br>&nbsp;&nbsp;&nbsp;+ Outbound Endpoints.<br>&nbsp;&nbsp;&nbsp;+ Resolver Rules. | 13/10/2026 | 13/10/2026 | [Amazon Route 53 Resolver Introduction](https://000010.awsfcaj.com/1-introduce/) |
 | 4 | - Tìm hiểu quy trình thực hành Hybrid DNS với Amazon Route 53 Resolver:<br>&nbsp;&nbsp;&nbsp;+ Environment Preparation.<br>&nbsp;&nbsp;&nbsp;+ Remote Desktop Gateway.<br>&nbsp;&nbsp;&nbsp;+ Microsoft Active Directory.<br>&nbsp;&nbsp;&nbsp;+ DNS Configuration.<br>&nbsp;&nbsp;&nbsp;+ DNS Resolution Testing. | 14/10/2026 | 14/10/2026 | [Amazon Route 53 Resolver Workshop](https://000010.awsfcaj.com/) |
-| 5 | - Tìm hiểu và trao đổi sơ bộ về dự án Reloop:<br>&nbsp;&nbsp;&nbsp;+ Problem & Solution.<br>&nbsp;&nbsp;&nbsp;+ Project Objectives.<br>&nbsp;&nbsp;&nbsp;+ Core Features. | 15/10/2026 | 15/10/2026 | |
-| 6 | - Tham gia buổi họp trực tiếp với các thành viên trong nhóm:<br>&nbsp;&nbsp;&nbsp;+ Thảo luận về mục tiêu và định hướng phát triển dự án Reloop.<br>&nbsp;&nbsp;&nbsp;+ Trao đổi về Business Workflow và các chức năng chính của hệ thống.<br>&nbsp;&nbsp;&nbsp;+ Tìm hiểu các dịch vụ AWS dự kiến sử dụng trong dự án.<br>&nbsp;&nbsp;&nbsp;+ Thảo luận về phương án triển khai và kế hoạch phát triển.<br>&nbsp;&nbsp;&nbsp;+ Thống nhất phân chia vai trò và trách nhiệm cho từng thành viên. | 16/10/2026 | 16/10/2026 | |
+| 5 | - Tìm hiểu và trao đổi sơ bộ về dự án Reloop:<br>&nbsp;&nbsp;&nbsp;+ Problem & Solution.<br>&nbsp;&nbsp;&nbsp;+ Project Objectives.<br>&nbsp;&nbsp;&nbsp;+ Core Features.<br>&nbsp;&nbsp;&nbsp;+ Tìm hiểu các nhóm người dùng dự kiến và nhu cầu sử dụng hệ thống.<br>&nbsp;&nbsp;&nbsp;+ Trao đổi sơ bộ về luồng đăng thông tin thiết bị, hình ảnh và tương tác giữa các bên. | 15/10/2026 | 15/10/2026 | |
+| 6 | - Tham gia buổi họp trực tiếp với các thành viên trong nhóm:<br>&nbsp;&nbsp;&nbsp;+ Thảo luận về mục tiêu và định hướng phát triển dự án Reloop.<br>&nbsp;&nbsp;&nbsp;+ Trao đổi về Business Workflow và các chức năng chính của hệ thống.<br>&nbsp;&nbsp;&nbsp;+ Tìm hiểu các dịch vụ AWS dự kiến sử dụng trong dự án.<br>&nbsp;&nbsp;&nbsp;+ Thảo luận về phương án triển khai và kế hoạch phát triển.<br>&nbsp;&nbsp;&nbsp;+ Thống nhất phân chia vai trò và trách nhiệm cho từng thành viên.<br>&nbsp;&nbsp;&nbsp;+ Xác định định hướng công việc cá nhân liên quan đến nghiên cứu bảo mật, kiểm thử hệ thống và tổng hợp tài liệu dự án. | 16/10/2026 | 16/10/2026 | |
 
 ---
 
@@ -52,9 +52,11 @@ pre: " <b> 1.5. </b> "
 - Bước đầu tìm hiểu về dự án Reloop:
   + Xác định vấn đề và mục tiêu của dự án.
   + Tìm hiểu các chức năng dự kiến của hệ thống.
+  + Tìm hiểu các nhóm người dùng và luồng hoạt động cơ bản của nền tảng.
 
 - Tham gia họp nhóm và thống nhất định hướng phát triển:
   + Trao đổi về Business Workflow và các chức năng chính.
   + Tìm hiểu các dịch vụ AWS dự kiến sử dụng.
   + Thảo luận kế hoạch phát triển dự án.
   + Thống nhất phân chia vai trò và trách nhiệm cho các thành viên.
+  + Xác định phạm vi công việc cá nhân trong hoạt động nghiên cứu bảo mật, kiểm thử và tổng hợp tài liệu dự án.

@@ -1,283 +1,197 @@
----
-title: "Proposal"
-weight: 2
-chapter: false
-pre: " <b> 2. </b> "
----
-
-# RELOOP
-## An AI-assisted marketplace for used and damaged electronics, built on AWS serverless architecture
-
-### 1. Executive Summary
-
-ReLoop is a web-based marketplace that enables users in Vietnam to sell used or damaged electronic devices (phones, laptops, monitors, and components) to nearby repair shops, electronics buyers, and recycling businesses. The project is developed by **AWSS3nt1n4L**, a five-member team participating in the AWS First Cloud Journey (FCAJ) program in Ho Chi Minh City, during a 12-week internship (September 14 – December 4, 2026).
-
-Sellers upload photos, and Amazon Bedrock automatically suggests listing information. The listing is then distributed to all approved buyers whose branch service areas (1–15 km) cover the seller's location. Transactions are finalized through buyer quotations or mutually agreed prices negotiated through chat.
-
-As of November 8, 2026, the development environment had 14 accounts, 12 active listings from 7 sellers, and approximately 31,000 API requests during its first month. The serverless architecture supports scalability without requiring architectural redesign, with an approved Lambda concurrency quota of 1,000.
-
-The primary AWS services include CloudFront, AWS WAF, API Gateway, Lambda, DynamoDB, S3, Cognito, Rekognition, Bedrock, EventBridge, CloudWatch, and SNS.
-
-Guests can browse the Marketplace without an account. Authenticated users can chat and purchase items. Only Admin-approved partners can sell, while content moderation and invoice management are restricted to authorized Admin and Finance Admin roles.
-
-#### Team Members
-
-| Team Member | Role |
-|---|---|
-| Kung Cẩm Thành | Team Lead |
-| Hoàng Quốc Việt | Tech Lead |
-| Trần Hoàng Quốc Trung | Backend Engineer |
-| Nguyễn Duy Quang | Frontend Engineer |
-| Nguyễn Anh Kỳ | Cybersecurity / Documentation |
-
-### 2. Problem Statement
-
-#### Current Challenges
-
-According to the Global E-waste Monitor 2024 (UNITAR/ITU), the world generated 62 million tonnes of electronic waste in 2022, but only 22.3% was formally collected and recycled. According to the same report, Vietnam generated approximately 516,000 tonnes of electronic waste (approximately 5.3 kg per capita) in 2022.
-
-Owners of used or damaged electronic devices often do not know who is willing to purchase their devices or how much those devices are worth. Currently, they rely on general classified websites or social media groups, manually describe their devices, contact individual repair shops, and frequently receive no response.
-
-General marketplaces such as Chợ Tốt and Facebook Marketplace serve a wide range of product categories and therefore lack:
-
-- Listing matching based on repair shops' service areas covering the seller's location.
-- Estimated prices calculated according to individual buyers' pricing rules.
-- Reputation records reflecting whether buyers honor their quotations.
-
-Small repair shops face similar challenges from the buyer's perspective, as they lack an affordable channel for receiving relevant electronic devices from nearby sellers.
-
-#### Solution
-
-ReLoop operates entirely on managed AWS services without requiring the team to maintain dedicated servers.
-
-- **Ingestion:** browsers upload up to 6 images per listing (JPEG/PNG/WebP, up to 5 MB per image) directly to Amazon S3 using presigned POST URLs. Amazon Rekognition performs image content moderation and text detection. Detected text is evaluated through Amazon Bedrock Guardrails to identify suspicious content and route it for Admin review.
-
-- **Processing:** a single AWS Lambda function (Node.js 22, arm64) serves 111 API routes behind Amazon API Gateway. The function also invokes itself asynchronously for time-consuming tasks:
-  - AI-powered image analysis using Kimi K3 on Amazon Bedrock, taking approximately 35 seconds per analysis.
-  - Matching listings with buyer branches using geohash and Haversine calculations.
-
-  Amazon EventBridge invokes the same function every 15 minutes to process expired listings, automatically complete transactions after 48 hours, send reminders, and generate monthly invoices.
-
-- **Storage:** a single Amazon DynamoDB table (PK/SK + 1 GSI) stores all entity types, including users, partners, branches, pricing rules, listings, quotations, transactions, chats, reviews, invoices, and Admin audit records. Write operations are conditional, and financial API operations require an `Idempotency-Key`. S3 Lifecycle rules delete unused images after 1 day and all images after 90 days.
-
-- **Web Interface:** a React single-page application served from a private S3 bucket through Amazon CloudFront. It includes a public Marketplace, a two-tier partner portal, and an Admin portal.
-
-- **Security:** Amazon Cognito manages user authentication and authorization. API Gateway validates JWTs on private routes. AWS WAF helps protect the web application and authentication process. The platform applies Content-Security-Policy (CSP) and the principle of Least Privilege through AWS IAM.
-
-Compared with general classified platforms, ReLoop provides AI-assisted listing creation, service-area matching, rule-based price estimation, two-step transaction completion (seller confirms the final price and buyer accepts it), and two-way reviews.
-
-ReLoop does not process payments directly. Both parties handle payments independently during device handover.
-
-#### Benefits and Return on Investment (ROI)
-
-- **Reduced manual input:** AI suggests the title, category, brand, model, and condition of electronic devices from up to 3 images. Sellers only need to confirm or modify the suggestions. Creating a listing takes approximately 5 minutes manually and less than 1 minute with AI assistance, based on the team's estimates.
-- **Fewer unanswered listings:** each new listing is automatically matched with buyer branches within their service areas, with branches within 5 km prioritized.
-- **Reliability:** state machines, conditional writes, and idempotent background jobs maintain consistency across listings, quotations, and transactions. The project includes 182 automated tests and an end-to-end smoke test running on AWS.
-- **Learning value:** the team gains practical experience in DynamoDB single-table design, event-driven Lambda processing, structured JSON responses from Bedrock, Infrastructure as Code using Terraform, AWS WAF configuration, and security testing.
-- **Cost efficiency:** approximately **USD 18.70/month (USD 224.40/year)** at the current scale (Section 6). AWS WAF accounts for USD 17.00 of this amount. Without WAF, the estimated infrastructure cost would be approximately USD 1.70/month. Until February 28, 2027, costs are covered by the remaining AWS account credits (USD 197.14 as of November 8, 2026).
-- **Break-even point:** revenue is generated through a VND 10,000 fee paid by the seller for each completed transaction. Assuming an approximate exchange rate of USD 1 ≈ VND 26,000 in November 2026, USD 18.70 is equivalent to approximately VND 486,200. Therefore, the platform reaches infrastructure cost break-even at **49 completed transactions per month**, or 5 transactions per month under a cost scenario excluding WAF.
-
-### 3. Solution Architecture
-
-ReLoop uses a serverless architecture with backend resources deployed in the ap-southeast-1 (Singapore) region:
-
-- AWS WAF and Amazon CloudFront protect and distribute web application content. Static files are served from a private S3 bucket, while API requests are forwarded to Amazon API Gateway.
-- A single Lambda function contains the application's business logic. It interacts with DynamoDB, S3, Rekognition, and Bedrock through lightweight adapters, allowing the same codebase to run locally using Node.js and in-memory storage.
-- Amazon Cognito manages user registration, sign-in, and authentication.
-- Application logs and business metrics are collected by CloudWatch. SNS sends email notifications to administrators when alarms are triggered.
-- All infrastructure is defined using Terraform, with its state stored in a versioned S3 bucket.
-
-![ReLoop Architecture](https://raw.githubusercontent.com/Kyna172/FCAJ-Workshop-Report/main/static/images/2-Proposal/reloop-architecture.png)
-
-*Original architecture diagram: [reloop-architecture.drawio](https://github.com/Kyna172/FCAJ-Workshop-Report/blob/main/static/images/2-Proposal/reloop-architecture.drawio) (generated using `diagram/make_architecture.py`).*
-
-#### AWS Services Used
-
-- **Amazon CloudFront:** delivers the web application and forwards `/api/*` requests to API Gateway. Implements security headers such as CSP, HSTS, and X-Frame-Options.
-- **AWS WAF:** uses two Web ACLs to protect the web application and authentication system, combining AWS Managed Rules with rate-limiting mechanisms.
-- **Amazon S3:** uses three buckets for the web application build (private, with OAC), device images (presigned POST/GET and tag-based lifecycle management), and Terraform state (with versioning).
-- **Amazon API Gateway (HTTP API):** validates JWTs on private routes and applies throttling to control API traffic.
-- **AWS Lambda:** runs Node.js 22 on arm64 (Graviton) with 512 MB of memory. Handles API requests, asynchronous AI and matching workers, scheduled jobs, and Cognito pre-sign-up triggers. The average execution duration is 144 ms, with a concurrency quota of 1,000.
-- **Amazon DynamoDB:** uses a single on-demand table with PK/SK and GSI1, with PITR and TTL enabled (notifications automatically expire after 90 days). Currently contains approximately 5,600 records (2.4 MB).
-- **Amazon Cognito:** provides an email-verified user pool and manages user authorization groups. Currently supports 14 users.
-- **Amazon Rekognition:** performs image content moderation and text detection.
-- **Amazon Bedrock:** uses Kimi K3 through the Converse API with tool choice to generate structured JSON responses. Guardrails support content filtering and AI safety.
-- **Amazon EventBridge:** uses one scheduled rule that runs every 15 minutes to invoke background processing jobs.
-- **Amazon CloudWatch:** provides application logs, custom business metrics, one dashboard, and 10 alarms for system monitoring.
-- **Amazon SNS:** delivers email alerts to administrators.
-- **AWS IAM:** manages resource access permissions according to the principle of Least Privilege.
-- **AWS Security Agent:** performs automated security testing on the development environment (3.63 task-hours on November 8, 2026; remediation updates deployed on November 10, 2026).
-
-#### Component Design
-
-- **Edge / Client:** a React 18 + TypeScript single-page application built with Vite, using Leaflet and OpenStreetMap for location selection. Guests can browse the Marketplace. After authentication, users can access the partner portal (Tier 1: individual sellers, up to 3 active listings; Tier 2: businesses with branches, pricing rules, and quotations, up to 10 active listings) or the Admin portal.
-
-- **Ingestion:**
-  1. The system generates a presigned POST URL, allowing browsers to upload images directly to Amazon S3.
-  2. Amazon Rekognition performs image content moderation.
-  3. When a listing is created, the system updates the image status to support appropriate storage lifecycle management.
-
-- **Processing:** the HTTP router handles authentication, idempotency, and input validation. State machines for Listing, Quote, and Transaction enforce valid state transitions. AI processing and listing matching run asynchronously. The background job runner organizes tasks by time intervals to identify scheduled work without scanning the entire table.
-
-- **Storage:** data access patterns are defined in `backend/src/store/keys.ts`. Marketplace listings are partitioned by month, with cursor-based pagination and cursor format validation. Monetary values are stored as integer VND amounts.
-
-- **Web Interface:** a public Marketplace, listing-specific chat (updated every 5 seconds) with price negotiation, transaction management (handover scheduling, price adjustments, confirmation, and disputes), and reviews.
-
-- **User Management:** Cognito registration requires email verification. The system validates registered accounts. Administrators approve partner applications, while Finance Admins generate and confirm monthly invoices. Sellers with invoices overdue by more than 3 days cannot create new listings; accounts with invoices overdue by more than 7 days are suspended.
-
-- **Monitoring:** structured JSON logs, metric filters for business events, CloudWatch dashboards, SNS email notifications, and WAF log management with sensitive information protection.
-
-### 4. Technical Implementation
-
-#### Implementation Phases
-
-1. **Initial Project Research and Project Selection (September 28 – October 9, 2026):**
-   - Formed the team and researched an AI-powered solution for analyzing and detecting suspicious emails.
-   - On October 8, the ReLoop concept was proposed in the team's shared document.
-   - On October 9, the team held an in-person discussion at the office and officially agreed to proceed with the development of ReLoop.
-
-2. **ReLoop Requirements Analysis, Architecture Design & Feasibility Assessment (from October 9, 2026):**
-   - Analyzed business requirements, identified core features, and established the serverless architecture approach on AWS.
-   - Identified DynamoDB access patterns and the approach of combining AWS Lambda with Amazon API Gateway HTTP API.
-   - Removed bank deposit and withdrawal functionality due to the lack of banking APIs, replacing it with direct payment during device handover.
-   - Selected DynamoDB on-demand and Lambda arm64.
-   - Abstracted AWS service calls behind interfaces so that team members could develop locally without incurring AWS costs.
-   - Evaluated implementation costs and technical feasibility.
-
-3. **Development & Initial Deployment (October 9 – October 23, 2026):**
-   - Started application development on October 9 with the main database table, image bucket, Cognito authentication, and React application.
-   - Created the initial Terraform configuration for Cognito, API Gateway, Lambda, S3, and CloudFront.
-   - Completed the full Marketplace workflow on AWS (October 19), including the two-tier partner model, quotations, chat-based price negotiation, transactions, reviews, service fees, and content moderation.
-   - Successfully completed the end-to-end smoke test `smoke-aws.py` on October 22.
-
-4. **Architecture Refinement (October 26 – November 6, 2026):**
-   - Redesigned the entire user interface based on the Product Owner's design and added a new Admin portal.
-   - Migrated AI processing to Kimi K3 on Amazon Bedrock (October 28).
-   - Conducted five QA rounds covering 146 items (November 3).
-   - Increased the Lambda concurrency quota from 10 to 1,000.
-   - Integrated AWS WAF with CloudFront and Cognito (November 6).
-
-5. **Testing, Security Hardening & Handover (November 9 – December 4, 2026):**
-   - Conduct security testing and remediation (week of November 9).
-   - Apply CSP security policies.
-   - Standardize the CI/CD deployment workflow and manage access permissions for individual team members.
-   - Implement SES for email, AWS Budgets, load testing, and the production environment.
-   - Submit Proposal Part 2 with actual cost figures and security testing results (submitted on November 13, 2026).
-   - Prepare final documentation and a demonstration according to the team's plan.
-
-#### Technical Requirements
-
-- **Software:** Node.js 22, TypeScript 5, React 18 + Vite 5, Leaflet, amazon-cognito-identity-js, AWS SDK v3, esbuild, Vitest, and Python 3 for AWS smoke testing.
-- **Infrastructure as Code:** Terraform ≥ 1.10 (AWS provider 6.x), state stored in S3; `infra/deploy.sh` (build → `terraform apply` → web upload → CloudFront cache invalidation); AWS CLI ≥ 2.32.
-- **CI:** GitHub Actions performs type checking, runs 182 tests, and builds the web application for every pull request.
-- **Hardware:** only team members' laptops are required, with no on-premises infrastructure.
-- **Skills:** DynamoDB single-table modeling, IAM Least Privilege, Bedrock prompt and Guardrails design, AWS WAF configuration, React development, and testing with simulated AWS service components.
-
-### 5. Timeline & Implementation Milestones
-
-The following timeline reflects my learning, technical research, and contributions to the ReLoop project in my cybersecurity and documentation role. Major project milestones are aligned with the team's shared timeline, while weekly activities reflect my individual responsibilities and internship experience.
-
-| Week | Period | Activities and Deliverables |
-|---|---|---|
-| Week 1 | 14/09–18/09 | Set up my AWS account, FCAJ Portal, and personal GitHub repository; learn program guidelines, AWS Credits, and cloud computing fundamentals. |
-| Week 2 | 21/09–26/09 | Study and practice AWS IAM and Amazon VPC; strengthen knowledge of identity management and network security; attend the Buildrathon Kickoff event on September 26. |
-| Week 3 | 28/09–02/10 | Study and practice Amazon EC2; attend Cloud & AI events; participate in initial team formation and research an AI-powered solution for analyzing suspicious emails. |
-| Week 4 | 05/10–09/10 | Explore Amazon RDS and AWS Budgets; evaluate the initial project concept; ReLoop is proposed on October 8 and officially selected by the team on October 9. |
-| Week 5 | 12/10–16/10 | Explore Amazon CloudWatch and Hybrid DNS with Amazon Route 53 Resolver; study ReLoop's objectives, features, and business workflows; finalize team roles on October 16. |
-| Week 6 | 19/10–24/10 | Study ReLoop's system workflows; participate in initial demo testing from October 21; document UI and functional issues, suggest improvements, and attend the FCAJ Meetup. |
-| Week 7 | 26/10–30/10 | Explore AWS Backup and Amazon ECS; perform regression and end-to-end workflow testing on the updated ReLoop application; write a technical blog about Amazon Bedrock cost management. |
-| Week 8 | 02/11–06/11 | Consolidate internship documentation; research AWS Budgets, Cost Anomaly Detection, and Cost Explorer; study the roles of AWS WAF and API Gateway Throttling in web application protection. |
-| Week 9 | 09/11–14/11 | Finalize and publish technical blogs about API security and Amazon Bedrock usage management; consolidate technical documentation and collaborate with the team on Proposal Part 2 on November 13; attend Cloud Mastery. |
-| Week 10 | 16/11–20/11 | Strengthen AWS WAF knowledge through a workshop; review the Proposal against project progress; discuss the Workshop structure, scope, and required supporting materials with the team. |
-| Week 11 | 23/11–27/11 | Explore AWS cost visualization and analysis using Cost Explorer; collaborate on Workshop development, technical documentation, and diagrams; learn about report website deployment using Hugo and GitHub Pages. |
-| Week 12 | 30/11–04/12 | Finalize the Worklog, Self-Evaluation, Feedback, and remaining report sections; deploy and review the bilingual report website; prepare the required materials for final internship report submission. |
-
-#### Post-launch Project Operation Plan
-
-According to the team's shared plan, ReLoop's development and production environments will continue operating within the AWS credit validity period until February 28, 2027, to monitor operational costs and collect actual data on AI usage and listing-matching effectiveness.
-
-*The team officially agreed to proceed with ReLoop on October 9, 2026. Activities before this date were part of the learning, team formation, and initial project research stages.*
-
-*Ongoing activities in Week 10 and milestones from Week 11 onward will be updated according to actual progress.*
-
-### 6. Budget Estimation
-
-The cost estimation is based on publicly available AWS pricing for the ap-southeast-1 region (use the [AWS Pricing Calculator](https://calculator.aws/) to recalculate the estimates).
-
-The detailed cost breakdown is available in [reloop-cost-estimate.csv](https://github.com/Kyna172/FCAJ-Workshop-Report/blob/main/static/files/2-proposal/reloop-cost-estimate.csv).
-
-#### Infrastructure Costs
-
-Region: ap-southeast-1 (Singapore). Usage statistics are based on actual Cost Explorer and CloudWatch data collected from September 26 to November 8, 2026: approximately 31,000 API requests and 14 users.
-
-| Service | USD / Month | Assumptions |
-|---|---|---|
-| AWS WAF – CloudFront Web ACL | 10.00 | 1 Web ACL (5.00) + 5 rules (5 × 1.00) + 0.60 per million requests |
-| AWS WAF – Cognito Web ACL | 7.00 | 1 Web ACL (5.00) + 2 rules (2 × 1.00) |
-| Amazon Bedrock (Kimi K3 + Guardrails) | 1.00 | October usage (USD 0.87), with AI usage limits |
-| Amazon Rekognition | 0.30 | Content moderation and text detection for approximately 70–100 images/month |
-| Amazon DynamoDB (on-demand) | 0.10 | Approximately 5,600 records, 2.4 MB, PITR enabled |
-| Amazon API Gateway (HTTP API) | 0.10 | Approximately 31,000 requests/month |
-| Amazon S3 | 0.05 | Web build, images (1/90-day lifecycle), and Terraform state |
-| Other (data transfer and miscellaneous charges) | 0.15 | Allowance for minor charges observed in October |
-| AWS Lambda | 0.00 | Approximately 2,250 GB-s/month — Free Tier (1 million requests + 400,000 GB-s) |
-| Amazon CloudFront | 0.00 | Free Tier (1 TB + 10 million requests/month) |
-| Amazon Cognito | 0.00 | 14 users — Free Tier of up to 10,000 MAUs |
-| Amazon CloudWatch + SNS + EventBridge | 0.00 | 10 alarms, 1 dashboard, 7-day log retention, email alerts, and 1 scheduled rule — Free Tier |
-| AWS Security Agent | 0.00 | Free trial (400 task-hours/month); 3.63 task-hours consumed |
-| **Total Monthly Cost** | **18.70** | |
-| **Total Annual Cost** | **224.40** | |
-
-- **One-time hardware cost:** USD 0.
-- **AWS Credits:** the account is currently on the AWS Free plan, with USD 197.14 in remaining credits as of November 8, 2026, expiring on February 28, 2027. This amount is sufficient to cover approximately 3.7 months from the reporting date (approximately USD 69) without out-of-pocket expenses, provided that usage does not increase significantly.
-- **Cost Analysis:** AWS WAF accounts for USD 17.00 of the total monthly cost of USD 18.70. The remaining components account for approximately USD 1.70/month. Cost optimization must balance financial efficiency with the platform's security and operational requirements.
-
-*Reference prices are based on AWS pricing for the ap-southeast-1 region in November 2026 and are subject to change. Usage-based costs will increase with traffic volume. The figures presented in this table represent the team's estimates at the time of preparing the Proposal.*
-
-### 7. Risk Assessment
-
-#### Risk Matrix
-
-| Risk | Impact | Probability |
-|---|---|---|
-| R1. Different code versions deployed to the same Lambda function from two machines (occurred on 28/10/2026) | High | Medium |
-| R2. AWS credit exhaustion or unexpected charges | High | Low |
-| R3. Lambda/API throttling during sudden traffic increases | Medium | Medium |
-| R4. Incorrect AI-based device identification or AI affected by inappropriate image content | Medium | Medium |
-| R5. Security vulnerabilities in the public website or API | High | Low |
-| R6. Buyers and sellers completing transactions outside the platform to avoid service fees | Medium | High |
-| R7. Default Cognito email limits affecting user registration during demonstrations | Medium | Medium |
-
-#### Mitigation Strategies
-
-- **R1:** standardize the deployment workflow using committed source code, gradually transition to CI/CD, and assign individual access permissions to team members. Monitor deployment status and CloudTrail logs to ensure traceability.
-- **R2:** evaluate the cost of each new feature against the remaining AWS credits before implementation. Apply AI usage limits and configure AWS Budgets alerts at 50% and 80%.
-- **R3:** increase the Lambda concurrency quota to 1,000 and combine API Gateway throttling with AWS WAF rate-limiting mechanisms to control incoming traffic.
-- **R4:** AI provides suggestions only, and sellers confirm each field. The system stores AI-generated suggestions alongside seller-confirmed values. Guardrails and Rekognition help detect inappropriate content, supported by the Admin moderation process.
-- **R5:** implement AWS WAF, CSP, JWT authentication, resource access controls, and periodic security testing. The latest security assessment identified 7 findings, none rated high severity. Remediation updates were deployed on November 10, 2026.
-- **R6:** apply service fee policies to transactions initiated through the platform, handle fee-related disputes through Finance Admins, and monitor repeated violations.
-- **R7:** migrate Cognito email delivery to Amazon SES before opening the platform to trial users.
-
-#### Contingency Plans
-
-- **Deployment failure:** restore the most recent stable version from version-controlled source code. Use Terraform to review and control infrastructure changes before deployment.
-- **Unexpected cost increases:** review service usage, adjust AI usage limits and non-essential workloads, and maintain necessary security measures.
-- **Bedrock unavailable:** AI assistance is optional. Sellers can manually complete listing forms and continue publishing listings.
-- **WAF or CSP incorrectly blocks legitimate users:** review logs, evaluate security configurations, and apply appropriate adjustments after testing.
-- **Data incidents:** restore DynamoDB data using Point-in-Time Recovery (PITR), with a recovery window of up to 35 days. Sellers can re-upload images when necessary.
-
-### 8. Expected Outcomes
-
-#### Technical Improvements
-
-- A complete Marketplace running on AWS, featuring 111 API routes, 3 user-facing portals, 182 automated tests, and a successful end-to-end smoke test on AWS.
-- Infrastructure that can be fully reproduced using Terraform with a single command, at an estimated cost of USD 18.70/month. Usage-dependent components (Lambda, DynamoDB, API Gateway, and S3) account for less than USD 1/month at the current traffic volume.
-- Security posture that can be evaluated through testing results: AWS WAF protection for key components, CSP implementation, and security testing with 7 findings, none rated high severity. Remediable issues have been addressed according to the team's recorded results.
-- Response performance: an average Lambda execution duration of 144 ms, supported by CloudWatch Alarms for monitoring system latency.
-
-#### Long-term Value
-
-- Each listing stores AI-generated suggestions alongside seller-confirmed values. Over time, this creates a labeled dataset that can be used to evaluate or improve device identification capabilities.
-- The adapter-based design (Table, ImageStore, Analyzer, AuthProvider) allows services to be replaced or extended, such as SES-based email delivery, WebSocket chat, or banking payment APIs, without modifying the core business logic.
-- The same Terraform configuration and deployment scripts can be used to establish a production environment or expand the platform to another city. Geohash-based listing matching can operate across different geographical locations.
-- Repair shops and recycling businesses gain an additional reliable channel for receiving used electronic devices from nearby sellers. This contributes to device reuse and formal recycling rather than allowing unused electronics to accumulate in households.
+--
+title	Proposal
+weight	2
+chapter	false
+pre	<b> 2. </b>
+--
+
+RELOOP
+An AI-assisted marketplace for used and broken electronics, built serverless on AWS
+1. Executive Summary
+ReLoop is a web marketplace where people in Vietnam sell used or broken electronics (phones, laptops, monitors, components) to nearby repair shops, resellers, and recyclers. It is built by AWSS3nt1n4L, a 5-person team in the AWS First Cloud AI Journey (FCAJ) program in Ho Chi Minh City, during a 12-week internship (14/09–04/12/2026). A seller uploads device photos, and Amazon Bedrock pre-fills the listing details. The listing is then matched to every approved buyer whose branch service area (1–15 km) serves the seller's location, and the deal closes through a buyer quote or a price agreed in chat.
+
+On 08/11/2026, the live environment had 14 registered accounts, 12 active listings from 7 sellers, and roughly 31,000 API requests in its first month. The serverless design scales automatically without re-architecture, with Lambda concurrency approved up to 1,000. The platform uses 12 managed AWS services (plus AWS IAM for least-privilege access): CloudFront, AWS WAF, S3, Cognito, API Gateway, Lambda, DynamoDB, Rekognition, Bedrock, EventBridge, CloudWatch, and SNS. Guests browse the public market without an account, signed-in Owners chat and buy, Admin-approved Partners unlock selling (Tier 1) or buying and quoting (Tier 2), and Admins / FinanceAdmins moderate flagged content and handle monthly fee invoices.
+
+{{% notice tip %}} Live Demo: https://d1cjl1tvcp0r6q.cloudfront.net/ (verified live HTTPS CloudFront deployment of ReLoop)
+Companion Code & Terraform Repo: https://github.com/madlyham/ReLoop {{% /notice %}}
+
+Team
+Member	Role
+Kung Cẩm Thành	Team Lead
+Hoàng Quốc Việt	Tech Lead
+Trần Hoàng Quốc Trung	Backend Engineer
+Nguyễn Duy Quang	Frontend Engineer
+Nguyễn Anh Kỳ	Cyber-security / Documentation
+2. Problem Statement
+What's the Problem?
+The Global E-waste Monitor 2024 (UNITAR/ITU) reports that the world generated 62 million tonnes of e-waste in 2022, and only 22.3% was formally collected and recycled. The same report estimates that Vietnam generated about 516,000 tonnes (≈5.3 kg per person) in 2022. Owners of an old or broken device rarely know who will buy it or what it is worth. Today they post on general classifieds sites or social groups, describe the device by hand, call shops one by one, and often get no answer. General marketplaces such as Chợ Tốt or Facebook Marketplace are built for all kinds of goods and do not:
+
+Match a listing to repair shops whose service area covers the seller.
+Show a price estimate generated from each buyer's own pricing rules.
+Maintain a reputation record that rewards buyers who honour their quotes.
+Small repair shops face the same gap from the other side: they have no low-cost channel to receive nearby devices that match what they buy.
+
+The Solution
+ReLoop runs end to end on managed serverless AWS services with zero servers to operate:
+
+Photo Ingest: the browser uploads up to 6 photos per listing (JPEG/PNG/WebP, max 5 MB each) straight to a private Amazon S3 bucket via short-lived presigned POST URLs. Amazon Rekognition checks every photo for unsafe content and reads text printed on device labels. Amazon Bedrock Guardrails screens that text so prompt-injection attempts and unsafe content are flagged for Admin review.
+
+API & AI Processing: one AWS Lambda function (Node.js 22, arm64) behind Amazon API Gateway serves 111 API routes and also invokes itself asynchronously for slower tasks:
+
+AI photo analysis with Kimi K3 on Amazon Bedrock (about 35 seconds per run, reading up to 3 photos to pre-fill listing fields);
+geohash + Haversine matching of listings to nearby buyer branches.
+Amazon EventBridge triggers the same function every 15 minutes to expire open listings past their 7-day window.
+
+Storage: a single on-demand Amazon DynamoDB table (partition/sort key + one Global Secondary Index) stores every entity: users, partners, branches, pricing rules, listings, quotes, transactions, chats, reviews, expiration timers, invoices, and audit logs. Conditional writes and an Idempotency-Key on fee-related APIs prevent duplicate or conflicting updates. S3 lifecycle rules delete unattached photos after 1 day and expire listing photos after 90 days.
+
+Web Interface: a React single-page app served from a private S3 bucket through Amazon CloudFront, providing a public market, a two-tier partner portal, and an Admin portal.
+
+Security: Amazon Cognito handles sign-up and sign-in across four groups (Admins, FinanceAdmins, Partners, and Owners), firing a Post-confirmation Lambda to create each user profile. API Gateway validates Cognito JWT tokens on every protected route. A CloudFront-attached AWS WAF web ACL applies AWS managed rules and per-IP rate limits, while a shared x-origin-verify secret header blocks direct calls to API Gateway. Separate least-privilege IAM roles restrict each Lambda function to only the resources it needs.
+
+Compared with general classifieds, ReLoop adds AI-filled listings, service-area matching, rule-based price estimates, two-step completion (seller confirms the final price, buyer accepts), and two-way reviews. ReLoop does not hold funds: buyer and seller settle payment directly in person at hand-over.
+
+Benefits and Return on Investment
+Less manual effort: AI suggests title, category, brand, model, and condition from up to 3 uploaded photos, leaving the seller to review or adjust. Creating a listing drops from roughly 5 minutes by hand to under 1 minute (team estimate).
+Fewer unanswered listings: every new listing automatically routes to all buyer branches in range, ranking buyers within 5 km first.
+Reliability: explicit state machines, conditional DynamoDB writes, and idempotent background sweeps keep listings, quotes, and transactions consistent. The codebase is backed by 182 automated tests and full end-to-end live verification on AWS.
+Learning value: the team gained hands-on experience with single-table DynamoDB design, event-driven Lambda, Amazon Bedrock structured tool output and Guardrails, CloudFront WAF tuning, and Terraform Infrastructure as Code.
+Cost: about 11.70 USD/month (140.40 USD/year) at the current scale (Section 6). 10.00 USD of that is the CloudFront AWS WAF web ACL, so without WAF the platform costs about 1.70 USD/month. Until 28/02/2027, the account's remaining credits (189.80 USD observed on 21/11/2026) cover the entire run at zero cash cost.
+Payback: revenue is 10,000 VND per completed transaction, paid by the seller. At an approximate rate of 1 USD ≈ 26,000 VND (November 2026), 11.70 USD ≈ 304,200 VND. The platform breaks even at 31 completed transactions per month, or 5 per month without WAF.
+3. Solution Architecture
+ReLoop runs fully serverless in Asia Pacific (Singapore) ap-southeast-1, protected globally at the edge by Amazon CloudFront and AWS WAF.
+
+ReLoop Serverless Architecture on AWS
+
+End-to-End Request Flow (Arrows 1 → 10)
+Users → CloudFront (HTTPS (TLS)): browsers connect over HTTPS to CloudFront. AWS WAF sits attached as an associated web ACL to block malicious IPs, common exploits, and abusive request rates.
+CloudFront → S3 Website (static files (OAC)): CloudFront fetches the private React single-page app from S3 through Origin Access Control (OAC) and rewrites SPA routes at the edge.
+Users → Cognito (sign up / sign in): users register and sign in directly with Amazon Cognito. On email confirmation, Cognito triggers AWS Lambda (Post-confirm) to create the initial user profile in DynamoDB.
+CloudFront → API Gateway (/api/* + x-origin-verify): requests under /api/* strip the /api prefix at CloudFront and forward to API Gateway with a shared x-origin-verify secret header so direct bypass calls are rejected.
+API Gateway → Lambda (API) (invoke): API Gateway verifies Cognito JWTs against the user pool JWKS on every private route and invokes the main Node.js 22 API Lambda.
+Lambda (API) ↔ DynamoDB (read/write users, listings & invoices): Lambda reads and writes users, partner branches, listings, quotes, chats, expiration timers, and monthly fee invoices in a single on-demand table.
+Lambda (API) ↔ S3 Photos (presign & tag): Lambda issues short-lived presigned upload/view URLs and tags photos by moderation and attachment state.
+Users ↔ S3 Photos (upload / view photos): browsers upload and load device photos directly against private S3 using presigned URLs — never proxying binary files through Lambda.
+Lambda (API) ↔ Rekognition (image moderation): Lambda checks uploaded photos for unsafe content and extracts visible text from device labels and stickers.
+Lambda (API) ↔ Bedrock (AI analysis + Guardrail): Lambda screens extracted text through Amazon Bedrock Guardrail and invokes Kimi K3 on Bedrock in ap-southeast-1 to return structured JSON listing suggestions.
+Background & Operations Paths:
+
+EventBridge → Lambda (API) (expire listings every 15 min): a 15-minute schedule sweeps due timer partitions and expires stale open listings automatically.
+Lambda (API) → CloudWatch (logs & metrics) → SNS (alarm → email Admin): structured Lambda logs retain 7 days of history, and a metric alarm emails Admins via SNS whenever Lambda errors cross the threshold.
+AWS Services Used
+Amazon CloudFront: global HTTPS distribution serving the private React web app from S3 via OAC and routing /api/* to API Gateway with the x-origin-verify secret header.
+AWS WAF: 1 CloudFront-scoped web ACL (associated web ACL) combining 3 AWS managed rule groups (IP Reputation, Known Bad Inputs, Common Rule Set) with 2 per-IP rate limits returning 429 (100 req/min on the public API; 1,000 req/min overall).
+Amazon S3: 2 private buckets (Block Public Access enabled) — one for the static web bundle (OAC-only) and one for device photos (presigned POST/GET with 1-day unattached and 90-day lifecycle expiry).
+Amazon Cognito: Essentials user pool with email verification, Auth Code PKCE, and 4 groups (Admins, FinanceAdmins, Partners, Owners). The browser communicates with Cognito directly; a post-confirmation trigger invokes the Post-confirm Lambda to write the user profile to DynamoDB. Currently holds 14 users.
+Amazon API Gateway (HTTP API): enforces Cognito JWT authorization (JWKS) on private routes and throttles traffic at 20 requests/s (burst 50).
+AWS Lambda: 2 functions in ap-southeast-1:
+API Lambda (Node.js 22, arm64/Graviton, 512 MB): serves 111 API routes, async AI/matching work, and scheduled sweeps. Average duration is 144 ms; concurrency quota is 1,000.
+Post-confirm Lambda (Python 3.12): writes the initial user profile to DynamoDB upon Cognito confirmation.
+Amazon DynamoDB: 1 on-demand table (PK/SK + GSI1) with Point-in-Time Recovery (PITR) and Time-to-Live (TTL) enabled, holding about 5,600 items (2.4 MB).
+Amazon Rekognition: runs content moderation labels (rejecting explicit photos and escalating borderline cases to Admin) and text detection on every uploaded photo.
+Amazon Bedrock: runs in ap-southeast-1. A Standard-tier Guardrail (apac.guardrail.v1:0) screens text read from photos against prompt attacks and unsafe content, and Kimi K3 (global.moonshotai.kimi-k3) via the Converse API returns structured JSON listing fields. Output is validated against a strict backend schema, and each user is capped at 20 AI analyses/day.
+Amazon EventBridge: 1 scheduled rule every 15 minutes (rate(15 minutes)) triggering the listing-expiry sweep.
+Amazon CloudWatch: 7-day log retention on the API Lambda log group and a metric alarm monitoring API Lambda errors (threshold ≥ 3 errors in 5 minutes).
+Amazon SNS: sends email alerts to Admins whenever the CloudWatch alarm enters the ALARM state.
+AWS IAM: 2 separate least-privilege execution roles — one scoped to DynamoDB profile writes for the Post-confirm Lambda, and one scoped strictly to the core table, photo bucket prefix, Rekognition, Bedrock model & Guardrail, and CloudWatch Logs for the API Lambda.
+Component Design
+Edge / Client: a React 18 + TypeScript single-page app (Vite) using Leaflet + OpenStreetMap for location picking. Guests browse the public market; signed-in users access the partner portal (Tier 1 individual sellers: max 3 open listings; Tier 2 business buyers with branches, pricing rules, and quotes: max 10) or the Admin portal.
+Photo Ingestion:
+POST /uploads/presign returns a 5-minute presigned POST URL so the browser uploads directly to private S3.
+POST /uploads/moderate runs Rekognition moderation and text extraction, tagging safe images as passed.
+Creating a listing tags its photos as attached so the 1-day cleanup lifecycle rule keeps them until the 90-day expiry.
+Processing: an HTTP router checks JWT claims, idempotency keys, and request payloads. Explicit state machines for Listing, Quote, and Transaction permit only valid state transitions. AI analysis and branch matching run asynchronously, while time-bucketed keys let the 15-minute EventBridge sweep find expiring listings without full table scans.
+Storage: all access patterns follow a centralized single-table key design with zero table scans. The market feed is partitioned by month with validated cursor pagination, and all currency values are stored as integer VND.
+Web Interface: public marketplace feed, per-listing chat (5-second polling) with price offers, a transaction drawer (schedule hand-over, adjust price, confirm, dispute), and two-way reviews.
+User Management: Cognito handles email-verified registration and group claims. Admins approve partner applications, and Finance Admins issue and settle monthly fee invoices. Sellers with invoices overdue by more than 3 days cannot post new listings; after 7 days overdue, the account is locked until settled.
+Monitoring: structured JSON Lambda logs with 7-day retention in CloudWatch Logs, paired with a Lambda error alarm connected to an SNS email topic for Admin alerts.
+4. Technical Implementation
+Implementation Phases
+Research & Architecture (28/09–08/10/2026 — Completed): converted Specification v1.0 (1,189 paragraphs) into 45 documented business decisions (QĐ-01 → QĐ-45), mapped all DynamoDB single-table access patterns, and selected a unified serverless Lambda backend behind HTTP API Gateway.
+Cost Estimation & Feasibility (05/10–08/10/2026 — Completed, Proposal Part 1 submitted 08/10/2026):
+replaced online bank top-up/withdrawal with direct in-person payment at hand-over;
+selected on-demand DynamoDB and arm64 Lambda to stay inside AWS Free Tier at low volume;
+isolated every AWS call behind small adapter interfaces so developers run and test locally with zero AWS spend.
+Development & First AWS Deploy (09/10–23/10/2026 — Completed): built the DynamoDB core table, S3 photo pipeline, Cognito sign-in + Post-confirm trigger, React web app, and Terraform IaC. Full market flow went live on AWS on 19/10, and the automated end-to-end AWS smoke test passed on 22/10.
+Architecture Refinement (26/10–06/11/2026 — Completed):
+rebuilt the UI from product designs and added the Admin portal;
+moved AI analysis to Kimi K3 with Bedrock Guardrail in ap-southeast-1 (28/10);
+completed 5 QA rounds (146 findings resolved, 03/11);
+raised Lambda concurrency from 10 to 1,000 and attached AWS WAF to CloudFront (06/11).
+Verification, Hardening & Hand-over (09/11–04/12/2026 — In Progress):
+Completed (09/11–21/11): Proposal Part 2 submitted (13/11), load-test re-run verifying API throttling (20 req/s, burst 50) with zero 5xx errors, standardized deployment workflow with per-member IAM users, and full streamlined Workshop rebuild + live end-to-end verification across Arrows 1 → 10.
+Remaining (23/11–04/12): final unused-resource cleanup, final cost check against remaining credits, live demo rehearsal, and hand-over package.
+Technical Requirements
+Application Stack: Node.js 22, TypeScript 5, React 18 + Vite 5, Leaflet, Cognito client SDK, AWS SDK v3, esbuild, Vitest; Python 3.12 for the Post-confirm Lambda and end-to-end verification scripts.
+Infrastructure & CI: Terraform ≥ 1.10 (AWS provider 6.x) and AWS CLI ≥ 2.32 for reproducible deployments; GitHub Actions runs typecheck, 182 automated tests, and the web build on every pull request.
+Hardware: developer laptops only; no on-premises hardware required.
+Skills: single-table DynamoDB modelling, least-privilege IAM, Bedrock prompt and Guardrail design, CloudFront WAF rule tuning, React SPA development, and automated testing with service fakes.
+5. Timeline & Milestones
+Week	Dates	Status	Deliverables
+Week 4	05/10–09/10	Done	ReLoop selected as project direction (08/10); initial concept, architecture & DynamoDB access patterns; Proposal Part 1 submitted (08/10); core table, Cognito sign-in & React app started (09/10)
+Week 5	12/10–16/10	Done	ReLoop requirements analysis, user roles & workflows; AWS serverless architecture planning (S3, CloudFront OAC, Cognito, API Gateway, Lambda, DynamoDB); direct S3 upload & Rekognition moderation
+Week 6	19/10–24/10	Done	Terraform dev environment live; full market flow running on AWS (19/10); end-to-end smoke test passing (22/10); EventBridge 15-min expiry sweep
+Week 7	26/10–30/10	Done	Redesigned UI (public market, partner portal, Admin portal); Rekognition text extraction + Bedrock Guardrail; AI listing analysis migrated to Kimi K3 (28/10)
+Week 8	02/11–06/11	Done	ReLoop AWS infrastructure inventory (ap-southeast-1, 04/11); async branch matching; 5 QA rounds (146 findings resolved, 03/11); Lambda concurrency raised to 1,000; AI cap 20/day; CloudFront AWS WAF attached (06/11)
+Week 9	09/11–13/11	Done	Security review, webhook/API idempotency & hardening fixes deployed; Proposal Part 2 submitted with observed AWS costs (13/11)
+Week 10	16/11–21/11	Done	End-to-end ReLoop AWS architecture review & diagram refinement; load-test re-run after throttling tuning (20 req/s, burst 50); single deployment workflow with per-member IAM users; full live Workshop verification (Arrows 1 → 10)
+Week 11	23/11–27/11	Done	Final integration validation (S3 upload restrictions, Rekognition/Guardrail moderation, AI listing workflow), unused-resource cleanup, cost verification, and final report submission (24–25/11)
+Week 12	30/11–04/12	Planned	Architecture extension research (SES, WebSockets, multi-city scaling), AWS security deep-dive, final resource/IAM hygiene, and hand-over wrap-up by 04/12/2026
+6. Budget Estimation
+The estimate uses AWS public list prices for ap-southeast-1 (Singapore) (reproducible in the AWS Pricing Calculator). The line-by-line spreadsheet is in reloop-cost-estimate.csv.
+
+Infrastructure Costs
+Region: ap-southeast-1 (Singapore) + global CloudFront edge. Usage assumptions reflect observed Cost Explorer and CloudWatch data (~31,000 API requests/month and 14 registered users).
+
+Service	USD / month	Assumption
+AWS WAF – CloudFront web ACL	10.00	1 web ACL ($5.00) + 5 rules (5 × $1.00) + $0.60 per 1M requests
+Amazon Bedrock (Kimi K3 + Guardrail)	1.00	Observed monthly usage (~$0.87), capped at 20 analyses/user/day
+Amazon Rekognition	0.30	Content moderation + text detection for ~70–100 photos/month
+Amazon DynamoDB (on-demand)	0.10	~5,600 items, 2.4 MB, PITR enabled
+Amazon API Gateway (HTTP API)	0.10	~31,000 requests/month
+Amazon S3 (website + photos)	0.05	Private web bundle + photos (1-day unattached / 90-day lifecycle)
+Miscellaneous (data transfer, small items)	0.15	Buffer for minor transfer and usage line items
+AWS Lambda (API + Post-confirm)	0.00	~2,250 GB-s/month — Always Free (1M requests + 400,000 GB-s)
+Amazon CloudFront	0.00	Always Free (1 TB transfer + 10M requests/month)
+Amazon Cognito	0.00	14 users — Free Tier up to 10,000 MAU
+Amazon CloudWatch + SNS + EventBridge	0.00	7-day logs, 1 alarm, SNS email alerts, 15-min rule — Free Tier
+Total per month	11.70	
+Total for 12 months	140.40	
+One-time hardware: 0 USD.
+Credits: the account is on the AWS Free plan with 189.80 USD in remaining credits (observed on 21/11/2026), valid until 28/02/2027. That easily covers the roughly 3.2 months remaining to expiry (≈ 38 USD at 11.70 USD/month) at zero cash cost.
+Optional saving: detaching the CloudFront WAF web ACL during idle periods lowers the bill to about 1.70 USD/month, at the trade-off of removing edge rate limits and AWS managed exploit rules.
+Prices reflect AWS public list prices for ap-southeast-1 in November 2026 and may change. Usage-based lines scale proportionally with traffic.
+7. Risk Assessment
+Risk Matrix
+Risk	Impact	Probability
+R1. Two developers deploy conflicting code to the same Lambda function (observed 28/10/2026)	High	Medium
+R2. Credits run out or an unexpected charge appears (Free-plan accounts suspend when credits exhaust)	High	Low
+R3. Lambda or API throttling under traffic bursts (initial load test at concurrency 10 hit 26% 5xx under 80 parallel requests)	Medium	Medium
+R4. AI misreads a device or encounters malicious prompt-injection text inside a photo	Medium	Medium
+R5. Unauthorized access or abuse against the public web app, API, or private photo storage	High	Low
+R6. Sellers and buyers close deals off-platform to avoid the transaction fee	Medium	High
+R7. Cognito's default email limit (~50 emails/day) blocks sign-ups during a live demo	Medium	Medium
+Mitigation Strategies
+R1: use one deployment workflow from committed code revisions, issue separate IAM users per team member, and avoid root access keys.
+R2: size every paid service against remaining credits before enabling it, enforce the 20/user/day AI analysis cap, and review AWS Billing regularly.
+R3: Lambda concurrency is raised to 1,000; API Gateway throttling (20 req/s, burst 50) and CloudFront WAF rate limits return clean 429 responses instead of 5xx errors.
+R4: AI only suggests fields and the seller confirms every value before publishing. Rekognition text detection plus Bedrock Guardrail flag suspicious photo text for Admin review.
+R5: CloudFront WAF applies AWS managed rules and rate limits; private S3 buckets enforce OAC and presigned URLs; API Gateway requires both the CloudFront x-origin-verify secret header and valid Cognito JWTs; Lambda roles follow least privilege.
+R6: a cancellation-removal fee applies when a listing is pulled within 72 hours of a cancelled transaction, fee appeals route to Finance Admin, and repeat offenders are flagged.
+R7: plan migration to a custom email sender before opening public registration beyond small demos.
+Contingency Plans
+Bad deploy: redeploy the last known-good revision via Terraform and static web sync; preview exact changes with terraform plan first.
+Cost spike: detach the CloudFront WAF web ACL and lower the daily AI analysis cap immediately.
+Bedrock unavailable: AI pre-fill is optional; sellers can still complete the form manually and publish listings without interruption.
+WAF blocks legitimate users: adjust the rule or rate threshold directly on the CloudFront WAF web ACL — takes effect at the edge without an application release.
+Data corruption or accidental deletion: restore DynamoDB using Point-in-Time Recovery (up to 35 days back); device photos can be re-uploaded by sellers.
+8. Expected Outcomes
+Technical Improvements
+A complete, live serverless marketplace on AWS: 111 API routes, 3 user portals, 182 automated tests, and verified end-to-end execution across all 10 architecture flows.
+Fully reproducible infrastructure running at roughly 11.70 USD/month (under 1 USD/month for variable compute, database, API, and storage usage at current volume).
+Clear defense-in-depth baseline: CloudFront WAF protection, private S3 storage (OAC + presigned URLs), x-origin-verify origin isolation, Cognito JWT verification, and Rekognition + Bedrock Guardrail photo screening.
+Responsive backend performance: average Lambda duration of 144 ms, backed by 7-day CloudWatch Logs and automated SNS error alerts.
+Long-term Value
+Storing every AI suggestion alongside the seller's confirmed values builds a labelled dataset for evaluating and improving device recognition over time.
+The adapter-based backend design allows swapping or adding services (such as custom email delivery, WebSocket chat, or bank payment APIs) without rewriting core business rules.
+The same Terraform modules can spin up separate production environments or expand to other cities, as geohash branch matching is location-agnostic.
+Local repair shops and recyclers gain a reliable neighborhood channel for used electronics, keeping more devices in reuse and formal recycling instead of household storage.

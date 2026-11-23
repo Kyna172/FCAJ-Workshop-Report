@@ -30,7 +30,7 @@ To objectively reflect on my internship performance, I have evaluated myself acc
 | 8 | **Teamwork** | Collaborating effectively with teammates and actively contributing to group activities | ✅ | ☐ | ☐ |
 | 9 | **Professional Conduct** | Respecting colleagues, partners, and organizational culture | ✅ | ☐ | ☐ |
 | 10 | **Problem-Solving Skills** | Identifying problems and proposing creative, practical solutions | ☐ | ✅ | ☐ |
-| 11 | **Contribution to the Project/Team** | Work effectiveness, improvement initiatives, and contributions recognized by the team | ✅ | ☐ | ☐ |
+| 11 | **Contribution to the Project/Team** | Work effectiveness, improvement initiatives, and contributions recognized by the team | ☐ | ✅ | ☐ |
 | 12 | **Overall Evaluation** | General assessment of internship performance | ✅ | ☐ | ☐ |
 
 ---

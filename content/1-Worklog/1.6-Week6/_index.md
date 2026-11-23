@@ -1,28 +1,72 @@
 ---
-title: "Week 6 Worklog"
-date: 2025-09-15
+title: "Worklog Week 6"
+date: 2026-10-19
 weight: 6
 chapter: false
 pre: " <b> 1.6. </b> "
 ---
 
-# Week 6: Serverless Architecture (AWS Lambda & Amazon API Gateway)
-
 ### Week 6 Objectives:
-* Master the event-driven serverless paradigm with AWS Lambda.
-* Design and expose RESTful APIs using Amazon API Gateway.
-* Build an end-to-end serverless CRUD microservice integrated with DynamoDB and automated error handling.
 
-### Tasks Carried Out This Week:
-| Day | Tasks | Start Date | Completion Date | Reference Materials |
-| :--- | :--- | :--- | :--- | :--- |
-| **Mon** | - Studied AWS Lambda execution environments, memory allocation, execution timeouts, and cold starts.<br>- Wrote and deployed first Python Lambda functions handling standard JSON event payloads.<br>- Attached IAM execution roles granting least privilege access to AWS CloudWatch Logs. | 15/09/2025 | 15/09/2025 | [AWS Lambda Developer Guide](https://docs.aws.amazon.com/lambda/) |
-| **Tue** | - Created an Amazon API Gateway REST API with resources (`/items`) and HTTP methods (`GET`, `POST`, `DELETE`).<br>- Configured Lambda Proxy Integration to pass query parameters, headers, and request bodies directly.<br>- Enabled Cross-Origin Resource Sharing (CORS) headers for frontend client interoperability. | 16/09/2025 | 16/09/2025 | [Amazon API Gateway Guide](https://docs.aws.amazon.com/apigateway/) |
-| **Wed** | - Built a full serverless backend: API Gateway -> Lambda -> Amazon DynamoDB.<br>- Implemented structured CRUD endpoints: Create item, Fetch item by ID, List all items, Delete item.<br>- Added input data validation and customized standard HTTP status code responses (200, 400, 404, 500). | 17/09/2025 | 17/09/2025 | [Building Serverless APIs](https://aws.amazon.com/serverless/) |
-| **Thu** | - Explored asynchronous Lambda event sources: Amazon S3 event notifications and DynamoDB Streams.<br>- Configured an S3 upload trigger to automatically resize user avatars upon upload via a Lambda function.<br>- Handled dead-letter queues (DLQ) using Amazon SQS for failed executions. | 18/09/2025 | 18/09/2025 | [Lambda Event Source Mapping](https://docs.aws.amazon.com/lambda/latest/dg/invocation-eventsourcemapping.html) |
-| **Fri** | - Introduction to AWS Step Functions for orchestrating multi-step serverless workflows.<br>- Performed end-to-end API testing using Postman; reviewed Lambda cold start metrics.<br>- Documented API specs and submitted weekly worklog. | 19/09/2025 | 19/09/2025 | [AWS Step Functions](https://docs.aws.amazon.com/step-functions/) |
+- Continue exploring the workflows and main features of the Reloop project.
+- Study user interaction flows and the website features that need to be tested.
+- Participate in testing the first Reloop demo and document identified issues.
+- Summarize testing results and discuss potential improvements with the team.
+- Attend the First Cloud AI Journey Meetup to expand knowledge of AWS, Cloud, and AI Agents.
 
-### Week 6 Achievements & Key Takeaways:
-* **True Zero-Server Overhead:** Realized the massive productivity boost of serverless computing—no operating systems to patch, no servers to scale, zero payment when no requests arrive.
-* **Stateless Microservices Design:** Learned to structure backend code cleanly into idempotent, stateless functions triggered by external events.
-* **Cold Start Mitigation:** Understood techniques to minimize Lambda cold start latencies by keeping function packages lightweight and utilizing provisioned concurrency when necessary.
+---
+
+### Tasks Completed During the Week:
+
+| Day | Tasks | Start Date | Completion Date | References |
+| --- | --- | --- | --- | --- |
+| Monday | - Continue studying and discussing the Reloop project's features:<br>&nbsp;&nbsp;&nbsp;+ System Overview.<br>&nbsp;&nbsp;&nbsp;+ User Roles.<br>&nbsp;&nbsp;&nbsp;+ Business Workflow.<br>&nbsp;&nbsp;&nbsp;+ User Registration & Login.<br>&nbsp;&nbsp;&nbsp;+ Listing Management.<br>&nbsp;&nbsp;&nbsp;+ AI Integration.<br>&nbsp;&nbsp;&nbsp;+ AWS Architecture.<br>&nbsp;&nbsp;&nbsp;+ ... | 19/10/2026 | 19/10/2026 | |
+| Tuesday | - Study user interaction flows and features to be tested on the Reloop website:<br>&nbsp;&nbsp;&nbsp;+ User Registration.<br>&nbsp;&nbsp;&nbsp;+ Login & Logout.<br>&nbsp;&nbsp;&nbsp;+ Password Recovery.<br>&nbsp;&nbsp;&nbsp;+ User Profile.<br>&nbsp;&nbsp;&nbsp;+ Listing Management.<br>&nbsp;&nbsp;&nbsp;+ Form Validation.<br>&nbsp;&nbsp;&nbsp;+ ... | 20/10/2026 | 20/10/2026 | |
+| Wednesday | - Participate in testing the first Reloop demo:<br>&nbsp;&nbsp;&nbsp;+ User Interface.<br>&nbsp;&nbsp;&nbsp;+ User Registration.<br>&nbsp;&nbsp;&nbsp;+ Login & Logout.<br>&nbsp;&nbsp;&nbsp;+ Password Recovery.<br>&nbsp;&nbsp;&nbsp;+ User Profile.<br>&nbsp;&nbsp;&nbsp;+ Form Validation.<br>&nbsp;&nbsp;&nbsp;+ Check basic operations from a user's perspective.<br>&nbsp;&nbsp;&nbsp;+ Record interface and functional issues encountered during testing.<br>&nbsp;&nbsp;&nbsp;+ ... | 21/10/2026 | 21/10/2026 | [Reloop Website](https://d1cjl1tvcp0r6q.cloudfront.net/) |
+| Thursday | - Continue testing and reviewing Reloop features:<br>&nbsp;&nbsp;&nbsp;+ Listing Creation.<br>&nbsp;&nbsp;&nbsp;+ Image Upload.<br>&nbsp;&nbsp;&nbsp;+ Profile Updates.<br>&nbsp;&nbsp;&nbsp;+ Email & Phone Validation.<br>&nbsp;&nbsp;&nbsp;+ Address Information.<br>&nbsp;&nbsp;&nbsp;+ Error Handling.<br>&nbsp;&nbsp;&nbsp;+ Check system responses to incomplete or invalid input.<br>&nbsp;&nbsp;&nbsp;+ ...<br>- Discuss issues identified during testing with team members. | 22/10/2026 | 22/10/2026 | |
+| Friday | - Summarize the testing information and results for the Reloop demo:<br>&nbsp;&nbsp;&nbsp;+ Test Scenarios.<br>&nbsp;&nbsp;&nbsp;+ UI Issues.<br>&nbsp;&nbsp;&nbsp;+ Functional Issues.<br>&nbsp;&nbsp;&nbsp;+ Bug Reports.<br>&nbsp;&nbsp;&nbsp;+ Improvement Suggestions.<br>&nbsp;&nbsp;&nbsp;+ Organize identified issues by feature to facilitate team discussions.<br>&nbsp;&nbsp;&nbsp;+ ...<br>- Discuss necessary adjustments for future versions with team members. | 23/10/2026 | 23/10/2026 | |
+| Saturday | - Attend the First Cloud AI Journey Meetup at Bitexco Financial Tower:<br>&nbsp;&nbsp;&nbsp;+ Vietnamese Voice AI on AWS.<br>&nbsp;&nbsp;&nbsp;+ AWS Resource Access Manager.<br>&nbsp;&nbsp;&nbsp;+ AWS Pentest & Security Agent.<br>&nbsp;&nbsp;&nbsp;+ Amazon Bedrock AgentCore.<br>&nbsp;&nbsp;&nbsp;+ Kiro Crew & AI Agents.<br>&nbsp;&nbsp;&nbsp;+ ... | 24/10/2026 | 24/10/2026 | [First Cloud AI Journey Meetup](https://www.facebook.com/share/p/19uiwnYsM8/) |
+
+---
+
+### Week 6 Achievements:
+
+- Continue developing a better understanding of the Reloop project:
+  + Overall system workflow.
+  + User groups and their corresponding features.
+  + Registration, login, and account management features.
+  + Device listing and management processes.
+  + Planned AI integration and AWS services.
+
+- Study the features and user flows that need to be tested:
+  + User Registration.
+  + Login & Logout.
+  + Password Recovery.
+  + User Profile.
+  + Listing Management.
+  + Form Validation.
+  + ...
+
+- Participate in testing the first Reloop demo:
+  + Check the user interface and basic website operations.
+  + Test registration, login, and logout features.
+  + Check password recovery and user profile updates.
+  + Test listing creation and device information entry.
+  + Review information fields such as email, phone number, and address.
+  + Check how the system responds to invalid input.
+  + Record and discuss issues identified during testing.
+
+- Summarize testing results and discuss website improvements:
+  + Summarize user interface and functional issues.
+  + Document bugs and limitations of the demo version.
+  + Categorize issues by feature for easier tracking and discussion.
+  + Discuss necessary adjustments with the team.
+  + Suggest improvements for future versions.
+
+- Attend the First Cloud AI Journey Meetup:
+  + Learn about Voice AI applications on AWS.
+  + Learn about resource sharing and management with AWS Resource Access Manager.
+  + Explore security assessment and system testing solutions on AWS.
+  + Learn about Amazon Bedrock AgentCore and AI Agent deployment capabilities.
+  + Explore Kiro Crew for coding assistance and workflow automation.
+  + Network with speakers and learn from their practical experiences.

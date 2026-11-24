@@ -18,9 +18,9 @@ Welcome to the **ReLoop AWS Serverless Workshop**. Across Modules **5.1 through 
 This guide uses `reloop2` as the resource prefix and sanitized placeholders (`123456789012`, `alerts@example.com`, `<suffix>`) so you can run the workshop safely without exposing personal data or colliding with existing stacks.
 {{% /notice %}}
 
-### Workshop Modules (Graph Order: 1 → 12)
+### Workshop Modules (Graph Order: 1 → 10)
 
-1. [5.1. Workshop Overview & Architecture](5.1-workshop-overview/) — Full diagram & numbered walk **1 → 12**
+1. [5.1. Workshop Overview & Architecture](5.1-workshop-overview/) — Full diagram & numbered walk **1 → 10**
 2. [5.2. Prerequisites & Bedrock Access](5.2-prerequisites/) — Account, Singapore region (`ap-southeast-1`) & Kimi K3 access
 3. [5.3. Global Edge & Static Website](5.3-global-edge/) — **Arrows 1, 2** + WAF (`Users → CloudFront [WAF] → S3 website`)
 4. [5.4. Sign-up, Sign-in & IAM Role](5.4-sign-up-and-sign-in/) — **Arrow 3** + Post-confirm (`Users → Cognito → Lambda → create profile`)

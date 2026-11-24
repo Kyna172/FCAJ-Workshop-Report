@@ -6,29 +6,29 @@ chapter : false
 pre : " <b> 5. </b> "
 ---
 
-# Deploy ReLoop Serverless E-Waste Marketplace on AWS
+# Triển khai Sàn Đồ Điện Tử Cũ Serverless ReLoop trên AWS
 
-Welcome to the **ReLoop AWS Serverless Workshop**. Across Modules **5.1 through 5.12**, you build and verify a complete serverless web application on AWS following the exact request flow of the architecture diagram — from **Arrow 1** at the global edge all the way through **Arrow 10** in AI processing, plus scheduled cleanup, monitoring, live verification, and teardown.
+Chào mừng bạn đến với **ReLoop AWS Serverless Workshop**. Qua các học phần **5.1 đến 5.12**, bạn sẽ xây dựng và kiểm chứng trọn vẹn ứng dụng web serverless trên AWS theo đúng luồng yêu cầu của sơ đồ kiến trúc — từ **Mũi tên 1** ở lớp biên toàn cầu cho tới **Mũi tên 10** ở lớp xử lý AI, cùng lịch dọn tin định kỳ, giám sát cảnh báo, kiểm thử thực tế và dọn dẹp tài nguyên.
 
 {{% notice tip %}}
-**Companion Code & Terraform Repo:** [https://github.com/madlyham/ReLoop](https://github.com/madlyham/ReLoop)
+**Mã nguồn đồng hành & Terraform Repo:** [https://github.com/madlyham/ReLoop](https://github.com/madlyham/ReLoop)
 {{% /notice %}}
 
 {{% notice note %}}
-This guide uses `reloop2` as the resource prefix and sanitized placeholders (`123456789012`, `alerts@example.com`, `<suffix>`) so you can run the workshop safely without exposing personal data or colliding with existing stacks.
+Hướng dẫn dùng tiền tố tài nguyên `reloop2` cùng các giá trị mẫu đã che thông tin (`123456789012`, `alerts@example.com`, `<suffix>`) để bạn thực hành an toàn, không lộ thông tin cá nhân và không trùng tên với hệ thống có sẵn.
 {{% /notice %}}
 
-### Workshop Modules (Graph Order: 1 → 10)
+### Danh sách học phần (Theo thứ tự sơ đồ: 1 → 10)
 
-1. [5.1. Workshop Overview & Architecture](5.1-workshop-overview/) — Full diagram & numbered walk **1 → 10**
-2. [5.2. Prerequisites & Bedrock Access](5.2-prerequisites/) — Account, Singapore region (`ap-southeast-1`) & Kimi K3 access
-3. [5.3. Global Edge & Static Website](5.3-global-edge/) — **Arrows 1, 2** + WAF (`Users → CloudFront [WAF] → S3 website`)
-4. [5.4. Sign-up, Sign-in & IAM Role](5.4-sign-up-and-sign-in/) — **Arrow 3** + Post-confirm (`Users → Cognito → Lambda → create profile`)
-5. [5.5. IAM & API Backend](5.5-api-backend/) — **Arrows 4, 5** + verify JWT (`CloudFront /api/* → API Gateway → Lambda API`)
-6. [5.6. Data Storage: Amazon DynamoDB](5.6-dynamodb/) — **Arrow 6** (`read/write users, listings & invoices`)
-7. [5.7. Data Storage: Amazon S3 Photos](5.7-s3-photos/) — **Arrows 7, 8** (`presign & tag` + `upload / view photos`)
-8. [5.8. AI Processing: Rekognition & Bedrock](5.8-ai-processing/) — **Arrows 9, 10** (`image moderation` + `AI analysis + Guardrail`)
-9. [5.9. Scheduled Sweeps: Amazon EventBridge](5.9-eventbridge/) — `expire listings every 15 min`
-10. [5.10. Monitoring & Alerts: CloudWatch & SNS](5.10-monitoring/) — `logs & metrics → alarm → email Admin`
-11. [5.11. End-to-End Verification](5.11-end-to-end-verification/) — Live walk of **Arrows 1 → 10** + EventBridge + CloudWatch & SNS
-12. [5.12. Cleanup & Terraform Reference](5.12-cleanup-and-iac/) — Reverse-order teardown & zero-leftovers verification
+1. [5.1. Tổng quan Workshop & Kiến trúc](5.1-workshop-overview/) — Sơ đồ tổng thể & giải thích luồng **1 → 10**
+2. [5.2. Chuẩn bị & Quyền truy cập Bedrock](5.2-prerequisites/) — Tài khoản, vùng Singapore (`ap-southeast-1`) & kiểm tra Kimi K3
+3. [5.3. Lớp biên toàn cầu & Website tĩnh](5.3-global-edge/) — **Mũi tên 1, 2** + WAF (`Người dùng → CloudFront [WAF] → S3 website`)
+4. [5.4. Đăng ký, Đăng nhập & IAM Role](5.4-sign-up-and-sign-in/) — **Mũi tên 3** + Post-confirm (`Người dùng → Cognito → Lambda → tạo hồ sơ`)
+5. [5.5. IAM & Hệ thống API Backend](5.5-api-backend/) — **Mũi tên 4, 5** + xác thực JWT (`CloudFront /api/* → API Gateway → Lambda API`)
+6. [5.6. Lưu trữ dữ liệu: Amazon DynamoDB](5.6-dynamodb/) — **Mũi tên 6** (`đọc/ghi người dùng, tin đăng & hóa đơn`)
+7. [5.7. Lưu trữ ảnh: Amazon S3 Photos](5.7-s3-photos/) — **Mũi tên 7, 8** (`tạo URL ký sẵn & gắn thẻ` + `tải lên / xem ảnh`)
+8. [5.8. Xử lý AI: Rekognition & Bedrock](5.8-ai-processing/) — **Mũi tên 9, 10** (`kiểm duyệt ảnh` + `phân tích AI + Guardrail`)
+9. [5.9. Dọn tin định kỳ: Amazon EventBridge](5.9-eventbridge/) — `tự động đóng tin đăng quá hạn mỗi 15 phút`
+10. [5.10. Giám sát & Cảnh báo: CloudWatch & SNS](5.10-monitoring/) — `nhật ký & chỉ số → cảnh báo → email Admin`
+11. [5.11. Kiểm thử toàn luồng thực tế](5.11-end-to-end-verification/) — Chạy kiểm chứng **Mũi tên 1 → 10** + EventBridge + CloudWatch & SNS
+12. [5.12. Dọn dẹp tài nguyên & Tham khảo Terraform](5.12-cleanup-and-iac/) — Xóa ngược thứ tự phụ thuộc & xác minh sạch tài nguyên

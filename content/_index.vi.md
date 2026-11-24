@@ -12,7 +12,7 @@ chapter: false
 
 &emsp; **Số điện thoại:** 0373 643 830
 
-&emsp; **Email:** kynguyen230220@gmai.com
+&emsp; **Email:** kynguyen230220@gmail.com
 
 &emsp; **Trường:** Đại học FPT
 

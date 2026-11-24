@@ -8,7 +8,7 @@ pre: " <b> 6. </b> "
 
 # Internship Self-Evaluation Report
 
-Throughout my participation in the **Workforce Bootcamp – First Cloud AI Journey (FCAJ)** program, from **September 14, 2026, to December 4, 2026**, I have had the opportunity to experience a practical learning and working environment, gradually applying the Information Security knowledge acquired at FPT University to Cloud Computing and Amazon Web Services (AWS).
+Throughout my participation in the **Workforce Bootcamp – First Cloud AI Journey (FCAJ)** program from **September 14, 2026, to the report finalization date of November 25, 2026**, I have had the opportunity to experience a practice-oriented learning and working environment, gradually applying the Information Security knowledge acquired at FPT University to cloud computing and Amazon Web Services (AWS).
 
 In the **ReLoop project – A Marketplace for Used and Reusable Electronic Devices**, my primary responsibilities involved **security research, information gathering, and project documentation**. My tasks included researching AWS security services, studying methods for protecting web applications and APIs, collaborating with team members to collect information about the system architecture, preparing the project Proposal, and developing Workshop documentation.
 

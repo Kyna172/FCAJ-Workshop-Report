@@ -16,7 +16,7 @@ pre: " <b> 1.11. </b> "
 
 ---
 
-### Tasks performed during the week:
+### Tasks Completed During the Week:
 
 | Day | Tasks | Start Date | Completion Date | References |
 | --- | --- | --- | --- | --- |

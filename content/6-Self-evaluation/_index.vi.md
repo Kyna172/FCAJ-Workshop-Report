@@ -8,7 +8,7 @@ pre: " <b> 6. </b> "
 
 # Báo cáo tự đánh giá kết quả thực tập
 
-Trong suốt quá trình tham gia chương trình **Workforce Bootcamp – First Cloud AI Journey (FCAJ)** từ **14/09/2026 đến 04/12/2026**, tôi có cơ hội tiếp cận môi trường học tập và làm việc định hướng thực tiễn, từng bước vận dụng những kiến thức chuyên ngành An toàn thông tin đã tích lũy tại Đại học FPT vào lĩnh vực Điện toán đám mây và các dịch vụ của Amazon Web Services (AWS).
+Trong suốt quá trình tham gia chương trình **Workforce Bootcamp – First Cloud AI Journey (FCAJ)** từ **14/09/2026 đến thời điểm hoàn thiện báo cáo ngày 25/11/2026**, tôi có cơ hội tiếp cận môi trường học tập và làm việc định hướng thực tiễn, từng bước vận dụng những kiến thức chuyên ngành An toàn thông tin đã tích lũy tại Đại học FPT vào lĩnh vực Điện toán đám mây và các dịch vụ của Amazon Web Services (AWS).
 
 Trong dự án nhóm **ReLoop – Nền tảng mua bán và tái sử dụng thiết bị điện tử đã qua sử dụng**, tôi chủ yếu tham gia ở vai trò **nghiên cứu bảo mật, tổng hợp thông tin và biên soạn tài liệu dự án**. Công việc bao gồm tìm hiểu các dịch vụ AWS liên quan đến bảo mật hệ thống, nghiên cứu những phương pháp bảo vệ ứng dụng Web và API, phối hợp với các thành viên để thu thập thông tin kiến trúc, xây dựng nội dung báo cáo Proposal và chuẩn bị tài liệu Workshop.
 

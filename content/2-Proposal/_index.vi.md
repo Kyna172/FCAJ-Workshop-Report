@@ -130,7 +130,7 @@ ReLoop chạy hoàn toàn serverless tại **Asia Pacific (Singapore) `ap-southe
 
 | Tuần | Thời gian | Trạng thái | Kết quả bàn giao |
 |---|---|---|---|
-| Tuần 4 | 05/10–09/10 | Đã xong | Chọn ReLoop làm đề tài dự án (08/10); phác thảo ý tưởng, kiến trúc & mẫu truy vấn DynamoDB; nộp Đề xuất Phần 1 (08/10); khởi chạy bảng chính, Cognito & web React (09/10) |
+| Tuần 4 | 05/10–09/10 | Đã xong | Đề xuất ý tưởng ReLoop (08/10) và thống nhất chọn đề tài (09/10); phác thảo ý tưởng, kiến trúc & mẫu truy vấn DynamoDB; nộp Đề xuất Phần 1 (08/10); khởi chạy bảng chính, Cognito & web React (09/10) |
 | Tuần 5 | 12/10–16/10 | Đã xong | Phân tích yêu cầu ReLoop, vai trò người dùng & luồng nghiệp vụ; lập kế hoạch kiến trúc Serverless AWS (S3, CloudFront OAC, Cognito, API Gateway, Lambda, DynamoDB); tải ảnh trực tiếp S3 & kiểm duyệt Rekognition |
 | Tuần 6 | 19/10–24/10 | Đã xong | Dựng môi trường dev bằng Terraform; luồng Chợ đầy đủ chạy trên AWS (19/10); smoke test trọn luồng đạt (22/10); lịch EventBridge quét hết hạn mỗi 15 phút |
 | Tuần 7 | 26/10–30/10 | Đã xong | Giao diện mới (Chợ công khai, cổng đối tác, cổng Admin); đọc chữ Rekognition + Bedrock Guardrail; chuyển phân tích tin bằng AI sang Kimi K3 (28/10) |

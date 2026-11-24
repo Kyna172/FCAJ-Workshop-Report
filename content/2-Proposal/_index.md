@@ -130,7 +130,7 @@ ReLoop runs fully serverless in **Asia Pacific (Singapore) `ap-southeast-1`**, p
 
 | Week | Dates | Status | Deliverables |
 |---|---|---|---|
-| Week 4 | 05/10–09/10 | Done | ReLoop selected as project direction (08/10); initial concept, architecture & DynamoDB access patterns; Proposal Part 1 submitted (08/10); core table, Cognito sign-in & React app started (09/10) |
+| Week 4 | 05/10–09/10 | Done | Proposed the ReLoop idea (08/10) and officially agreed on the project topic (09/10); outlined the concept, architecture & DynamoDB query patterns; submitted Proposal Part 1 (08/10); launched the main table, Cognito & React web application (09/10) |
 | Week 5 | 12/10–16/10 | Done | ReLoop requirements analysis, user roles & workflows; AWS serverless architecture planning (S3, CloudFront OAC, Cognito, API Gateway, Lambda, DynamoDB); direct S3 upload & Rekognition moderation |
 | Week 6 | 19/10–24/10 | Done | Terraform dev environment live; full market flow running on AWS (19/10); end-to-end smoke test passing (22/10); EventBridge 15-min expiry sweep |
 | Week 7 | 26/10–30/10 | Done | Redesigned UI (public market, partner portal, Admin portal); Rekognition text extraction + Bedrock Guardrail; AI listing analysis migrated to Kimi K3 (28/10) |

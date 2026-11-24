@@ -13,7 +13,7 @@ pre: " <b> 1.3. </b> "
 
 ---
 
-### Tasks to be Carried Out This Week:
+### Tasks Completed During the Week:
 
 | Day | Task | Start Date | Completion Date | Reference Material |
 | --- | --- | --- | --- | --- |
